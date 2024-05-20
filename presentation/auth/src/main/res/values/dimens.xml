@@ -3,6 +3,7 @@
 
     <dimen name="def_horizontal_margin">16dp</dimen>
     <dimen name="def_vertical_margin">24dp</dimen>
+    <dimen name="margin_16dp">24dp</dimen>
 
     <dimen name="primary_button_height">54dp</dimen>
     <dimen name="primary_button_icon_size">24dp</dimen>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_16dp"
+    tools:context=".entry.EntryFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_entry_logo"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        style="@style/Healthy.Text.Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:text="@string/entry_description" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Healthy.Widget.Button.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:text="@string/button_login_text"
+        app:backgroundTint="#3FCC7D" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Healthy.Widget.Button.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:text="@string/button_register_text" />
+
+
+</LinearLayout>

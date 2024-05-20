@@ -6,5 +6,12 @@
 
     <string name="button_forward_text">Далее</string>
     <string name="button_get_started_text">Приступить</string>
+    <string name="button_login_text">Войти</string>
+    <string name="button_register_text">Зарегистрироваться</string>
+
+    <string name="entry_description">Остался последний шаг\nВойдите в сущестующий аккаунт или создайте новый</string>
+
+
+
 
 </resources>
