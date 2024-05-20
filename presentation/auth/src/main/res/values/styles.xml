@@ -5,6 +5,12 @@
 
     <style name="Healthy.Text"/>
 
+    <style name="Healthy.Text.Headline">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#232323</item>
+    </style>
+
     <style name="Healthy.Text.Description">
         <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">18sp</item>

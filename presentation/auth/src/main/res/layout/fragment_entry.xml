@@ -22,6 +22,7 @@
         android:text="@string/entry_description" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_login_entry"
         style="@style/Healthy.Widget.Button.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
         app:backgroundTint="#3FCC7D" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_register_entry"
         style="@style/Healthy.Widget.Button.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
