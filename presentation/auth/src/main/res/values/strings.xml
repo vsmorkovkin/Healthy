@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="welcome_title">Добро пожаловать в Healthy</string>
+    <string name="welcome_description">Мы рады приветствовать вас в нашем приложении, которое поможет вам следить за здоровым образом жизни. Давайте познакомимся с основными функциями</string>
+    <string name="button_start_text">Начать</string>
+
+</resources>
