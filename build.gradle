@@ -25,12 +25,14 @@ buildscript {
                 appCompat       : "1.6.1",
                 material        : "1.12.0",
                 constraintLayout: "2.1.4",
+                splashScreen    : "1.0.1",
         ]
 
         androidx = [
-                core              : "androidx.core:core-ktx:${versions.coreKtx}",
-                appCompat         : "androidx.appcompat:appcompat:${versions.appCompat}",
-                constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                core            : "androidx.core:core-ktx:${versions.coreKtx}",
+                appCompat       : "androidx.appcompat:appcompat:${versions.appCompat}",
+                constraintLayout: "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                splashScreen    : "androidx.core:core-splashscreen:${versions.splashScreen}",
         ]
 
         material = [
@@ -42,6 +44,6 @@ buildscript {
 }
 
 plugins {
-id 'com.android.application' version '8.2.2' apply false
+    id 'com.android.application' version '8.2.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.22' apply false
 }

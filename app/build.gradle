@@ -37,6 +37,7 @@ dependencies {
     implementation androidx.core
     implementation androidx.appCompat
     implementation androidx.constraintLayout
+    implementation androidx.splashScreen
     implementation material.material
 
 }
