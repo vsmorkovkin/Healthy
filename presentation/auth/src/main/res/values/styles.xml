@@ -46,6 +46,13 @@
 
     <style name="Healthy.Widget.Button.Secondary">
         <item name="android:layout_height">@dimen/secondary_button_height</item>
+        <item name="backgroundTint">#232323</item>
+    </style>
+
+    <style name="Healthy.Widget.Button.Secondary.Forward">
+        <item name="icon">@drawable/ic_forward_arrow</item>
+        <item name="iconSize">@dimen/primary_button_icon_size</item>
+        <item name="iconGravity">textEnd</item>
     </style>
 
 </resources>

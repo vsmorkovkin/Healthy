@@ -8,4 +8,6 @@
     <dimen name="primary_button_icon_size">24dp</dimen>
     <dimen name="secondary_button_height">48dp</dimen>
 
+    <dimen name="tab_layout_page_indicator_height">8dp</dimen>
+
 </resources>

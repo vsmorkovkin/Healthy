@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".onboarding.WelcomeFragment">
+    tools:context=".welcome.WelcomeFragment">
 
     <ImageView
         android:id="@+id/image_view_welcome_logo"

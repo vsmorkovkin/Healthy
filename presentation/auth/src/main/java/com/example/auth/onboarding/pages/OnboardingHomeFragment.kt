@@ -1,29 +1,29 @@
-package com.example.auth.onboarding
+package com.example.auth.onboarding.pages
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.auth.databinding.FragmentWelcomeBinding
+import com.example.auth.databinding.FragmentOnboardingHomeBinding
 
 
-class WelcomeFragment : Fragment() {
-
-    private var _binding: FragmentWelcomeBinding? = null
+class OnboardingHomeFragment : Fragment() {
+    
+    private var _binding: FragmentOnboardingHomeBinding? = null
     private val binding get() = _binding!!
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+        _binding = FragmentOnboardingHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
+    
 }

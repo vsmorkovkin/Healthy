@@ -4,4 +4,7 @@
     <string name="welcome_description">Мы рады приветствовать вас в нашем приложении, которое поможет вам следить за здоровым образом жизни. Давайте познакомимся с основными функциями</string>
     <string name="button_start_text">Начать</string>
 
+    <string name="button_forward_text">Далее</string>
+    <string name="button_get_started_text">Приступить</string>
+
 </resources>
