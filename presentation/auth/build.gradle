@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -35,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation project(':data:session')
+
     implementation androidx.core
     implementation androidx.appCompat
     implementation androidx.constraintLayout
@@ -43,4 +47,11 @@ dependencies {
     implementation androidx.navigationFragment
     implementation androidx.navigatinUiKtx
 
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
+
+}
+
+kapt {
+    correctErrorTypes = true
 }
