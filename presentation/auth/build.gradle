@@ -50,6 +50,10 @@ dependencies {
     implementation di.hiltAndroid
     kapt di.hiltCompiler
 
+    implementation platform(firebase.BoM)
+    implementation firebase.auth
+    implementation firebase.firestore
+
 }
 
 kapt {

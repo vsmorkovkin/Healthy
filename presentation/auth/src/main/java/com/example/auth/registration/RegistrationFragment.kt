@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.auth.R
 import com.example.auth.databinding.FragmentRegistrationBinding
 import com.example.auth.registration.viewmodel.RegistrationViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,12 +54,9 @@ class RegistrationFragment : Fragment() {
         }
 
         viewModel.isRegistered.onEach {
-            val message = if (it) {
-                "Пользователь успешно зарегистрирован"
-            } else {
-                "Не удалось зарегистровать пользователя"
+            if (it) {
+                findNavController().navigate(R.id.action_registrationFragment_to_mainFragment)
             }
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }.launchIn(lifecycleScope)
 
     }
