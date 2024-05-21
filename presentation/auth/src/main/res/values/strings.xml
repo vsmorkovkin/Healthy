@@ -19,5 +19,7 @@
     <string name="button_no_account_text">Нет аккаунта</string>
     <string name="button_password_forgotten_text">Не помню пароль</string>
 
+    <string name="edit_text_password_confirmation_hint">Подтвердите пароль</string>
+    <string name="edit_text_email_hint">Электронная почта</string>
 
 </resources>

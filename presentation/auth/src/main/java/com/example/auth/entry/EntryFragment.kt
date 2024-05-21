@@ -30,6 +30,10 @@ class EntryFragment : Fragment() {
             buttonLoginEntry.setOnClickListener {
                 findNavController().navigate(R.id.action_entryFragment_to_loginFragment)
             }
+
+            buttonRegisterEntry.setOnClickListener {
+                findNavController().navigate(R.id.action_entryFragment_to_registrationFragment)
+            }
         }
 
     }

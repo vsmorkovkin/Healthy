@@ -15,7 +15,7 @@ class LoginViewModel @Inject constructor(
     private val sessionService: SessionService
 ) : ViewModel() {
 
-    private val _hasUser = MutableStateFlow<Boolean>(false)
+    private val _hasUser = MutableStateFlow(false)
     val hasUser: StateFlow<Boolean>
         get() = _hasUser.asStateFlow()
 
