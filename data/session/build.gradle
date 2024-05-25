@@ -34,6 +34,8 @@ android {
 
 dependencies {
 
+    implementation project(':domain:session')
+
     implementation platform(firebase.BoM)
     implementation firebase.auth
     implementation firebase.firestore
