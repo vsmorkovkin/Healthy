@@ -21,15 +21,17 @@ buildscript {
 
 
         versions = [
-                coreKtx         : "1.13.1",
-                appCompat       : "1.6.1",
-                material        : "1.12.0",
-                constraintLayout: "2.1.4",
-                splashScreen    : "1.0.1",
-                navigation      : "2.7.7",
-                firebaseBoM     : "33.0.0",
-                coroutines      : "1.7.1",
-                hilt            : "2.51.1",
+                coreKtx            : "1.13.1",
+                appCompat          : "1.6.1",
+                material           : "1.12.0",
+                constraintLayout   : "2.1.4",
+                splashScreen       : "1.0.1",
+                navigation         : "2.7.7",
+                firebaseBoM        : "33.0.0",
+                coroutines         : "1.7.1",
+                hilt               : "2.51.1",
+                lifecycleRuntimeKtx: "2.8.0",
+                viewModel          : "2.8.0",
         ]
 
         androidx = [
@@ -38,7 +40,9 @@ buildscript {
                 constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
                 splashScreen      : "androidx.core:core-splashscreen:${versions.splashScreen}",
                 navigationFragment: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
-                navigatinUiKtx    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+                navigatinUiKtx    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                lifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycleRuntimeKtx}",
+                viewModelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModel}",
         ]
 
         material = [
