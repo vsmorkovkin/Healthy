@@ -4,22 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.auth.R
 import com.example.auth.databinding.FragmentLoginBinding
-import com.example.auth.login.viewmodel.LoginViewModel
+import com.example.common.mvi.BaseFragmentMvi
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginFragment :
+    BaseFragmentMvi<LoginPartialState, LoginIntent, LoginState, LoginEffect>(R.layout.fragment_login) {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: LoginViewModel by viewModels()
+    override val store: LoginStore by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,14 +37,11 @@ class LoginFragment : Fragment() {
             buttonLogin.setOnClickListener {
                 val email = editTextLogin.text.toString()
                 val password = editTextPassword.text.toString()
-
-                viewModel.login(email, password) {
-                    findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-                }
+                store.postIntent(LoginIntent.SignInIntent(email, password))
             }
 
             buttonNoAccount.setOnClickListener {
-                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+                store.postIntent(LoginIntent.NoAccountIntent)
             }
         }
 
@@ -53,5 +51,21 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun resolveEffect(effect: LoginEffect) {
+        when(effect) {
+            LoginEffect.SuccessfulLogin -> {
+                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+            }
+            is LoginEffect.LoginFailure -> {
+                Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
+            }
+            LoginEffect.RegisterEffect -> {
+                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+            }
+        }
+    }
+
+    override fun render(state: LoginState) {}
 
 }

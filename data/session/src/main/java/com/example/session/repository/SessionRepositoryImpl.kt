@@ -8,8 +8,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class SessionRepositoryImpl : SessionRepository {
+class SessionRepositoryImpl @Inject constructor() : SessionRepository {
     override suspend fun login(email: String, password: String) {
         Firebase.auth.signInWithEmailAndPassword(email, password).await()
     }

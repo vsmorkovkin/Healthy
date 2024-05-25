@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation project(':presentation:common')
+    implementation project(':domain:session')
     implementation project(':data:session')
 
     implementation androidx.core

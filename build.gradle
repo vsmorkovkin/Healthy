@@ -2,6 +2,7 @@
 buildscript {
     ext {
         javaCompileVersion = JavaVersion.VERSION_1_8
+        jvmToolchain = 8
 
         buildConfig = [
                 'compileSdk': 34,
