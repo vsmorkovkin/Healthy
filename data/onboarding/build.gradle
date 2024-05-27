@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.auth'
+    namespace 'com.example.onboarding'
     compileSdk buildConfig.compileSdk
 
     defaultConfig {
@@ -14,10 +14,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        viewBinding true
     }
 
     buildTypes {
@@ -37,26 +33,10 @@ android {
 
 dependencies {
 
-    implementation project(':presentation:common')
-    implementation project(':domain:session')
-    implementation project(':data:session')
     implementation project(':domain:onboarding')
-    implementation project(':data:onboarding')
-
-    implementation androidx.core
-    implementation androidx.appCompat
-    implementation androidx.constraintLayout
-    implementation material.material
-
-    implementation androidx.navigationFragment
-    implementation androidx.navigatinUiKtx
 
     implementation di.hiltAndroid
     kapt di.hiltCompiler
-
-    implementation platform(firebase.BoM)
-    implementation firebase.auth
-    implementation firebase.firestore
 
 }
 
