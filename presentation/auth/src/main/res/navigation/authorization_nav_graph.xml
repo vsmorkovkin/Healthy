@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.auth.welcome.WelcomeFragment"
+        android:name="com.example.auth.fragments.welcome.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.auth.onboarding.OnboardingFragment"
+        android:name="com.example.auth.fragments.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/entryFragment"
-        android:name="com.example.auth.entry.EntryFragment"
+        android:name="com.example.auth.fragments.entry.EntryFragment"
         android:label="fragment_entry"
         tools:layout="@layout/fragment_entry" >
         <action
@@ -39,9 +39,9 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.auth.login.LoginFragment"
+        android:name="com.example.auth.fragments.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.auth.registration.RegistrationFragment"
+        android:name="com.example.auth.fragments.registration.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.auth.main.MainFragment"
+        android:name="com.example.auth.fragments.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action

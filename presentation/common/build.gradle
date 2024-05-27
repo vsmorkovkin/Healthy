@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -38,4 +40,11 @@ dependencies {
     implementation androidx.lifecycleRuntimeKtx
     implementation androidx.viewModelKtx
 
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
+
+}
+
+kapt {
+    correctErrorTypes = true
 }
