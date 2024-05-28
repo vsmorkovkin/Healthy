@@ -1,3 +1,10 @@
 <resources>
     <string name="button_logout_text">Выйти</string>
+
+    <string name="fragment_home_label">Активность</string>
+    <string name="fragment_videos_label">Видео</string>
+    <string name="fragment_events_label">События</string>
+    <string name="fragment_chats_label">Чаты</string>
+    <string name="fragment_profile_label">Профиль</string>
+
 </resources>
