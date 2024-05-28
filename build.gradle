@@ -36,12 +36,12 @@ buildscript {
         ]
 
         androidx = [
-                core              : "androidx.core:core-ktx:${versions.coreKtx}",
-                appCompat         : "androidx.appcompat:appcompat:${versions.appCompat}",
-                constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
-                splashScreen      : "androidx.core:core-splashscreen:${versions.splashScreen}",
-                navigationFragment: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
-                navigatinUiKtx    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                core               : "androidx.core:core-ktx:${versions.coreKtx}",
+                appCompat          : "androidx.appcompat:appcompat:${versions.appCompat}",
+                constraintLayout   : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                splashScreen       : "androidx.core:core-splashscreen:${versions.splashScreen}",
+                navigationFragment : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+                navigationUiKtx    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
                 lifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycleRuntimeKtx}",
                 viewModelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModel}",
         ]

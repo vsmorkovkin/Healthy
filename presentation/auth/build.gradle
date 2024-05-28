@@ -49,7 +49,7 @@ dependencies {
     implementation material.material
 
     implementation androidx.navigationFragment
-    implementation androidx.navigatinUiKtx
+    implementation androidx.navigationUiKtx
 
     implementation di.hiltAndroid
     kapt di.hiltCompiler

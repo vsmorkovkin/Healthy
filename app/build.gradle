@@ -49,7 +49,7 @@ dependencies {
     implementation androidx.splashScreen
 
     implementation androidx.navigationFragment
-    implementation androidx.navigatinUiKtx
+    implementation androidx.navigationUiKtx
 
     implementation platform(firebase.BoM)
     implementation firebase.auth
