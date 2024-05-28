@@ -34,6 +34,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        Firebase.auth.currentUser.let {
+            binding.textViewUserNameAndSurname.text = it?.displayName
+        }
+
         binding.buttonLogout.setOnClickListener {
             Firebase.auth.signOut()
 

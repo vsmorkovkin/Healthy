@@ -1,5 +1,6 @@
 package com.example.auth.fragments.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.auth.R
 import com.example.auth.databinding.FragmentLoginBinding
 import com.example.common.mvi.BaseFragmentMvi
+import com.example.common.navigation.NavigationDeeplinkContainer
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -21,6 +24,9 @@ class LoginFragment :
     private val binding get() = _binding!!
 
     override val store: LoginStore by viewModels()
+
+    @Inject
+    lateinit var deeplinkContainer: NavigationDeeplinkContainer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,13 +59,13 @@ class LoginFragment :
     }
 
     override fun resolveEffect(effect: LoginEffect) {
-        when(effect) {
-            LoginEffect.SuccessfulLogin -> {
-                findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-            }
+        when (effect) {
+            LoginEffect.SuccessfulLogin -> navigateToMainActivity()
+
             is LoginEffect.LoginFailure -> {
                 Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
             }
+
             LoginEffect.RegisterEffect -> {
                 findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
             }
@@ -67,5 +73,10 @@ class LoginFragment :
     }
 
     override fun render(state: LoginState) {}
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(Intent.ACTION_VIEW, deeplinkContainer.DEEPLINK_TO_MAIN_ACTIVITY)
+        startActivity(intent)
+    }
 
 }

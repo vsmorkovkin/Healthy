@@ -38,6 +38,7 @@ android {
 dependencies {
 
     implementation project(':presentation:common')
+    implementation project(':data:session')
 
     implementation androidx.core
     implementation androidx.appCompat
