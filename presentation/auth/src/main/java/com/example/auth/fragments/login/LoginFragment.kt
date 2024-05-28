@@ -35,7 +35,7 @@ class LoginFragment :
 
         binding.run {
             buttonLogin.setOnClickListener {
-                val email = editTextLogin.text.toString()
+                val email = editTextEmail.text.toString()
                 val password = editTextPassword.text.toString()
                 store.postIntent(LoginIntent.SignInIntent(email, password))
             }

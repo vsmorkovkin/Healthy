@@ -3,7 +3,6 @@ package com.example.auth.di
 import com.example.onboarding.repository.OnboardingRepository
 import com.example.onboarding.usecase.GetOnboardingCompleteStatusUseCase
 import com.example.onboarding.usecase.UpdateOnboardingCompleteStatusUseCase
-import com.example.session.repository.SessionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
