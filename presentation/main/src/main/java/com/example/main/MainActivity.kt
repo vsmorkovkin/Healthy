@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
+        binding.imageViewProfile.setOnClickListener {
+            navController.navigate(R.id.profileFragment)
+        }
+
 
 
     }
