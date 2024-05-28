@@ -10,4 +10,19 @@
         android:name="com.example.main.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="com.example.main.fragments.videos.VideosFragment"
+        android:label="fragment_videos"
+        tools:layout="@layout/fragment_videos" />
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.main.fragments.events.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.example.main.fragments.chats.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
 </navigation>

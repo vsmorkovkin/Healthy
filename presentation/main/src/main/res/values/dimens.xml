@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="bottom_nav_view_height">56dp</dimen>
+    <dimen name="profile_image_side">56dp</dimen>
+    <dimen name="selected_bottom_nav_item_bg_corner_radius">24dp</dimen>
+    <dimen name="selected_bottom_nav_item_bg_padding">8dp</dimen>
+</resources>
