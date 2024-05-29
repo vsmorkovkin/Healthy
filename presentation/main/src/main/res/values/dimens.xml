@@ -8,4 +8,5 @@
     <dimen name="profile_image_view_size">256dp</dimen>
     <dimen name="_36dp">36dp</dimen>
     <dimen name="_24dp">24dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
 </resources>
