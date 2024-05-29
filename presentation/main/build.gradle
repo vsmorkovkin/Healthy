@@ -39,6 +39,7 @@ dependencies {
 
     implementation project(':presentation:common')
     implementation project(':data:session')
+    implementation project(':domain:session')
 
     implementation androidx.core
     implementation androidx.appCompat
@@ -54,6 +55,9 @@ dependencies {
     implementation platform(firebase.BoM)
     implementation firebase.auth
     implementation firebase.firestore
+    implementation firebase.storage
+
+    implementation glide.glide
 
 }
 

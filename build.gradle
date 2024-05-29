@@ -33,6 +33,7 @@ buildscript {
                 hilt               : "2.51.1",
                 lifecycleRuntimeKtx: "2.8.0",
                 viewModel          : "2.8.0",
+                glide              : "4.14.2",
         ]
 
         androidx = [
@@ -54,6 +55,7 @@ buildscript {
                 BoM      : "com.google.firebase:firebase-bom:${versions.firebaseBoM}",
                 auth     : "com.google.firebase:firebase-auth",
                 firestore: "com.google.firebase:firebase-firestore",
+                storage  : "com.google.firebase:firebase-storage"
         ]
 
         kotlinx = [
@@ -64,6 +66,11 @@ buildscript {
                 hiltAndroid : "com.google.dagger:hilt-android:${versions.hilt}",
                 hiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.hilt}"
         ]
+
+        glide = [
+                glide: "com.github.bumptech.glide:glide:${versions.glide}"
+        ]
+
 
     }
 

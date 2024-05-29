@@ -2,6 +2,7 @@ package com.example.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -35,7 +36,11 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarMain.setupWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
+            if (destination.id == R.id.profileFragment) {
+                binding.imageViewProfile.isVisible = false
+            } else {
+                binding.imageViewProfile.isVisible = true
+            }
             /*if (destination.id == R.id.full_screen_destination) {
                 toolbar.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE

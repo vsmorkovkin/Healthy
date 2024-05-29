@@ -36,9 +36,13 @@ dependencies {
 
     implementation project(':domain:session')
 
+    implementation kotlinx.coroutinesAndroid
+
     implementation platform(firebase.BoM)
     implementation firebase.auth
     implementation firebase.firestore
+    implementation firebase.storage
+
 
     implementation di.hiltAndroid
     kapt di.hiltCompiler

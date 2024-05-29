@@ -8,4 +8,5 @@ interface SessionRepository {
     suspend fun logout()
     suspend fun register(userRegisterEntity: UserRegisterEntity)
     suspend fun getUserProfile(): UserProfileEntity
+    suspend fun setUserProfileImage(imageUri: String): String?
 }

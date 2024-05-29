@@ -1,5 +1,6 @@
 package com.example.session.repository
 
+import android.net.Uri
 import com.example.session.entity.UserProfileEntity
 import com.example.session.entity.UserRegisterEntity
 import com.google.firebase.Firebase
@@ -7,10 +8,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class SessionRepositoryImpl @Inject constructor() : SessionRepository {
+
     override suspend fun login(email: String, password: String) {
         Firebase.auth.signInWithEmailAndPassword(email, password).await()
     }
@@ -57,4 +62,32 @@ class SessionRepositoryImpl @Inject constructor() : SessionRepository {
             imageUrl = photoUrl
         )
     }
+
+    override suspend fun setUserProfileImage(imageUri: String): String? {
+        val storageReference = FirebaseStorage.getInstance().reference
+        val user = FirebaseAuth.getInstance().currentUser
+
+        val profileImageRef = storageReference.child("profileImages/${user?.uid}.png")
+        val localImageUri = Uri.parse(imageUri)
+
+        profileImageRef.putFile(localImageUri).await() // save image in remote storage
+        val downloadUrl = profileImageRef.downloadUrl.await() // get url for image in remote storage
+        updateProfileWithImage(downloadUrl).await() // set url for image in remote storage to user photo url
+
+        return downloadUrl?.toString()
+    }
+
+    private suspend fun updateProfileWithImage(downloadUrl: Uri) = coroutineScope {
+        async {
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.let { firebaseUser ->
+                val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setPhotoUri(downloadUrl)
+                    .build()
+
+                firebaseUser.updateProfile(profileUpdates)
+            }
+        }
+    }
+
 }
