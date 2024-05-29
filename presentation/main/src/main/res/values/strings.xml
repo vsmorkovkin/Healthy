@@ -6,5 +6,24 @@
     <string name="fragment_events_label">События</string>
     <string name="fragment_chats_label">Чаты</string>
     <string name="fragment_profile_label">Профиль</string>
+    <string name="fragment_activity_by_day_label">Активность по дням</string>
+
+    <string name="card_steps_title">Шаги</string>
+    <string name="card_steps_initial_value">0</string>
+    <string name="card_steps_value_measurement">шагов</string>
+
+    <string name="card_water_title">Вода</string>
+    <string name="card_water_initial_value">0</string>
+    <string name="card_water_value_measurement">литров</string>
+
+    <string name="card_sleep_title">Сон</string>
+    <string name="card_sleep_initial_value">--</string>
+    <string name="card_sleep_value_measurement">часов</string>
+
+    <string name="card_weight_title">Вес</string>
+    <string name="card_weight_initial_value">--</string>
+    <string name="card_weight_value_measurement">кг</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

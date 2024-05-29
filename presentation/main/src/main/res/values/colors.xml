@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_steps">#3FCC7D</color>
+    <color name="color_water">#5BC7F8</color>
+    <color name="color_sleep">#7265E3</color>
+    <color name="color_weight">#000000</color>
+</resources>

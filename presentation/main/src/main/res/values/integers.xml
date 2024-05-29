@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="card_steps_target_value">6000</integer>
+    <integer name="card_water_target_value">2</integer>
+    <integer name="card_sleep_target_value">8</integer>
+</resources>

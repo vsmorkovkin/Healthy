@@ -6,10 +6,32 @@
     </style>
 
 
+    <style name="Healthy.Text.H4">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="Healthy.Text.H5">
         <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">#000000</item>
     </style>
+
+    <style name="Healthy.Text.Body0">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Healthy.Text.Body1">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#DFDFDF</item>
+    </style>
+
+
+    <!--<item name="android:includeFontPadding">false</item>-->
 
 </resources>

@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.main.fragments.home.HomeFragment"
         android:label="@string/fragment_home_label"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_activityByDayFragment"
+            app:destination="@id/activityByDayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/videosFragment"
         android:name="com.example.main.fragments.videos.VideosFragment"
@@ -30,4 +34,9 @@
         android:name="com.example.main.fragments.profile.ProfileFragment"
         android:label="@string/fragment_profile_label"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/activityByDayFragment"
+        android:name="com.example.main.fragments.activity_by_day.ActivityByDayFragment"
+        android:label="@string/fragment_activity_by_day_label"
+        tools:layout="@layout/fragment_activity_by_day" />
 </navigation>
