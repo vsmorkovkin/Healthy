@@ -5,11 +5,10 @@ import com.example.main.fragments.home.mvi.effect.HomeEffect
 import com.example.main.fragments.home.mvi.intent.HomeIntent
 import com.example.main.fragments.home.mvi.state.HomePartialState
 import com.example.main.fragments.home.mvi.state.HomeState
+import com.example.main.utils.DateConverter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 import javax.inject.Inject
 
 
@@ -22,9 +21,7 @@ class HomeActor @Inject constructor() : MviActor<HomePartialState, HomeIntent, H
 
     private fun getCurrentDate(): Flow<HomePartialState> = flow {
         val currentDate = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("d MMMM, E", Locale("ru", "RU"))
-        val formattedDate = dateFormat.format(currentDate)
-
+        val formattedDate = DateConverter.dateToHomeUi(currentDate)
         emit(HomePartialState.CurrentDateLoaded(formattedDate))
     }
 }

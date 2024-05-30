@@ -69,6 +69,8 @@ class ActivityByDayFragment :
         val activityUi = state.activityUi ?: return
 
         binding.run {
+            textViewCurrentDateActivityByDay.text = activityUi.date
+
             containerCardsActivityByDay.run {
                 cardSteps.setValue(activityUi.stepsNumber)
                 cardWater.setValue(activityUi.waterIntake.toInt())
@@ -76,8 +78,7 @@ class ActivityByDayFragment :
                 cardWeight.setValue(activityUi.weight.toInt())
             }
         }
-
-
+        
     }
 
 }

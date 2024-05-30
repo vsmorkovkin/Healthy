@@ -8,6 +8,7 @@ import com.example.main.fragments.activity_by_day.mvi.effect.ActivityByDayEffect
 import com.example.main.fragments.activity_by_day.mvi.intent.ActivityByDayIntent
 import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayPartialState
 import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayState
+import com.example.main.utils.DateConverter
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,7 +36,11 @@ class ActivityByDayActor @Inject constructor(
             getActivityByDateUseCase(date)
         }.fold(
             onSuccess = {
-                emit(ActivityByDayPartialState(activityUi = it?.toUi()))
+                emit(
+                    ActivityByDayPartialState(activityUi = it?.toUi { s ->
+                        DateConverter.entityDateToActivityByDayUi(s)
+                    })
+                )
 
                 Log.d("Activity", "is null: ${it == null}")
                 val gson = Gson()
