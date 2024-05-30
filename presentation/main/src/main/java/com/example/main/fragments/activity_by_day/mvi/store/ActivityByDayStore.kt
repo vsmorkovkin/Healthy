@@ -18,7 +18,7 @@ class ActivityByDayStore @Inject constructor(
 ) {
 
     override fun initialStateCreator(): ActivityByDayState {
-        return ActivityByDayState(null)
+        return ActivityByDayState(null, null)
     }
 
 }

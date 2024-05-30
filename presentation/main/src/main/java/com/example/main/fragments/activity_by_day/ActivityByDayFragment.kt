@@ -66,6 +66,10 @@ class ActivityByDayFragment :
     }
 
     override fun render(state: ActivityByDayState) {
+        state.selectedDate?.let {
+            binding.textViewCurrentDateActivityByDay.text = it
+        }
+
         val activityUi = state.activityUi
 
         if (activityUi == null) {

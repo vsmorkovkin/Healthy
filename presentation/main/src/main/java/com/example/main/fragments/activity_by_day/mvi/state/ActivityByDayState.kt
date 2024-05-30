@@ -4,5 +4,6 @@ import com.example.common.mvi.MviState
 import com.example.main.fragments.activity_by_day.model.ActivityUi
 
 data class ActivityByDayState(
+    val selectedDate: String?,
     val activityUi: ActivityUi?
 ) : MviState

@@ -31,13 +31,19 @@ class ActivityByDayActor @Inject constructor(
     }
 
     private fun getActivityByDayIntent(date: String): Flow<ActivityByDayPartialState> = flow {
+        emit(
+            ActivityByDayPartialState.ActivityByDaySelected(
+                DateConverter.entityDateToActivityByDayUi(date)
+            )
+        )
+
         runCatching {
             Log.d("Activity", "date=$date")
             getActivityByDateUseCase(date)
         }.fold(
             onSuccess = {
                 emit(
-                    ActivityByDayPartialState(activityUi = it?.toUi { s ->
+                    ActivityByDayPartialState.ActivityByDayLoaded(activityUi = it?.toUi { s ->
                         DateConverter.entityDateToActivityByDayUi(s)
                     })
                 )
