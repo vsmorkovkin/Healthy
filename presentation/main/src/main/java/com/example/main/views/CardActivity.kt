@@ -34,6 +34,10 @@ fun CardActivityBinding.initialize(cardActivityInitial: CardActivityInitial) {
     }
 }
 
+fun CardActivityBinding.initializeValue(initValue: String) {
+    value.text = initValue
+    percentage.text = "0"
+}
 
 fun CardActivityBinding.setValue(currentValue: Int) {
     value.text = currentValue.toString()
@@ -44,5 +48,6 @@ private const val MAX_PERCENT = 100
 
 private fun CardActivityBinding.setProgress(currentProgress: Int) {
     progress.progress = currentProgress
-    percentage.text = minOf(((progress.progress.toFloat() / progress.max) * 100).toInt(), MAX_PERCENT).toString()
+    percentage.text =
+        minOf(((progress.progress.toFloat() / progress.max) * 100).toInt(), MAX_PERCENT).toString()
 }

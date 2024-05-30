@@ -15,6 +15,7 @@ import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayPartial
 import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayState
 import com.example.main.fragments.activity_by_day.mvi.store.ActivityByDayStore
 import com.example.main.views.initialize
+import com.example.main.views.initializeValues
 import com.example.main.views.setValue
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -65,20 +66,23 @@ class ActivityByDayFragment :
     }
 
     override fun render(state: ActivityByDayState) {
+        val activityUi = state.activityUi
 
-        val activityUi = state.activityUi ?: return
+        if (activityUi == null) {
+            binding.containerCardsActivityByDay.initializeValues(requireContext())
+        } else {
+            binding.run {
+                textViewCurrentDateActivityByDay.text = activityUi.date
 
-        binding.run {
-            textViewCurrentDateActivityByDay.text = activityUi.date
-
-            containerCardsActivityByDay.run {
-                cardSteps.setValue(activityUi.stepsNumber)
-                cardWater.setValue(activityUi.waterIntake.toInt())
-                cardSleep.setValue(activityUi.sleepTime.toInt())
-                cardWeight.setValue(activityUi.weight.toInt())
+                containerCardsActivityByDay.run {
+                    cardSteps.setValue(activityUi.stepsNumber)
+                    cardWater.setValue(activityUi.waterIntake.toInt())
+                    cardSleep.setValue(activityUi.sleepTime.toInt())
+                    cardWeight.setValue(activityUi.weight.toInt())
+                }
             }
         }
-        
+
     }
 
 }

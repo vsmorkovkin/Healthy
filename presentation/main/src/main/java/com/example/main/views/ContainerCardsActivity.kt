@@ -60,3 +60,12 @@ fun ContainerCardsActivityBinding.initialize(context: Context) {
         )
     )
 }
+
+fun ContainerCardsActivityBinding.initializeValues(context: Context) {
+    context.run {
+        cardSteps.initializeValue(getString(R.string.card_steps_initial_value))
+        cardWater.initializeValue(getString(R.string.card_water_initial_value))
+        cardSleep.initializeValue(getString(R.string.card_sleep_initial_value))
+        cardWeight.initializeValue(getString(R.string.card_weight_initial_value))
+    }
+}
