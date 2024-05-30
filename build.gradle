@@ -34,6 +34,7 @@ buildscript {
                 lifecycleRuntimeKtx: "2.8.0",
                 viewModel          : "2.8.0",
                 glide              : "4.14.2",
+                gson               : "2.10",
         ]
 
         androidx = [
@@ -71,6 +72,9 @@ buildscript {
                 glide: "com.github.bumptech.glide:glide:${versions.glide}"
         ]
 
+        gson = [
+                gson: "com.google.code.gson:gson:${versions.gson}"
+        ]
 
     }
 

@@ -41,7 +41,7 @@ dependencies {
     implementation firebase.firestore
     implementation firebase.storage
 
-    implementation 'com.google.code.gson:gson:2.10'
+    implementation gson.gson
 
     implementation di.hiltAndroid
     kapt di.hiltCompiler

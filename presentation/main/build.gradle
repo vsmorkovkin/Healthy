@@ -62,7 +62,7 @@ dependencies {
 
     implementation glide.glide
 
-    implementation 'com.google.code.gson:gson:2.10'
+    implementation gson.gson
 
 }
 
