@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.main'
+    namespace 'com.example.activity'
     compileSdk buildConfig.compileSdk
 
     defaultConfig {
@@ -14,10 +14,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        viewBinding true
     }
 
     buildTypes {
@@ -37,35 +33,17 @@ android {
 
 dependencies {
 
-    implementation project(':presentation:common')
-    implementation project(':data:session')
-    implementation project(':domain:session')
-    implementation project(':data:activity')
     implementation project(':domain:activity')
-
-    implementation androidx.core
-    implementation androidx.appCompat
-    implementation androidx.constraintLayout
-    implementation material.material
-
-    implementation androidx.navigationFragment
-    implementation androidx.navigationUiKtx
-
-    implementation di.hiltAndroid
     implementation project(':domain:nutrition')
-    kapt di.hiltCompiler
 
     implementation platform(firebase.BoM)
     implementation firebase.auth
     implementation firebase.firestore
     implementation firebase.storage
 
-    implementation glide.glide
-
     implementation 'com.google.code.gson:gson:2.10'
 
-}
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
 
-kapt {
-    correctErrorTypes = true
 }

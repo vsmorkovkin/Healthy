@@ -58,8 +58,9 @@ class MainActivity : AppCompatActivity() {
             binding.run {
                 (destination.id in bottomNavViewItems).let {
                     imageViewProfile.isVisible = it
-                    bottomNavViewMain.isVisible = it
                 }
+
+                bottomNavViewMain.isVisible = destination.id != R.id.profileFragment
 
                 toolbarMain.menu.findItem(R.id.activityByDayFragment)?.isVisible =
                     destination.id == R.id.homeFragment

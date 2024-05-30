@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_16dp"
     tools:context=".fragments.activity_by_day.ActivityByDayFragment">
 
+    <Button
+        android:id="@+id/button_select_date"
+        style="@style/Healthy.Widget.Button.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_select_date" />
 
+    <include
+        android:id="@+id/container_cards_activity_by_day"
+        layout="@layout/container_cards_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp" />
 
-</FrameLayout>
+</LinearLayout>
