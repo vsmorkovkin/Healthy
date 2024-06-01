@@ -78,6 +78,8 @@ class ActivityByDayFragment :
             binding.run {
                 textViewCurrentDateActivityByDay.text = activityUi.date
 
+                cardCalories.setValue(activityUi.nutrition.calories)
+
                 containerCardsActivityByDay.run {
                     cardSteps.setValue(activityUi.stepsNumber)
                     cardWater.setValue(activityUi.waterIntake.toInt())

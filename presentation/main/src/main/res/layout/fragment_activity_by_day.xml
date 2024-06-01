@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/_16dp"
+    android:layout_height="wrap_content"
     tools:context=".fragments.activity_by_day.ActivityByDayFragment">
 
-    <Button
-        android:id="@+id/button_select_date"
-        style="@style/Healthy.Widget.Button.Secondary"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_select_date" />
+        android:orientation="vertical"
+        android:padding="@dimen/_16dp">
 
-    <TextView
-        style="@style/Healthy.Text.H5"
-        android:id="@+id/text_view_current_date_activity_by_day"
-        android:layout_marginTop="@dimen/_16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/current_date_hint"/>
+        <Button
+            android:id="@+id/button_select_date"
+            style="@style/Healthy.Widget.Button.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_select_date" />
 
-    <include
-        android:id="@+id/container_cards_activity_by_day"
-        layout="@layout/container_cards_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16dp" />
+        <TextView
+            android:id="@+id/text_view_current_date_activity_by_day"
+            style="@style/Healthy.Text.H5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/current_date_hint" />
 
-</LinearLayout>
+        <include
+            android:id="@+id/card_calories"
+            layout="@layout/card_calories" />
+
+        <include
+            android:id="@+id/container_cards_activity_by_day"
+            layout="@layout/container_cards_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

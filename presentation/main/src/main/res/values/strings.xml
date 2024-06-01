@@ -25,5 +25,7 @@
     <string name="card_weight_value_measurement">кг</string>
     <string name="button_select_date">Выбрать дату</string>
     <string name="current_date_hint">Выберите дату</string>
+    <string name="card_calories_title">Калории</string>
+    <string name="card_calories_value_measurement">ккал</string>
 
 </resources>
