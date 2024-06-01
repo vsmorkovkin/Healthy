@@ -22,4 +22,8 @@
     <dimen name="card_calories_progress_size">120dp</dimen>
     <dimen name="card_calories_corner_radius">16dp</dimen>
     <dimen name="_20dp">20dp</dimen>
+    <dimen name="card_nutrient_progress_size">36dp</dimen>
+    <dimen name="_0dp">0dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_9dp">9dp</dimen>
 </resources>

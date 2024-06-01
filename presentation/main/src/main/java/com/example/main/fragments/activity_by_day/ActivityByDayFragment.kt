@@ -44,6 +44,7 @@ class ActivityByDayFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.containerCardsActivityByDay.initialize(requireContext())
+        binding.cardProteins.initialize("Белки", requireContext().getColor(R.color.color_proteins_progress))
 
         binding.run {
             buttonSelectDate.setOnClickListener {
@@ -79,6 +80,7 @@ class ActivityByDayFragment :
                 textViewCurrentDateActivityByDay.text = activityUi.date
 
                 cardCalories.setValue(activityUi.nutrition.calories)
+                cardProteins.setValue(activityUi.nutrition.proteins)
 
                 containerCardsActivityByDay.run {
                     cardSteps.setValue(activityUi.stepsNumber)

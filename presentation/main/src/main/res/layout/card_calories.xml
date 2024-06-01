@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/icon_calories"
         app:trackColor="@color/color_calories_progress_bg"
         app:trackCornerRadius="@dimen/_12dp"
-        app:trackThickness="@dimen/_12dp" />
+        app:trackThickness="@dimen/_9dp" />
 
 
     <TextView

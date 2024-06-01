@@ -31,6 +31,10 @@
             layout="@layout/card_calories" />
 
         <include
+            android:id="@+id/card_proteins"
+            layout="@layout/card_nutrient"/>
+
+        <include
             android:id="@+id/container_cards_activity_by_day"
             layout="@layout/container_cards_activity"
             android:layout_width="match_parent"
