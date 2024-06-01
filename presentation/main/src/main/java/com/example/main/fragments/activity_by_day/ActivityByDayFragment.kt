@@ -43,10 +43,10 @@ class ActivityByDayFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.containerCardsActivityByDay.initialize(requireContext())
-        binding.cardProteins.initialize("Белки", requireContext().getColor(R.color.color_proteins_progress))
-
         binding.run {
+            containerCardsActivityByDay.initialize(requireContext())
+            cardNutrition.initialize(requireContext())
+
             buttonSelectDate.setOnClickListener {
                 store.postIntent(ActivityByDayIntent.OpenSelectDateDialogIntent)
             }
@@ -67,20 +67,20 @@ class ActivityByDayFragment :
     }
 
     override fun render(state: ActivityByDayState) {
-        state.selectedDate?.let {
-            binding.textViewCurrentDateActivityByDay.text = it
-        }
+        binding.run {
+            state.selectedDate?.let {
+                textViewCurrentDateActivityByDay.text = it
+            }
 
-        val activityUi = state.activityUi
+            val activityUi = state.activityUi
 
-        if (activityUi == null) {
-            binding.containerCardsActivityByDay.initializeValues(requireContext())
-        } else {
-            binding.run {
+            if (activityUi == null) {
+                cardNutrition.initializeValues()
+                containerCardsActivityByDay.initializeValues(requireContext())
+            } else {
                 textViewCurrentDateActivityByDay.text = activityUi.date
 
-                cardCalories.setValue(activityUi.nutrition.calories)
-                cardProteins.setValue(activityUi.nutrition.proteins)
+                cardNutrition.setValue(activityUi.nutrition)
 
                 containerCardsActivityByDay.run {
                     cardSteps.setValue(activityUi.stepsNumber)
@@ -90,7 +90,6 @@ class ActivityByDayFragment :
                 }
             }
         }
-
     }
 
 }

@@ -18,7 +18,11 @@
             android:layout_height="wrap_content" />
 
         <include
-            layout="@layout/card_calories"/>
+            android:id="@+id/card_nutrition_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            layout="@layout/card_nutrition"/>
 
         <include
             android:id="@+id/container_cards_activity"

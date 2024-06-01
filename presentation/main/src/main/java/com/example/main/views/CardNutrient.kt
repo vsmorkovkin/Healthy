@@ -5,10 +5,12 @@ import com.example.main.databinding.CardNutrientBinding
 
 fun CardNutrientBinding.initialize(
     title: String,
-    progressColor: Int
+    progressColor: Int,
+    targetValue: Int
 ) {
     titleNutrient.text = title
     progressNutrient.setIndicatorColor(progressColor)
+    progressNutrient.max = targetValue
 }
 
 fun CardNutrientBinding.setValue(value: Int) {

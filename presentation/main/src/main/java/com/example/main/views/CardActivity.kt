@@ -37,6 +37,7 @@ fun CardActivityBinding.initialize(cardActivityInitial: CardActivityInitial) {
 fun CardActivityBinding.initializeValue(initValue: String) {
     value.text = initValue
     percentage.text = "0"
+    progress.progress = 0
 }
 
 fun CardActivityBinding.setValue(currentValue: Int) {

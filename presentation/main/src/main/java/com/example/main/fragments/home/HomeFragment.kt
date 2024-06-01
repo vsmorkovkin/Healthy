@@ -39,9 +39,10 @@ class HomeFragment :
 
         store.postIntent(HomeIntent.GetCurrentDate)
 
-        binding.containerCardsActivity.initialize(requireContext())
-        //Log.d("Home","dimen=${resources.getInteger(R.integer.card_steps_target_value)}")
-
+        binding.run {
+            containerCardsActivity.initialize(requireContext())
+            cardNutritionHome.initialize(requireContext())
+        }
     }
 
     override fun onDestroyView() {
@@ -50,7 +51,7 @@ class HomeFragment :
     }
 
     override fun resolveEffect(effect: HomeEffect) {
-        TODO("Not yet implemented")
+
     }
 
     override fun render(state: HomeState) {

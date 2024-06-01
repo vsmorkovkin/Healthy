@@ -28,4 +28,8 @@
     <string name="card_calories_title">Калории</string>
     <string name="card_calories_value_measurement">ккал</string>
 
+    <string name="card_proteins_title">Белки</string>
+    <string name="card_fats_title">Жиры</string>
+    <string name="card_carbs_title">Углеводы</string>
+
 </resources>
