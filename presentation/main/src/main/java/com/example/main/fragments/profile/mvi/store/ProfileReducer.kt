@@ -11,7 +11,7 @@ class ProfileReducer @Inject constructor() : MviReducer<ProfilePartialState, Pro
         return when (partialState) {
             is ProfilePartialState.ProfileLoaded -> prevState.copy(userProfileUi = partialState.userProfileUi)
             is ProfilePartialState.UserProfileImageChanged -> ProfileState(
-                userProfileUi = prevState.userProfileUi!!.copy(imageUrl = Uri.parse(partialState.imageUrl))
+                userProfileUi = prevState.userProfileUi?.copy(imageUrl = Uri.parse(partialState.imageUrl))
             )
         }
     }

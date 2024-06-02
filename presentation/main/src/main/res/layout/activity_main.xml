@@ -31,7 +31,7 @@
                 android:layout_width="@dimen/profile_image_side"
                 android:layout_height="@dimen/profile_image_side"
                 android:layout_marginStart="@dimen/_16dp"
-                android:src="#3FCC7D"
+                android:background="#232323"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/CircleImageView"

@@ -48,6 +48,7 @@ class ProfileActor @Inject constructor(
         }.fold(
             onSuccess = {
                 emit(ProfilePartialState.UserProfileImageChanged(it))
+                _effects.emit(ProfileEffect.UserProfileImageChanged)
             },
             onFailure = {
                 _effects.emit(ProfileEffect.SetUserProfileImageFailure(it.message.orEmpty()))

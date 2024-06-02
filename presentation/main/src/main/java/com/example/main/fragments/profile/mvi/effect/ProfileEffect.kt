@@ -7,7 +7,9 @@ sealed interface ProfileEffect : MviEffect {
 
     data object OpenSelectImageDialog: ProfileEffect
     data class SetUserProfileImageFailure(val message: String) : ProfileEffect
+    data object UserProfileImageChanged : ProfileEffect
 
     data object SuccessfulLogout : ProfileEffect
+
     data class LogoutFailure(val message: String) : ProfileEffect
 }

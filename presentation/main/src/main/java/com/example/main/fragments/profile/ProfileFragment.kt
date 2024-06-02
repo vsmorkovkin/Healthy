@@ -3,11 +3,13 @@ package com.example.main.fragments.profile
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.common.mvi.BaseFragmentMvi
@@ -74,6 +76,7 @@ class ProfileFragment :
         when (effect) {
             ProfileEffect.SuccessfulLogout -> navigateToAuthActivity()
             ProfileEffect.OpenSelectImageDialog -> openSelectImageDialog()
+            ProfileEffect.UserProfileImageChanged -> parentFragmentManager.setFragmentResult(REQUEST_KEY_CHANGED_PROFILE_IMAGE, bundleOf())
             is ProfileEffect.SetUserProfileImageFailure -> showToast("Не удалось изменить изображение профиля. Ошибка: ${effect.message}")
             is ProfileEffect.GetUserProfileFailure -> showToast("Не удалось получить данные профиля. Ошибка: ${effect.message}")
             is ProfileEffect.LogoutFailure -> showToast("Не удалось выполнить выход. Ошибка: ${effect.message}")
@@ -115,5 +118,9 @@ class ProfileFragment :
                 }
             }
         }
+
+    companion object {
+        const val REQUEST_KEY_CHANGED_PROFILE_IMAGE = "REQUEST_KEY_CHANGED_PROFILE_IMAGE"
+    }
 
 }

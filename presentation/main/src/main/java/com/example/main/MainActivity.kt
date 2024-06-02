@@ -14,7 +14,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.main.databinding.ActivityMainBinding
+import com.example.main.fragments.profile.ProfileFragment
 import com.example.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -27,51 +29,25 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
 
+    private lateinit var navController: NavController
+    private lateinit var navHostFragment: NavHostFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Get navigation controller
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
-        val navController: NavController = navHostFragment.navController
-
-        // Bottom navigation bar setup
-        binding.bottomNavViewMain.setupWithNavController(navController)
-
-        // Toolbar setup
-        setSupportActionBar(binding.toolbarMain)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.videosFragment, R.id.eventsFragment, R.id.chatsFragment)
-        )
-        binding.toolbarMain.setupWithNavController(navController, appBarConfiguration)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            val bottomNavViewItems = listOf(
-                R.id.homeFragment,
-                R.id.videosFragment,
-                R.id.eventsFragment,
-                R.id.chatsFragment
-            )
-
-            binding.run {
-                (destination.id in bottomNavViewItems).let {
-                    imageViewProfile.isVisible = it
-                }
-
-                bottomNavViewMain.isVisible = destination.id != R.id.profileFragment
-
-                toolbarMain.menu.findItem(R.id.activityByDayFragment)?.isVisible =
-                    destination.id == R.id.homeFragment
-            }
-
-        }
+        navigationSetup()
+        registerFragmentResult()
 
         mainViewModel.userProfileUrl.onEach {
+            if (it == null) return@onEach
+
             binding.run {
                 Glide.with(imageViewProfile.context)
                     .load(it)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .skipMemoryCache(true)
                     .centerCrop()
                     .into(imageViewProfile)
             }
@@ -83,6 +59,61 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.profileFragment)
         }
 
+    }
+
+    private fun registerFragmentResult() {
+        navHostFragment.childFragmentManager.setFragmentResultListener(
+            ProfileFragment.REQUEST_KEY_CHANGED_PROFILE_IMAGE,
+            this
+        ) { _, _ ->
+            Glide.get(binding.imageViewProfile.context).clearMemory()
+            mainViewModel.getUserProfile()
+        }
+    }
+
+    private fun navigationSetup() {
+        // Get navigation controller
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        // Bottom navigation bar setup
+        binding.bottomNavViewMain.setupWithNavController(navController)
+
+        // Toolbar setup
+        setSupportActionBar(binding.toolbarMain)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.homeFragment, R.id.videosFragment, R.id.eventsFragment, R.id.chatsFragment)
+        )
+        binding.toolbarMain.setupWithNavController(navController, appBarConfiguration)
+
+        navController.addOnDestinationChangedListener { controller, destination, args ->
+            val bottomNavViewItems = listOf(
+                R.id.homeFragment,
+                R.id.videosFragment,
+                R.id.eventsFragment,
+                R.id.chatsFragment
+            )
+
+            binding.run {
+                // hide profile image if destination is not in bottomNavViews
+                (destination.id in bottomNavViewItems).let {
+                    imageViewProfile.isVisible = it
+                }
+
+                // hide bottom nav view in ProfileFragment
+                bottomNavViewMain.isVisible = destination.id != R.id.profileFragment
+
+                toolbarMain.menu.findItem(R.id.activityByDayFragment)?.isVisible =
+                    destination.id == R.id.homeFragment
+            }
+
+        }
+
+        // Set toolbar title with current destination label instead of app name
+        navController.currentDestination?.let {
+            supportActionBar?.title = it.label
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
