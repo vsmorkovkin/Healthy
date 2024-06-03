@@ -45,7 +45,7 @@ class ActivityByDayFragment :
 
         binding.run {
             containerCardsActivityByDay.initialize(requireContext())
-            cardNutrition.initialize(requireContext())
+            cardNutritionActivityByDay.initialize()
 
             buttonSelectDate.setOnClickListener {
                 store.postIntent(ActivityByDayIntent.OpenSelectDateDialogIntent)
@@ -75,12 +75,12 @@ class ActivityByDayFragment :
             val activityUi = state.activityUi
 
             if (activityUi == null) {
-                cardNutrition.initializeValues()
+                cardNutritionActivityByDay.initializeValues()
                 containerCardsActivityByDay.initializeValues(requireContext())
             } else {
                 textViewCurrentDateActivityByDay.text = activityUi.date
 
-                cardNutrition.setValue(activityUi.nutrition)
+                cardNutritionActivityByDay.setValue(activityUi.nutrition)
 
                 containerCardsActivityByDay.run {
                     cardSteps.setValue(activityUi.stepsNumber)

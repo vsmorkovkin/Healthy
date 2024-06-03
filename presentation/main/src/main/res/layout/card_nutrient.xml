@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:max="100"
-        android:progress="80"
+        android:progress="0"
         android:rotation="180"
         app:indicatorSize="@dimen/card_nutrient_progress_size"
         app:indicatorTrackGapSize="0dp"

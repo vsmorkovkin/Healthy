@@ -4,4 +4,5 @@ import com.example.common.mvi.MviIntent
 
 sealed interface HomeIntent : MviIntent {
     data object GetCurrentDate : HomeIntent
+    data object OpenNutritionScreen : HomeIntent
 }

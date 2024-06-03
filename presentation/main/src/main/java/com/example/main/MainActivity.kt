@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -56,7 +58,13 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getUserProfile()
 
         binding.imageViewProfile.setOnClickListener {
-            navController.navigate(R.id.profileFragment)
+            navController.navigate(
+                R.id.profileFragment,
+                null,
+                navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.profileFragment, true)
+                    .build()
+            )
         }
 
     }

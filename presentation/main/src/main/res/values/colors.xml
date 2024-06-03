@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_black">#000000</color>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_black">#FF000000</color>
 
     <color name="color_steps">#3FCC7D</color>
     <color name="color_water">#5BC7F8</color>
@@ -18,5 +19,7 @@
     <color name="color_fats_progress">#FCC903</color>
     <color name="color_carbs_progress">#EB0A56</color>
 
+    <color name="color_delete">#FF555D</color>
+    <color name="color_meal_nutrient_value">#939292</color>
 
 </resources>

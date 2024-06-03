@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_activity"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:paddingVertical="@dimen/_12dp">
+
+    <TextView
+        style="@style/Healthy.Text.Body0.Medium"
+        android:id="@+id/text_view_meal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_meal_calories_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        tools:layout_editor_absoluteX="16dp"
+        tools:text="Завтрак" />
+
+    <TextView
+        style="@style/Healthy.Text.H4"
+        android:id="@+id/text_view_meal_calories_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_meal_title"
+        tools:layout_editor_absoluteX="16dp"
+        tools:text="532" />
+
+    <TextView
+        style="@style/Healthy.Text.Body1"
+        android:id="@+id/text_view_meal_calories_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4dp"
+        android:text="@string/kilocalories_text"
+        app:layout_constraintBaseline_toBaselineOf="@id/text_view_meal_calories_value"
+        app:layout_constraintStart_toEndOf="@id/text_view_meal_calories_value" />
+
+
+    <include
+        android:id="@+id/card_meal_proteins"
+        layout="@layout/card_meal_nutrient" />
+
+    <include
+        android:id="@+id/card_meal_fats"
+        layout="@layout/card_meal_nutrient" />
+
+    <include
+        android:id="@+id/card_meal_carbs"
+        layout="@layout/card_meal_nutrient" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        app:constraint_referenced_ids="card_meal_proteins,card_meal_fats,card_meal_carbs"
+        app:flow_horizontalGap="@dimen/_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@id/text_view_meal_calories_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="@dimen/_24dp"
+        android:layout_height="@dimen/_24dp"
+        android:background="@drawable/ic_bin"
+        android:backgroundTint="@color/color_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

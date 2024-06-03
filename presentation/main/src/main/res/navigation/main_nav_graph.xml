@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_homeFragment_to_activityByDayFragment"
             app:destination="@id/activityByDayFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nutritionFragment"
+            app:destination="@id/nutritionFragment"
+            app:popUpTo="@id/nutritionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/videosFragment"
@@ -38,5 +43,18 @@
         android:id="@+id/activityByDayFragment"
         android:name="com.example.main.fragments.activity_by_day.ActivityByDayFragment"
         android:label="@string/fragment_activity_by_day_label"
-        tools:layout="@layout/fragment_activity_by_day" />
+        tools:layout="@layout/fragment_activity_by_day" >
+        <action
+            android:id="@+id/action_activityByDayFragment_to_nutritionFragment"
+            app:destination="@id/nutritionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutritionFragment"
+        android:name="com.example.main.fragments.nutrition.NutritionFragment"
+        android:label="@string/fragment_nutrition_label"
+        tools:layout="@layout/fragment_nutrition" >
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
 </navigation>

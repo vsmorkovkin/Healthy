@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/Healthy.Text.Body0.Medium"
+        android:id="@+id/text_view_meal_nutrient_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card_meal_nutrient"
+        android:paddingHorizontal="@dimen/_12dp"
+        android:paddingVertical="@dimen/_4dp"
+        tools:text="Б" />
+
+    <TextView
+        style="@style/Healthy.Text.Body0.Regular"
+        android:id="@+id/text_view_meal_nutrient_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:includeFontPadding="false"
+        tools:text="12" />
+
+</LinearLayout>

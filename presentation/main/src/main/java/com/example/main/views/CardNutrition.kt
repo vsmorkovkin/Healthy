@@ -1,12 +1,11 @@
 package com.example.main.views
 
-import android.content.Context
 import com.example.main.R
 import com.example.main.databinding.CardNutritionBinding
 import com.example.main.fragments.activity_by_day.model.NutritionUi
 
-fun CardNutritionBinding.initialize(context: Context) {
-    context.run {
+fun CardNutritionBinding.initialize() {
+    root.context.run {
         cardProteins.initialize(
             getString(R.string.card_proteins_title),
             getColor(R.color.color_proteins_progress),

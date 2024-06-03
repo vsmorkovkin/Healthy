@@ -7,6 +7,7 @@
     <string name="fragment_chats_label">Чаты</string>
     <string name="fragment_profile_label">Профиль</string>
     <string name="fragment_activity_by_day_label">Активность по дням</string>
+    <string name="fragment_nutrition_label">Питание</string>
 
     <string name="card_steps_title">Шаги</string>
     <string name="card_steps_initial_value">0</string>
@@ -23,13 +24,23 @@
     <string name="card_weight_title">Вес</string>
     <string name="card_weight_initial_value">--</string>
     <string name="card_weight_value_measurement">кг</string>
+
     <string name="button_select_date">Выбрать дату</string>
     <string name="current_date_hint">Выберите дату</string>
+
     <string name="card_calories_title">Калории</string>
     <string name="card_calories_value_measurement">ккал</string>
 
     <string name="card_proteins_title">Белки</string>
     <string name="card_fats_title">Жиры</string>
     <string name="card_carbs_title">Углеводы</string>
+
+    <string name="meals_text">Приемы пищи</string>
+    <string name="button_add_text">+ Добавить</string>
+    <string name="kilocalories_text">Ккал</string>
+    <string name="card_meal_proteins_title">Б</string>
+    <string name="card_meal_fats_title">Ж</string>
+    <string name="card_meal_carbs_title">У</string>
+
 
 </resources>
