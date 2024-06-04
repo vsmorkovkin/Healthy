@@ -16,5 +16,5 @@ fun CardNutrientBinding.initialize(
 fun CardNutrientBinding.setValue(value: Int) {
     valueNutrient.text = value.toString()
     progressNutrient.progress = value
-    percentageNutrient.text = value.toString()
+    percentageNutrient.text = minOf((value.toFloat() / progressNutrient.max * 100).toInt(), 100).toString()
 }
