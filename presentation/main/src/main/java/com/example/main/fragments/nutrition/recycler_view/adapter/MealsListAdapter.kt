@@ -9,7 +9,9 @@ import com.example.main.fragments.nutrition.model.MealUi
 import com.example.main.views.initialize
 import com.example.main.views.setMeal
 
-class MealsListAdapter : ListAdapter<MealUi, MealsListAdapter.MealViewHolder>(MealDiffCallback()) {
+class MealsListAdapter(
+    private val onClickDelete: (mealDateTimeOfCreation: Long) -> Unit
+) : ListAdapter<MealUi, MealsListAdapter.MealViewHolder>(MealDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val binding = CardMealBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,13 +20,23 @@ class MealsListAdapter : ListAdapter<MealUi, MealsListAdapter.MealViewHolder>(Me
     }
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+
+        holder.bind(item) {
+            onClickDelete(item.dateTimeOfCreation)
+            val newList = currentList.toMutableList()
+            newList.removeAt(holder.adapterPosition)
+            submitList(newList)
+        }
     }
 
     class MealViewHolder(private val binding: CardMealBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MealUi) {
-            binding.setMeal(item)
+        fun bind(item: MealUi, onClickDelete: () -> Unit) {
+            binding.run {
+                setMeal(item)
+                buttonDeleteMeal.setOnClickListener { onClickDelete() }
+            }
         }
     }
 

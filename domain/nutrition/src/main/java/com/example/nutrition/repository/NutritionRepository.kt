@@ -6,7 +6,7 @@ import com.example.nutrition.entity.NutritionWithMealsEntity
 
 interface NutritionRepository {
     suspend fun addMealByDate(mealEntity: MealEntity, date: String)
-    fun deleteMealByDate(date: String)
+    suspend fun deleteMealByDate(date: String, mealDateTimeOfCreation: Long)
     fun getNutritionByDate(date: String): NutritionEntity
     suspend fun getNutritionWithMeals(date: String): NutritionWithMealsEntity
 }

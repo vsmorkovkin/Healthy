@@ -11,7 +11,7 @@ class NutritionReducer @Inject constructor() : MviReducer<NutritionPartialState,
         partialState: NutritionPartialState
     ): NutritionState {
         return when (partialState) {
-            is NutritionPartialState.DateLoaded -> prevState.copy(date = partialState.date)
+            is NutritionPartialState.DateLoaded -> prevState.copy(dateUi = partialState.date)
             is NutritionPartialState.NutritionWithMealsLoaded -> prevState.copy(
                 nutritionWithMealsUi = partialState.nutritionWithMealsUi
             )

@@ -7,16 +7,19 @@ import com.example.main.fragments.nutrition.mvi.effect.NutritionEffect
 import com.example.main.fragments.nutrition.mvi.intent.NutritionIntent
 import com.example.main.fragments.nutrition.mvi.state.NutritionPartialState
 import com.example.main.fragments.nutrition.mvi.state.NutritionState
+import com.example.main.utils.DateConverter
 import com.example.nutrition.entity.MealEntity
 import com.example.nutrition.usecase.AddMealByDateUseCase
+import com.example.nutrition.usecase.DeleteMealByDateUseCase
 import com.example.nutrition.usecase.GetNutritionWithMealsUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class NutritionActor @Inject constructor(
-    private val addMealByDateUseCase: AddMealByDateUseCase,
     private val getNutritionWithMealsUseCase: GetNutritionWithMealsUseCase,
+    private val addMealByDateUseCase: AddMealByDateUseCase,
+    private val deleteMealByDateUseCase: DeleteMealByDateUseCase
 ) :
     MviActor<NutritionPartialState, NutritionIntent, NutritionState, NutritionEffect>() {
 
@@ -27,14 +30,14 @@ class NutritionActor @Inject constructor(
         return when (intent) {
             is NutritionIntent.DateReceivedFromArgs -> loadDate(intent.date)
             is NutritionIntent.GetNutritionWithMealsByDate -> getNutritionWithMealsByDate(intent.date)
-            is NutritionIntent.AddMealByDate -> addMealByDate(intent.mealEntity, state.date)
-            NutritionIntent.DeleteMealByDate -> deleteMealByDate(state.date)
+            is NutritionIntent.AddMealByDate -> addMealByDate(intent.date, intent.mealEntity)
+            is NutritionIntent.DeleteMealByDate -> deleteMealByDate(intent.date, intent.mealDateTimeOfCreation)
             NutritionIntent.OpenAddMealDialog -> showAddMealDialog()
         }
     }
 
     private fun loadDate(date: String): Flow<NutritionPartialState> = flow {
-        emit(NutritionPartialState.DateLoaded(date))
+        emit(NutritionPartialState.DateLoaded(DateConverter.dateEntityToNutritionUi(date)))
     }
 
     private fun getNutritionWithMealsByDate(date: String): Flow<NutritionPartialState> = flow {
@@ -42,32 +45,40 @@ class NutritionActor @Inject constructor(
             getNutritionWithMealsUseCase(date)
         }.fold(
             onSuccess = {
-                Log.d("Meal", "getNutritionWithMeals success: ${it.mealsList}")
                 emit(NutritionPartialState.NutritionWithMealsLoaded(it.toUi()))
             },
             onFailure = {
-                Log.d("Meal", "getNutritionWithMeals failure: ${it.message}")
+                Log.d("Nutrition", "getNutritionWithMeals failure: ${it.message}")
             }
         )
     }
 
-    private fun addMealByDate(mealEntity: MealEntity, date: String): Flow<NutritionPartialState> = flow {
+    private fun addMealByDate(date: String, mealEntity: MealEntity): Flow<NutritionPartialState> = flow {
         runCatching {
             addMealByDateUseCase(mealEntity, date)
             getNutritionWithMealsUseCase(date)
         }.fold(
             onSuccess = {
-                Log.d("Meal", "meal added: $mealEntity")
                 emit(NutritionPartialState.NutritionWithMealsLoaded(it.toUi()))
             },
             onFailure = {
-                Log.d("Meal", "meal adding failure: ${it.message}")
+                Log.d("Nutrition", "meal adding failure: ${it.message}")
             }
         )
     }
 
-    private fun deleteMealByDate(date: String): Flow<NutritionPartialState> = flow {
-        TODO("Not yet implemented")
+    private fun deleteMealByDate(date: String, mealDateTimeOfCreation: Long): Flow<NutritionPartialState> = flow {
+        runCatching {
+            deleteMealByDateUseCase(date, mealDateTimeOfCreation)
+            getNutritionWithMealsUseCase(date)
+        }.fold(
+            onSuccess = {
+                emit(NutritionPartialState.NutritionWithMealsLoaded(it.toUi()))
+            },
+            onFailure = {
+                Log.d("Nutrition", "meal deleting failure: ${it.message}")
+            }
+        )
     }
 
     private fun showAddMealDialog(): Flow<NutritionPartialState> = flow {

@@ -1,18 +1,14 @@
 package com.example.main.fragments.nutrition
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentNutritionBinding
-import com.example.main.fragments.activity_by_day.model.NutritionUi
 import com.example.main.fragments.nutrition.dialog.AddMealDialog
-import com.example.main.fragments.nutrition.model.MealUi
 import com.example.main.fragments.nutrition.mvi.effect.NutritionEffect
 import com.example.main.fragments.nutrition.mvi.intent.NutritionIntent
 import com.example.main.fragments.nutrition.mvi.state.NutritionPartialState
@@ -36,22 +32,17 @@ class NutritionFragment :
 
     override val store: NutritionStore by viewModels()
 
-    private val mealsAdapter by lazy(LazyThreadSafetyMode.NONE) { MealsListAdapter() }
+    private var dateParam = ""
+
+    private val mealsAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        MealsListAdapter { mealDateTimeOfCreation ->
+            store.postIntent(NutritionIntent.DeleteMealByDate(dateParam, mealDateTimeOfCreation))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        childFragmentManager.setFragmentResultListener(AddMealDialog.REQUEST_KEY_ENTERED_MEAL_TO_ADD, this) { _, bundle ->
-
-            val mealJsonString = bundle.getString(AddMealDialog.BUNDLE_KEY_MEAL)
-            val gson = Gson()
-            val mealEntityToAdd = gson.fromJson(mealJsonString, MealEntity::class.java)
-
-            store.postIntent(NutritionIntent.AddMealByDate(mealEntityToAdd))
-
-            Log.d("Nutrition", "meal: $mealEntityToAdd")
-            Toast.makeText(requireContext(), "Meal added", Toast.LENGTH_SHORT).show()
-        }
+        registerForFragmentResult()
     }
 
     override fun onCreateView(
@@ -66,18 +57,18 @@ class NutritionFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cardNutrition.initialize()
+        dateParam = NutritionFragmentArgs.fromBundle(requireArguments()).date
 
-        val date = NutritionFragmentArgs.fromBundle(requireArguments()).date
-        store.postIntent(NutritionIntent.DateReceivedFromArgs(date))
-
-        binding.buttonAddMeal.setOnClickListener {
-            store.postIntent(NutritionIntent.OpenAddMealDialog)
+        binding.run {
+            cardNutrition.initialize()
+            buttonAddMeal.setOnClickListener {
+                store.postIntent(NutritionIntent.OpenAddMealDialog)
+            }
         }
-
         mealsRecyclerViewSetup()
 
-        store.postIntent(NutritionIntent.GetNutritionWithMealsByDate(date))
+        store.postIntent(NutritionIntent.DateReceivedFromArgs(dateParam))
+        store.postIntent(NutritionIntent.GetNutritionWithMealsByDate(dateParam))
     }
 
     override fun onDestroyView() {
@@ -87,9 +78,8 @@ class NutritionFragment :
 
     override fun render(state: NutritionState) {
         binding.run {
-            textViewDateNutrition.text = state.date
+            textViewDateNutrition.text = state.dateUi
             state.nutritionWithMealsUi.let {
-                Log.d("Meal", "fragment render: ${it.mealsList}")
                 cardNutrition.setValue(it.totalNutrition)
                 mealsAdapter.submitList(it.mealsList)
             }
@@ -99,6 +89,19 @@ class NutritionFragment :
     override fun resolveEffect(effect: NutritionEffect) {
         when (effect) {
             NutritionEffect.ShowAddMealDialog -> showAddMealDialog()
+        }
+    }
+
+    private fun registerForFragmentResult() {
+        childFragmentManager.setFragmentResultListener(
+            AddMealDialog.REQUEST_KEY_ENTERED_MEAL_TO_ADD,
+            this
+        ) { _, bundle ->
+            val mealJsonString = bundle.getString(AddMealDialog.BUNDLE_KEY_MEAL)
+            val gson = Gson()
+            val mealEntityToAdd = gson.fromJson(mealJsonString, MealEntity::class.java)
+
+            store.postIntent(NutritionIntent.AddMealByDate(dateParam, mealEntityToAdd))
         }
     }
 
@@ -115,17 +118,6 @@ class NutritionFragment :
                 0
             )
         )
-
-        /*mealsAdapter.submitList(
-            listOf(
-                MealUi(1, "Завтрак", NutritionUi(210, 22, 45, 93)),
-                MealUi(2, "Обед", NutritionUi(314, 32, 41, 89)),
-                MealUi(3, "Ужин", NutritionUi(576, 25, 55, 115)),
-                MealUi(4, "Завтрак", NutritionUi(210, 22, 45, 93)),
-                MealUi(5, "Обед", NutritionUi(314, 32, 41, 89)),
-                MealUi(6, "Ужин", NutritionUi(576, 25, 55, 115)),
-            )
-        )*/
     }
 
 }

@@ -4,6 +4,6 @@ import com.example.common.mvi.MviState
 import com.example.main.fragments.nutrition.model.NutritionWithMealsUi
 
 data class NutritionState(
-    val date: String,
+    val dateUi: String,
     val nutritionWithMealsUi: NutritionWithMealsUi
 ) : MviState

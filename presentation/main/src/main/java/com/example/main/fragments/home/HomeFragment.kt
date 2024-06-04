@@ -1,7 +1,6 @@
 package com.example.main.fragments.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,7 +70,7 @@ class HomeFragment :
 
     private fun navigateToNutritionFragment() {
         val currentDate = Calendar.getInstance().time
-        val formattedDate = DateConverter.dateToHomeUi(currentDate)
+        val formattedDate = DateConverter.dateToDateEntity(currentDate)
         val action = HomeFragmentDirections.actionHomeFragmentToNutritionFragment(formattedDate)
         findNavController().navigate(action)
     }

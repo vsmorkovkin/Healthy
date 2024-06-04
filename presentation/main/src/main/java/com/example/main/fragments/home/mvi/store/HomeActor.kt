@@ -1,6 +1,5 @@
 package com.example.main.fragments.home.mvi.store
 
-import android.util.Log
 import com.example.common.mvi.MviActor
 import com.example.main.fragments.home.mvi.effect.HomeEffect
 import com.example.main.fragments.home.mvi.intent.HomeIntent

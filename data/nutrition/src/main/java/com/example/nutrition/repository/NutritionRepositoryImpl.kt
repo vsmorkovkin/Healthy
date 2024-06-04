@@ -1,11 +1,11 @@
 package com.example.nutrition.repository
 
-import android.util.Log
 import com.example.nutrition.entity.MealEntity
 import com.example.nutrition.entity.NutritionEntity
 import com.example.nutrition.entity.NutritionWithMealsEntity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.tasks.await
@@ -18,14 +18,18 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
         const val COLLECTION_MEALS = "meals"
     }
 
-    override suspend fun addMealByDate(mealEntity: MealEntity, date: String) {
+    private fun getMealDocRef(date: String): DocumentReference? {
         val db: FirebaseFirestore = Firebase.firestore
-        val userId = Firebase.auth.currentUser?.uid ?: return
+        val userId = Firebase.auth.currentUser?.uid ?: return null
 
-        val mealDocRef = db.collection(COLLECTION_USERS)
+        return db.collection(COLLECTION_USERS)
             .document(userId)
             .collection(COLLECTION_MEALS)
             .document(date)
+    }
+
+    override suspend fun addMealByDate(mealEntity: MealEntity, date: String) {
+        val mealDocRef = getMealDocRef(date) ?: return
 
         val documentSnapshot = mealDocRef.get().await()
 
@@ -45,8 +49,6 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
                 NutritionWithMealsEntity(mealEntity.nutritionEntity, listOf(mealEntity))
             mealDocRef.set(newNutritionWithMeals)
         }
-
-        Log.d("Meal", "repository: meal added")
     }
 
     private fun updateTotalNutrition(
@@ -61,8 +63,40 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
         )
     }
 
-    override fun deleteMealByDate(date: String) {
-        TODO("Not yet implemented")
+    override suspend fun deleteMealByDate(date: String, mealDateTimeOfCreation: Long) {
+        val mealDocRef = getMealDocRef(date) ?: return
+
+        val documentSnapshot = mealDocRef.get().await()
+
+        if (documentSnapshot.exists()) {
+            val nutritionWithMeals = documentSnapshot.toObject(NutritionWithMealsEntity::class.java)
+            if (nutritionWithMeals != null) {
+                // find meal by datetimeOfCreation
+                val indexToRemove = nutritionWithMeals.mealsList.indexOfFirst { it.datetimeOfCreation == mealDateTimeOfCreation }
+                if (indexToRemove == -1) return
+
+                // subtract meal nutrition from total nutrition
+                val mealToDelete = nutritionWithMeals.mealsList[indexToRemove]
+                val updatedTotalNutrition = subtractTotalNutrition(nutritionWithMeals.totalNutrition, mealToDelete.nutritionEntity)
+
+                // delete meal
+                val updatedList = nutritionWithMeals.mealsList.toMutableList()
+                updatedList.removeAt(indexToRemove)
+                val updatedNutritionWithMeals = NutritionWithMealsEntity(updatedTotalNutrition, updatedList)
+
+                // set updated nutrition with meals
+                mealDocRef.set(updatedNutritionWithMeals)
+            }
+        }
+    }
+
+    private fun subtractTotalNutrition(existingNutrition: NutritionEntity, mealNutrition: NutritionEntity): NutritionEntity {
+        return NutritionEntity(
+            calories = existingNutrition.calories - mealNutrition.calories,
+            proteins = existingNutrition.proteins - mealNutrition.proteins,
+            fats = existingNutrition.fats - mealNutrition.fats,
+            carbs = existingNutrition.carbs - mealNutrition.carbs
+        )
     }
 
     override fun getNutritionByDate(date: String): NutritionEntity {
@@ -70,13 +104,7 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
     }
 
     override suspend fun getNutritionWithMeals(date: String): NutritionWithMealsEntity {
-        val db: FirebaseFirestore = Firebase.firestore
-        val userId = Firebase.auth.currentUser?.uid ?: throw Exception("No user")
-        val mealDocRef = db.collection(COLLECTION_USERS)
-            .document(userId)
-            .collection(COLLECTION_MEALS)
-            .document(date)
-
+        val mealDocRef = getMealDocRef(date) ?: return NutritionWithMealsEntity()
         val documentSnapshot = mealDocRef.get().await()
 
         return documentSnapshot.toObject(NutritionWithMealsEntity::class.java)

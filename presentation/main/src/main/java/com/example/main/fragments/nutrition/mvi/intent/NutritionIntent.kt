@@ -6,7 +6,7 @@ import com.example.nutrition.entity.MealEntity
 sealed interface NutritionIntent : MviIntent {
     data class DateReceivedFromArgs(val date: String) : NutritionIntent
     data class GetNutritionWithMealsByDate(val date: String) : NutritionIntent
-    data class AddMealByDate(val mealEntity: MealEntity) : NutritionIntent
-    data object DeleteMealByDate : NutritionIntent
+    data class AddMealByDate(val date: String, val mealEntity: MealEntity) : NutritionIntent
+    data class DeleteMealByDate(val date: String, val mealDateTimeOfCreation: Long) : NutritionIntent
     data object OpenAddMealDialog : NutritionIntent
 }

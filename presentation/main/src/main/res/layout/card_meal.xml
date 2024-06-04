@@ -63,12 +63,12 @@
         app:constraint_referenced_ids="card_meal_proteins,card_meal_fats,card_meal_carbs"
         app:flow_horizontalGap="@dimen/_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/button_delete_meal"
         app:layout_constraintStart_toEndOf="@id/text_view_meal_calories_text"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/button_delete_meal"
         android:layout_width="@dimen/_24dp"
         android:layout_height="@dimen/_24dp"
         android:background="@drawable/ic_bin"
