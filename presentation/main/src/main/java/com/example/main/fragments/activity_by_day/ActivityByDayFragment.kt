@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentActivityByDayBinding
@@ -45,7 +46,10 @@ class ActivityByDayFragment :
 
         binding.run {
             containerCardsActivityByDay.initialize(requireContext())
-            cardNutritionActivityByDay.initialize()
+            cardNutritionActivityByDay.run {
+                initialize()
+                root.setOnClickListener { navigateToNutritionFragment() }
+            }
 
             buttonSelectDate.setOnClickListener {
                 store.postIntent(ActivityByDayIntent.OpenSelectDateDialogIntent)
@@ -68,7 +72,7 @@ class ActivityByDayFragment :
 
     override fun render(state: ActivityByDayState) {
         binding.run {
-            state.selectedDate?.let {
+            state.selectedDateUi?.let {
                 textViewCurrentDateActivityByDay.text = it
             }
 
@@ -89,6 +93,13 @@ class ActivityByDayFragment :
                     cardWeight.setValue(activityUi.weight.toInt())
                 }
             }
+        }
+    }
+
+    private fun navigateToNutritionFragment() {
+        store.uiState.value.selectedDateEntity?.let { date ->
+            val action = ActivityByDayFragmentDirections.actionActivityByDayFragmentToNutritionFragment(date)
+            findNavController().navigate(action)
         }
     }
 

@@ -33,7 +33,8 @@ class ActivityByDayActor @Inject constructor(
     private fun getActivityByDayIntent(date: String): Flow<ActivityByDayPartialState> = flow {
         emit(
             ActivityByDayPartialState.ActivityByDaySelected(
-                DateConverter.dateEntityToActivityByDayUi(date)
+                DateConverter.dateEntityToActivityByDayUi(date),
+                date
             )
         )
 
