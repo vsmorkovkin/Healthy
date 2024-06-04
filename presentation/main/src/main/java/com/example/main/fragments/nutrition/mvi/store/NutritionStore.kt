@@ -1,6 +1,7 @@
 package com.example.main.fragments.nutrition.mvi.store
 
 import com.example.common.mvi.MviStore
+import com.example.main.fragments.nutrition.model.NutritionWithMealsUi
 import com.example.main.fragments.nutrition.mvi.effect.NutritionEffect
 import com.example.main.fragments.nutrition.mvi.intent.NutritionIntent
 import com.example.main.fragments.nutrition.mvi.state.NutritionPartialState
@@ -15,6 +16,6 @@ class NutritionStore @Inject constructor(
 ) :
     MviStore<NutritionPartialState, NutritionIntent, NutritionState, NutritionEffect>(reducer, actor) {
     override fun initialStateCreator(): NutritionState {
-        return NutritionState("", null, emptyList())
+        return NutritionState("", NutritionWithMealsUi())
     }
 }

@@ -76,6 +76,8 @@ class NutritionFragment :
         }
 
         mealsRecyclerViewSetup()
+
+        store.postIntent(NutritionIntent.GetNutritionWithMealsByDate(date))
     }
 
     override fun onDestroyView() {
@@ -86,10 +88,11 @@ class NutritionFragment :
     override fun render(state: NutritionState) {
         binding.run {
             textViewDateNutrition.text = state.date
-            state.nutritionUi?.let {
-                cardNutrition.setValue(it)
+            state.nutritionWithMealsUi.let {
+                Log.d("Meal", "fragment render: ${it.mealsList}")
+                cardNutrition.setValue(it.totalNutrition)
+                mealsAdapter.submitList(it.mealsList)
             }
-            mealsAdapter.submitList(state.mealsUi)
         }
     }
 
@@ -113,7 +116,7 @@ class NutritionFragment :
             )
         )
 
-        mealsAdapter.submitList(
+        /*mealsAdapter.submitList(
             listOf(
                 MealUi(1, "Завтрак", NutritionUi(210, 22, 45, 93)),
                 MealUi(2, "Обед", NutritionUi(314, 32, 41, 89)),
@@ -122,7 +125,7 @@ class NutritionFragment :
                 MealUi(5, "Обед", NutritionUi(314, 32, 41, 89)),
                 MealUi(6, "Ужин", NutritionUi(576, 25, 55, 115)),
             )
-        )
+        )*/
     }
 
 }

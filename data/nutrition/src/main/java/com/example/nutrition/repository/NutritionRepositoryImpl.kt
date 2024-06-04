@@ -41,7 +41,8 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
             val updatedNutrition = updateTotalNutrition(totalNutrition, mealEntity.nutritionEntity)
             mealDocRef.set(NutritionWithMealsEntity(updatedNutrition, mealList)).await()
         } else {
-            val newNutritionWithMeals = NutritionWithMealsEntity(mealEntity.nutritionEntity, listOf(mealEntity))
+            val newNutritionWithMeals =
+                NutritionWithMealsEntity(mealEntity.nutritionEntity, listOf(mealEntity))
             mealDocRef.set(newNutritionWithMeals)
         }
 
@@ -68,7 +69,17 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
         TODO("Not yet implemented")
     }
 
-    override fun getNutritionWithMeals(): NutritionWithMealsEntity {
-        TODO("Not yet implemented")
+    override suspend fun getNutritionWithMeals(date: String): NutritionWithMealsEntity {
+        val db: FirebaseFirestore = Firebase.firestore
+        val userId = Firebase.auth.currentUser?.uid ?: throw Exception("No user")
+        val mealDocRef = db.collection(COLLECTION_USERS)
+            .document(userId)
+            .collection(COLLECTION_MEALS)
+            .document(date)
+
+        val documentSnapshot = mealDocRef.get().await()
+
+        return documentSnapshot.toObject(NutritionWithMealsEntity::class.java)
+            ?: NutritionWithMealsEntity()
     }
 }

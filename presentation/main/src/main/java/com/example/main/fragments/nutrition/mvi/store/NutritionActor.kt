@@ -2,6 +2,7 @@ package com.example.main.fragments.nutrition.mvi.store
 
 import android.util.Log
 import com.example.common.mvi.MviActor
+import com.example.main.fragments.nutrition.model.toUi
 import com.example.main.fragments.nutrition.mvi.effect.NutritionEffect
 import com.example.main.fragments.nutrition.mvi.intent.NutritionIntent
 import com.example.main.fragments.nutrition.mvi.state.NutritionPartialState
@@ -25,7 +26,7 @@ class NutritionActor @Inject constructor(
     ): Flow<NutritionPartialState> {
         return when (intent) {
             is NutritionIntent.DateReceivedFromArgs -> loadDate(intent.date)
-            NutritionIntent.GetNutritionWithMealsByDate -> getNutritionWithMealsByDate(state.date)
+            is NutritionIntent.GetNutritionWithMealsByDate -> getNutritionWithMealsByDate(intent.date)
             is NutritionIntent.AddMealByDate -> addMealByDate(intent.mealEntity, state.date)
             NutritionIntent.DeleteMealByDate -> deleteMealByDate(state.date)
             NutritionIntent.OpenAddMealDialog -> showAddMealDialog()
@@ -37,24 +38,27 @@ class NutritionActor @Inject constructor(
     }
 
     private fun getNutritionWithMealsByDate(date: String): Flow<NutritionPartialState> = flow {
-        /*runCatching {
-            addMealByDateUseCase(mealEntity, date)
+        runCatching {
+            getNutritionWithMealsUseCase(date)
         }.fold(
             onSuccess = {
-                Log.d("Meal", "NutritionWithMeals received")
+                Log.d("Meal", "getNutritionWithMeals success: ${it.mealsList}")
+                emit(NutritionPartialState.NutritionWithMealsLoaded(it.toUi()))
             },
             onFailure = {
-                Log.d("Meal", "meal adding failure: ${it.message}")
+                Log.d("Meal", "getNutritionWithMeals failure: ${it.message}")
             }
-        )*/
+        )
     }
 
     private fun addMealByDate(mealEntity: MealEntity, date: String): Flow<NutritionPartialState> = flow {
         runCatching {
             addMealByDateUseCase(mealEntity, date)
+            getNutritionWithMealsUseCase(date)
         }.fold(
             onSuccess = {
                 Log.d("Meal", "meal added: $mealEntity")
+                emit(NutritionPartialState.NutritionWithMealsLoaded(it.toUi()))
             },
             onFailure = {
                 Log.d("Meal", "meal adding failure: ${it.message}")

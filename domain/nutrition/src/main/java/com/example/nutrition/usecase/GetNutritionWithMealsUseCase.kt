@@ -6,7 +6,7 @@ import com.example.nutrition.repository.NutritionRepository
 class GetNutritionWithMealsUseCase(
     private val nutritionRepository: NutritionRepository
 ) {
-    operator fun invoke(): NutritionWithMealsEntity {
-        return nutritionRepository.getNutritionWithMeals()
+    suspend operator fun invoke(date: String): NutritionWithMealsEntity {
+        return nutritionRepository.getNutritionWithMeals(date)
     }
 }

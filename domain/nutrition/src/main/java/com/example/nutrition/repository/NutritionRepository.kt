@@ -8,5 +8,5 @@ interface NutritionRepository {
     suspend fun addMealByDate(mealEntity: MealEntity, date: String)
     fun deleteMealByDate(date: String)
     fun getNutritionByDate(date: String): NutritionEntity
-    fun getNutritionWithMeals(): NutritionWithMealsEntity
+    suspend fun getNutritionWithMeals(date: String): NutritionWithMealsEntity
 }
