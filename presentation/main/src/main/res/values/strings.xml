@@ -36,11 +36,23 @@
     <string name="card_carbs_title">Углеводы</string>
 
     <string name="meals_text">Приемы пищи</string>
-    <string name="button_add_text">+ Добавить</string>
+    <string name="button_add_text_with_plus">+ Добавить</string>
+    <string name="button_add_text">Добавить</string>
     <string name="kilocalories_text">Ккал</string>
     <string name="card_meal_proteins_title">Б</string>
     <string name="card_meal_fats_title">Ж</string>
     <string name="card_meal_carbs_title">У</string>
+    <string name="dialog_nutrition_title">Питание</string>
+    <string name="hint_meal_title">Прием пищи</string>
+    <string name="hint_calories">Калории</string>
+    <string name="hint_proteins">Белки</string>
+    <string name="hint_fats">Жиры</string>
+    <string name="hint_carbs">Углеводы</string>
+    <string name="warning_empty_calories">Введите калории</string>
+    <string name="warning_empty_meal_title">Введите название для приема пищи</string>
+    <string name="warning_empty_proteins">Введите количество белков</string>
+    <string name="warning_empty_fats">Введите количество жиров</string>
+    <string name="warning_empty_carbs">Введите количество углеводов</string>
 
 
 </resources>

@@ -22,4 +22,6 @@
     <color name="color_delete">#FF555D</color>
     <color name="color_meal_nutrient_value">#939292</color>
 
+    <color name="color_nutrition">#F79A14</color>
+
 </resources>

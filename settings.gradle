@@ -15,13 +15,17 @@ dependencyResolutionManagement {
 
 rootProject.name = "Healthy"
 include ':app'
-include ':presentation:auth'
-include ':data:session'
+
 include ':presentation:common'
-include ':domain:session'
+include ':presentation:auth'
 include ':presentation:main'
+
+include ':domain:session'
 include ':domain:onboarding'
-include ':data:onboarding'
 include ':domain:activity'
 include ':domain:nutrition'
+
+include ':data:session'
+include ':data:onboarding'
 include ':data:activity'
+include ':data:nutrition'

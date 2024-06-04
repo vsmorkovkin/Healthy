@@ -15,8 +15,8 @@ fun CardMealBinding.initialize() {
 
 fun CardMealBinding.setMeal(mealUi: MealUi) {
     textViewMealTitle.text = mealUi.title
-    textViewMealCaloriesValue.text = mealUi.calories.toString()
-    cardMealProteins.setValue(mealUi.proteins)
-    cardMealFats.setValue(mealUi.fats)
-    cardMealCarbs.setValue(mealUi.carbs)
+    textViewMealCaloriesValue.text = mealUi.nutritionUi.calories.toString()
+    cardMealProteins.setValue(mealUi.nutritionUi.proteins)
+    cardMealFats.setValue(mealUi.nutritionUi.fats)
+    cardMealCarbs.setValue(mealUi.nutritionUi.carbs)
 }

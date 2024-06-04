@@ -1,9 +1,9 @@
 package com.example.main.fragments.nutrition.model
 
+import com.example.main.fragments.activity_by_day.model.NutritionUi
+
 data class MealUi(
+    val dateTimeOfCreation: Long,
     val title: String,
-    val calories: Int,
-    val proteins: Int,
-    val fats: Int,
-    val carbs: Int
+    val nutritionUi: NutritionUi
 )

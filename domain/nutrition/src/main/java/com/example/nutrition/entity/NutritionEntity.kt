@@ -1,8 +1,8 @@
 package com.example.nutrition.entity
 
 data class NutritionEntity(
-    val calories: Int,
-    val proteins: Int,
-    val fats: Int,
-    val carbs: Int,
+    val calories: Int = 0,
+    val proteins: Int = 0,
+    val fats: Int = 0,
+    val carbs: Int = 0,
 )
