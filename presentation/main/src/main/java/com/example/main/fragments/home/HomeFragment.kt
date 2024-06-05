@@ -11,6 +11,7 @@ import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
 import com.example.main.fragments.home.dialogs.AddWaterIntakeDialog
+import com.example.main.fragments.home.dialogs.EnterCurrentWeightDialog
 import com.example.main.fragments.home.dialogs.EnterSleepTimeDialog
 import com.example.main.fragments.home.mvi.effect.HomeEffect
 import com.example.main.fragments.home.mvi.intent.HomeIntent
@@ -53,6 +54,14 @@ class HomeFragment :
             Log.d("Home", "bedtime=$bedtime wakeupTime=$wakeupTime")
         }
 
+        childFragmentManager.setFragmentResultListener(
+            EnterCurrentWeightDialog.REQUEST_KEY_CURRENT_WEIGHT_ENTERED,
+            this
+        ) { _, bundle ->
+            val currentWeight = bundle.getFloat(EnterCurrentWeightDialog.BUNDLE_KEY_CURRENT_WEIGHT)
+            Log.d("Home", "currentWeight=$currentWeight")
+        }
+
     }
 
     override fun onCreateView(
@@ -78,6 +87,10 @@ class HomeFragment :
 
                 cardSleep.root.setOnClickListener {
                     EnterSleepTimeDialog().show(childFragmentManager, null)
+                }
+
+                cardWeight.root.setOnClickListener {
+                    EnterCurrentWeightDialog().show(childFragmentManager, null)
                 }
             }
 

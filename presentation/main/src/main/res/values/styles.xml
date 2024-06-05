@@ -94,4 +94,8 @@
         <item name="colorPrimary">@color/color_sleep</item>
     </style>
 
+    <style name="ThemeOverlay.EnterCurrentWeightDialog" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/color_weight</item>
+    </style>
+
 </resources>

@@ -59,6 +59,8 @@
     <string name="warning_enter_correct_time">Введите корректное время</string>
     <string name="hint_water_intake_ml">мл</string>
     <string name="warning_empty_water_intake">Введите объем выпитой воды в мл</string>
+    <string name="hint_current_weight">Текущий вес</string>
+    <string name="warning_empty_current_weight">Введите ваш текущий вес</string>
 
 
 </resources>
