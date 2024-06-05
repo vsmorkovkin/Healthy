@@ -86,6 +86,10 @@
         <item name="colorPrimary">@color/color_nutrition</item>
     </style>
 
+    <style name="ThemeOverlay.AddWaterIntakeDialog" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/color_water</item>
+    </style>
+
     <style name="ThemeOverlay.EnterSleepTimeDialog" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/color_sleep</item>
     </style>

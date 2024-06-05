@@ -57,6 +57,8 @@
     <string name="hint_wakeup_time">Время пробуждения</string>
     <string name="hint_bedtime">Время отхода ко сну</string>
     <string name="warning_enter_correct_time">Введите корректное время</string>
+    <string name="hint_water_intake_ml">мл</string>
+    <string name="warning_empty_water_intake">Введите объем выпитой воды в мл</string>
 
 
 </resources>

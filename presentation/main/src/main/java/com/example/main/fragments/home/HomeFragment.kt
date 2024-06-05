@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
+import com.example.main.fragments.home.dialogs.AddWaterIntakeDialog
 import com.example.main.fragments.home.dialogs.EnterSleepTimeDialog
 import com.example.main.fragments.home.mvi.effect.HomeEffect
 import com.example.main.fragments.home.mvi.intent.HomeIntent
@@ -34,6 +35,15 @@ class HomeFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        childFragmentManager.setFragmentResultListener(
+            AddWaterIntakeDialog.REQUEST_KEY_WATER_INTAKE_ENTERED,
+            this
+        ) { _, bundle ->
+            val waterIntake = bundle.getInt(AddWaterIntakeDialog.BUNDLE_KEY_WATER_INTAKE)
+            Log.d("Home", "waterIntake=$waterIntake")
+        }
+
         childFragmentManager.setFragmentResultListener(
             EnterSleepTimeDialog.REQUEST_KEY_SLEEP_TIME_ENTERED,
             this
@@ -42,6 +52,7 @@ class HomeFragment :
             val wakeupTime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_WAKEUP_TIME)
             Log.d("Home", "bedtime=$bedtime wakeupTime=$wakeupTime")
         }
+
     }
 
     override fun onCreateView(
@@ -60,6 +71,10 @@ class HomeFragment :
         binding.run {
             containerCardsActivity.run {
                 initialize(requireContext())
+
+                cardWater.root.setOnClickListener {
+                    AddWaterIntakeDialog().show(childFragmentManager, null)
+                }
 
                 cardSleep.root.setOnClickListener {
                     EnterSleepTimeDialog().show(childFragmentManager, null)
