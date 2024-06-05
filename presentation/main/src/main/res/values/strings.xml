@@ -53,6 +53,10 @@
     <string name="warning_empty_proteins">Введите количество белков</string>
     <string name="warning_empty_fats">Введите количество жиров</string>
     <string name="warning_empty_carbs">Введите количество углеводов</string>
+    <string name="button_save_text">Сохранить</string>
+    <string name="hint_wakeup_time">Время пробуждения</string>
+    <string name="hint_bedtime">Время отхода ко сну</string>
+    <string name="warning_enter_correct_time">Введите корректное время</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.main.fragments.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
+import com.example.main.fragments.home.dialogs.EnterSleepTimeDialog
 import com.example.main.fragments.home.mvi.effect.HomeEffect
 import com.example.main.fragments.home.mvi.intent.HomeIntent
 import com.example.main.fragments.home.mvi.state.HomePartialState
@@ -29,6 +31,19 @@ class HomeFragment :
 
     override val store: HomeStore by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        childFragmentManager.setFragmentResultListener(
+            EnterSleepTimeDialog.REQUEST_KEY_SLEEP_TIME_ENTERED,
+            this
+        ) { _, bundle ->
+            val bedtime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_BEDTIME)
+            val wakeupTime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_WAKEUP_TIME)
+            Log.d("Home", "bedtime=$bedtime wakeupTime=$wakeupTime")
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +58,14 @@ class HomeFragment :
         store.postIntent(HomeIntent.GetCurrentDate)
 
         binding.run {
-            containerCardsActivity.initialize(requireContext())
+            containerCardsActivity.run {
+                initialize(requireContext())
+
+                cardSleep.root.setOnClickListener {
+                    EnterSleepTimeDialog().show(childFragmentManager, null)
+                }
+            }
+
             cardNutritionHome.run {
                 initialize()
                 root.setOnClickListener {
