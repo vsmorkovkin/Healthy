@@ -43,4 +43,9 @@ dependencies {
     implementation di.hiltAndroid
     kapt di.hiltCompiler
 
+    implementation network.okHttp
+    implementation network.okHttpLogging
+    implementation network.retrofit
+    implementation network.retrofitGson
+
 }

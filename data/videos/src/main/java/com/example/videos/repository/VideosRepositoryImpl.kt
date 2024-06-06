@@ -1,25 +1,14 @@
 package com.example.videos.repository
 
-import com.example.videos.entity.VideoEntity
 import com.example.videos.entity.VideoGroupEntity
+import com.example.videos.service.VideosService
 import javax.inject.Inject
 
-class VideosRepositoryImpl @Inject constructor() : VideosRepository {
+class VideosRepositoryImpl @Inject constructor(
+    private val videosService: VideosService
+) : VideosRepository {
 
     override suspend fun getVideoGroups(): List<VideoGroupEntity> {
-        val videoGroups = Array(5) {
-            VideoGroupEntity(
-                "Видео группа $it",
-                Array(7) { videoId ->
-                    VideoEntity(
-                        ((it + 1) * (videoId + 1)).toString(),
-                        "Видео $videoId",
-                        ""
-                    )
-                }.toMutableList()
-            )
-        }.toMutableList()
-
-        return videoGroups
+        return videosService.getVideoGroups()
     }
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.main.databinding.CardVideoBinding
 import com.example.main.fragments.videos.model.VideoUi
 
@@ -28,7 +29,14 @@ class VideosAdapter : ListAdapter<VideoUi, VideosAdapter.VideosViewHolder>(
     class VideosViewHolder(private val binding: CardVideoBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: VideoUi) {
-            binding.textViewVideoTitleCard.text = item.title
+            binding.run {
+                textViewVideoTitleCard.text = item.title
+                Glide.with(imageViewVideoPreviewSmall.context)
+                    .load(item.imagePreviewUrl)
+                    .centerCrop()
+                    .into(imageViewVideoPreviewSmall)
+            }
+
         }
     }
 
