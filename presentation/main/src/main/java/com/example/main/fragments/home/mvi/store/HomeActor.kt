@@ -4,6 +4,8 @@ import android.util.Log
 import com.example.activity.entity.ActivityEntity
 import com.example.activity.usecase.GetActivityByDateUseCase
 import com.example.activity.usecase.GetActivityWithNutritionByDateUseCase
+import com.example.activity.usecase.GetInitialStepsUseCase
+import com.example.activity.usecase.SetInitialStepsUseCase
 import com.example.activity.usecase.UpdateActivityUseCase
 import com.example.common.mvi.MviActor
 import com.example.main.fragments.home.mvi.effect.HomeEffect
@@ -22,7 +24,9 @@ import javax.inject.Inject
 class HomeActor @Inject constructor(
     private val updateActivityUseCase: UpdateActivityUseCase,
     private val getActivityByDateUseCase: GetActivityByDateUseCase,
-    private val getActivityWithNutritionByDateUseCase: GetActivityWithNutritionByDateUseCase
+    private val getActivityWithNutritionByDateUseCase: GetActivityWithNutritionByDateUseCase,
+    private val getInitialStepsUseCase: GetInitialStepsUseCase,
+    private val setInitialStepsUseCase: SetInitialStepsUseCase,
 ) :
     MviActor<HomePartialState, HomeIntent, HomeState, HomeEffect>() {
 
@@ -30,6 +34,12 @@ class HomeActor @Inject constructor(
         return when (intent) {
             HomeIntent.GetCurrentDate -> getCurrentDate()
             HomeIntent.OpenNutritionScreen -> flow { _effects.emit(HomeEffect.NavigateToNutritionFragment) }
+            HomeIntent.GetActivityWithNutrition -> getActivityWithNutrition()
+
+            is HomeIntent.UpdateStepsInActivity -> updateStepsInActivity(
+                state.activityEntity,
+                intent.totalSteps
+            )
 
             is HomeIntent.UpdateWaterIntakeInActivity -> updateWaterIntakeInActivity(
                 state.activityEntity,
@@ -46,11 +56,6 @@ class HomeActor @Inject constructor(
                 state.activityEntity,
                 intent.weight
             )
-
-            HomeIntent.GetActivityWithNutrition -> {
-                Log.d("Home", " getActivityWithNutrition state=$state")
-                getActivityWithNutrition()
-            }
         }
     }
 
@@ -60,7 +65,6 @@ class HomeActor @Inject constructor(
             val currentDate: Date = Calendar.getInstance().time
             return DateConverter.dateToDateEntity(currentDate)
         }
-
 
     private fun getCurrentDate(): Flow<HomePartialState> = flow {
         val currentDate = Calendar.getInstance().time
@@ -78,6 +82,35 @@ class HomeActor @Inject constructor(
             },
             onFailure = {
                 Log.d("Home", "getActivityWithNutrition failure: ${it.message}")
+            }
+        )
+    }
+
+    private var initialSteps: Int = -1
+
+    private fun updateStepsInActivity(
+        activityEntity: ActivityEntity,
+        totalSteps: Int
+    ): Flow<HomePartialState> = flow {
+        if (initialSteps == -1) {
+            initialSteps = getInitialStepsUseCase(currentDate)
+            if (initialSteps == -1) {
+                setInitialStepsUseCase(currentDate, totalSteps)
+                return@flow
+            }
+        }
+
+        runCatching {
+            val currentSteps = totalSteps - initialSteps
+            val newActivity = activityEntity.copy(stepsNumber = currentSteps)
+            updateActivityUseCase(currentDate, newActivity)
+            getActivityByDateUseCase(currentDate)
+        }.fold(
+            onSuccess = {
+                emit(HomePartialState.ActivityLoaded(it))
+            },
+            onFailure = {
+                Log.d("Home", "updateStepsInActivity failure: ${it.message}")
             }
         )
     }

@@ -49,4 +49,11 @@ class ActivityRepositoryImpl @Inject constructor(
             .await()
     }
 
+    override fun getInitialSteps(date: String): Int {
+        return activityLocalDataSource.getInitialSteps(date)
+    }
+
+    override fun setInitialSteps(date: String, initialSteps: Int) {
+        activityLocalDataSource.saveInitialSteps(date, initialSteps)
+    }
 }

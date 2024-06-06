@@ -1,5 +1,10 @@
 package com.example.main.fragments.home
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
+import com.example.main.extensions.showToast
 import com.example.main.fragments.activity_by_day.model.toUi
 import com.example.main.fragments.home.dialogs.AddWaterIntakeDialog
 import com.example.main.fragments.home.dialogs.EnterCurrentWeightDialog
@@ -30,15 +36,23 @@ import java.util.Calendar
 
 @AndroidEntryPoint
 class HomeFragment :
-    BaseFragmentMvi<HomePartialState, HomeIntent, HomeState, HomeEffect>(R.layout.fragment_home) {
+    BaseFragmentMvi<HomePartialState, HomeIntent, HomeState, HomeEffect>(R.layout.fragment_home),
+    SensorEventListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override val store: HomeStore by viewModels()
 
+    private lateinit var sensorManager: SensorManager
+    private var stepCounterSensor: Sensor? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+
         registerForDialogResults()
     }
 
@@ -62,6 +76,18 @@ class HomeFragment :
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         render(store.uiState.value)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        stepCounterSensor?.also { stepCounter ->
+            sensorManager.registerListener(this, stepCounter, SensorManager.SENSOR_DELAY_UI)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
     }
 
     override fun onDestroyView() {
@@ -162,4 +188,16 @@ class HomeFragment :
         val action = HomeFragmentDirections.actionHomeFragmentToNutritionFragment(formattedDate)
         findNavController().navigate(action)
     }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        event?.let {
+            if (it.sensor.type == Sensor.TYPE_STEP_COUNTER) {
+                val totalSteps = event.values[0].toInt()
+                showToast(totalSteps.toString())
+                store.postIntent(HomeIntent.UpdateStepsInActivity(totalSteps))
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 }

@@ -1,8 +1,6 @@
 package com.example.activity.datasource
 
 import android.content.Context
-import com.example.activity.entity.ActivityWithNutritionEntity
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -12,27 +10,29 @@ class ActivityLocalDataSource @Inject constructor(
 
     companion object {
         const val ACTIVITY_SHARED_PREFS = "ACTIVITY_SHARED_PREFS"
-        const val LAST_ACTIVITY_KEY = "LAST_ACTIVITY_KEY"
+        const val KEY_LAST_ACTIVITY = "KEY_INITIAL_STEPS"
+        const val KEY_SAVE_DATE_INITIAL_STEPS = "KEY_SAVE_DATE_INITIAL_STEPS"
+        const val NO_INITIALS_STEPS_VALUE = -1
     }
 
     private val sharedPreferences by lazy {
         context.getSharedPreferences(ACTIVITY_SHARED_PREFS, Context.MODE_PRIVATE)
     }
 
-    fun getLastActivity(): ActivityWithNutritionEntity? {
-        val gson = Gson()
-        val activityEntityJson = sharedPreferences.getString(LAST_ACTIVITY_KEY, null)
+    fun getInitialSteps(date: String): Int {
+        val saveDateOfInitialSteps = sharedPreferences.getString(KEY_SAVE_DATE_INITIAL_STEPS, null)
 
-        return activityEntityJson?.let {
-            gson.fromJson(it, ActivityWithNutritionEntity::class.java)
+        if (saveDateOfInitialSteps == null || saveDateOfInitialSteps != date) {
+            return NO_INITIALS_STEPS_VALUE
         }
+
+        return sharedPreferences.getInt(KEY_LAST_ACTIVITY, NO_INITIALS_STEPS_VALUE)
     }
 
-    fun saveActivity(activityWithNutritionEntity: ActivityWithNutritionEntity) {
-        val gson = Gson()
-        val activityEntityJson = gson.toJson(activityWithNutritionEntity)
+    fun saveInitialSteps(date: String, initialSteps: Int) {
         sharedPreferences.edit()
-            .putString(LAST_ACTIVITY_KEY, activityEntityJson)
+            .putString(KEY_SAVE_DATE_INITIAL_STEPS, date)
+            .putInt(KEY_LAST_ACTIVITY, initialSteps)
             .apply()
     }
 
