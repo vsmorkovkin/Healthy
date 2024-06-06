@@ -5,6 +5,11 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="VideoPreviewImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_10dp</item>
+    </style>
+
 
     <style name="Healthy.Text.H4">
         <item name="android:fontFamily">@font/inter_medium</item>
@@ -70,6 +75,12 @@
         <item name="android:textColor">@color/color_black</item>
     </style>
 
+    <style name="Healthy.Text.Subtitle2">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_black</item>
+    </style>
+
     <style name="Healthy.Text.Caption">
         <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:textSize">12sp</item>
@@ -80,6 +91,12 @@
         <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/color_black</item>
+    </style>
+
+    <style name="Healthy.Text.Caption1.Regular">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#232323</item>
     </style>
 
     <style name="ThemeOverlay.AddMealDialog" parent="ThemeOverlay.AppCompat">
