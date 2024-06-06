@@ -193,7 +193,6 @@ class HomeFragment :
         event?.let {
             if (it.sensor.type == Sensor.TYPE_STEP_COUNTER) {
                 val totalSteps = event.values[0].toInt()
-                showToast(totalSteps.toString())
                 store.postIntent(HomeIntent.UpdateStepsInActivity(totalSteps))
             }
         }
