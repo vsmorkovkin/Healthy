@@ -23,7 +23,11 @@
         android:id="@+id/videosFragment"
         android:name="com.example.main.fragments.videos.VideosFragment"
         android:label="@string/fragment_videos_label"
-        tools:layout="@layout/fragment_videos" />
+        tools:layout="@layout/fragment_videos" >
+        <action
+            android:id="@+id/action_videosFragment_to_watchingVideoFragment"
+            app:destination="@id/watchingVideoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.main.fragments.events.EventsFragment"
@@ -55,6 +59,15 @@
         tools:layout="@layout/fragment_nutrition" >
         <argument
             android:name="date"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchingVideoFragment"
+        android:name="com.example.main.fragments.watchvideo.WatchingVideoFragment"
+        android:label="@string/fragment_watching_video_label"
+        tools:layout="@layout/fragment_watching_video" >
+        <argument
+            android:name="videoId"
             app:argType="string" />
     </fragment>
 </navigation>

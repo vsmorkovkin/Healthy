@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentVideosBinding
@@ -28,7 +29,13 @@ class VideosFragment : BaseFragmentMvi<VideosPartialState, VideosIntent, VideosS
 
     override val store: VideosStore by viewModels()
 
-    private val videosAdapter by lazy(LazyThreadSafetyMode.NONE) { VideoGroupsAdapter() }
+    private val videosAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        VideoGroupsAdapter {
+            val action = VideosFragmentDirections.actionVideosFragmentToWatchingVideoFragment(it)
+            findNavController().navigate(action)
+        }
+    }
+
     private val videoGroupItemDecoration by lazy(LazyThreadSafetyMode.NONE) {
         val dimen16dp = resources.getDimension(R.dimen._16dp).toInt()
         VideoGroupItemDecoration(dimen16dp, dimen16dp, dimen16dp)

@@ -11,7 +11,9 @@ import com.example.main.fragments.videos.recycler_view.videos.adapter.VideosAdap
 import com.example.main.fragments.videos.recycler_view.videos.decoration.VideoItemDecoration
 
 
-class VideoGroupsAdapter :
+class VideoGroupsAdapter(
+    private val onVideoClick: (videoId: String) -> Unit
+) :
     ListAdapter<VideoGroupUi, VideoGroupsAdapter.VideoGroupsViewHolder>(
         VideoGroupDiffCallback()
     ) {
@@ -27,7 +29,7 @@ class VideoGroupsAdapter :
 
     override fun onBindViewHolder(holder: VideoGroupsViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onVideoClick)
     }
 
     class VideoGroupsViewHolder(private val binding: CardVideoGroupBinding) :
@@ -37,11 +39,11 @@ class VideoGroupsAdapter :
         private val dimen12dp = context.resources.getDimension(R.dimen._12dp).toInt()
         private val videoItemDecoration = VideoItemDecoration(dimen12dp, 0)
 
-        fun bind(item: VideoGroupUi) {
+        fun bind(item: VideoGroupUi, onVideoClick: (videoId: String) -> Unit) {
             binding.run {
                 textViewVideoGroupTitle.text = item.title
 
-                val adapter = VideosAdapter()
+                val adapter = VideosAdapter(onVideoClick)
                 recyclerViewVideos.adapter = adapter
                 recyclerViewVideos.addItemDecoration(videoItemDecoration)
                 adapter.submitList(item.videos)

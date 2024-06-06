@@ -8,6 +8,7 @@
     <string name="fragment_profile_label">Профиль</string>
     <string name="fragment_activity_by_day_label">Активность по дням</string>
     <string name="fragment_nutrition_label">Питание</string>
+    <string name="fragment_watching_video_label">Видео</string>
 
     <string name="card_steps_title">Шаги</string>
     <string name="card_steps_initial_value">0</string>
@@ -61,6 +62,8 @@
     <string name="warning_empty_water_intake">Введите объем выпитой воды в мл</string>
     <string name="hint_current_weight">Текущий вес</string>
     <string name="warning_empty_current_weight">Введите ваш текущий вес</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

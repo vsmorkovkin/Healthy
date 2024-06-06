@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Healthy"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.youtube.API_KEY"
+            android:value="AIzaSyDDvt9DXUFto-e4Kuty0-k3LsQ-CpBSW_Y"/>
         <activity
             android:name=".StartingActivity"
             android:exported="true"

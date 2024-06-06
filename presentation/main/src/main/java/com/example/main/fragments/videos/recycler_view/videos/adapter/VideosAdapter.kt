@@ -8,7 +8,9 @@ import com.bumptech.glide.Glide
 import com.example.main.databinding.CardVideoBinding
 import com.example.main.fragments.videos.model.VideoUi
 
-class VideosAdapter : ListAdapter<VideoUi, VideosAdapter.VideosViewHolder>(
+class VideosAdapter(
+    private val onVideoClick: (videoId: String) -> Unit
+) : ListAdapter<VideoUi, VideosAdapter.VideosViewHolder>(
     VideoDiffCallback()
 ) {
 
@@ -23,18 +25,21 @@ class VideosAdapter : ListAdapter<VideoUi, VideosAdapter.VideosViewHolder>(
 
     override fun onBindViewHolder(holder: VideosViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onVideoClick)
     }
 
     class VideosViewHolder(private val binding: CardVideoBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: VideoUi) {
+        fun bind(item: VideoUi, onVideoClick: (videoId: String) -> Unit) {
             binding.run {
                 textViewVideoTitleCard.text = item.title
                 Glide.with(imageViewVideoPreviewSmall.context)
                     .load(item.imagePreviewUrl)
                     .centerCrop()
                     .into(imageViewVideoPreviewSmall)
+                root.setOnClickListener {
+                    onVideoClick(item.id)
+                }
             }
 
         }
