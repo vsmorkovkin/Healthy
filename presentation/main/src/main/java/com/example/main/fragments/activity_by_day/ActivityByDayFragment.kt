@@ -45,7 +45,8 @@ class ActivityByDayFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.run {
-            containerCardsActivityByDay.initialize(requireContext())
+            //containerCardsActivityByDay.initialize(requireContext())
+            containerCardsActivityByDay.initialize()
             cardNutritionActivityByDay.run {
                 initialize()
                 root.setOnClickListener { navigateToNutritionFragment() }

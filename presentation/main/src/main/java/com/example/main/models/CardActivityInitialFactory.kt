@@ -8,7 +8,6 @@ object CardActivityInitialFactory {
     fun create(
         context: Context,
         titleId: Int,
-        initialValueId: Int,
         valueMeasurementId: Int,
         targetProgressId: Int? = null,
         iconId: Int,
@@ -17,13 +16,12 @@ object CardActivityInitialFactory {
     ): CardActivityInitial {
         return context.run {
             CardActivityInitial(
-                getString(titleId),
-                getString(initialValueId),
-                getString(valueMeasurementId),
-                targetProgressId?.let { resources.getInteger(it) },
-                ResourcesCompat.getDrawable(resources, iconId, theme)!!,
-                resources.getColor(colorId, theme),
-                isPercentageVisible
+                title = getString(titleId),
+                valueMeasurement = getString(valueMeasurementId),
+                maxProgress = targetProgressId?.let { resources.getInteger(it) },
+                icon = ResourcesCompat.getDrawable(resources, iconId, theme)!!,
+                itemColor = resources.getColor(colorId, theme),
+                isPercentageVisible = isPercentageVisible
             )
         }
     }

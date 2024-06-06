@@ -3,10 +3,10 @@ package com.example.activity.usecase
 import com.example.activity.entity.ActivityEntity
 import com.example.activity.repository.ActivityRepository
 
-class SaveActivityRemotelyUseCase(
+class UpdateActivityUseCase(
     private val activityRepository: ActivityRepository
 ) {
-    operator fun invoke(activityEntity: ActivityEntity) {
-        activityRepository.saveActivityRemotely(activityEntity)
+    suspend operator fun invoke(date: String, activityEntity: ActivityEntity) {
+        activityRepository.updateActivity(date, activityEntity)
     }
 }

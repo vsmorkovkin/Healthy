@@ -6,13 +6,13 @@ import com.example.main.databinding.ContainerCardsActivityBinding
 import com.example.main.models.CardActivityInitialFactory
 
 
-fun ContainerCardsActivityBinding.initialize(context: Context) {
+fun ContainerCardsActivityBinding.initialize() {
+    val context = root.context
 
     cardSteps.initialize(
         CardActivityInitialFactory.create(
             context,
             R.string.card_steps_title,
-            R.string.card_steps_initial_value,
             R.string.card_steps_value_measurement,
             R.integer.card_steps_target_value,
             R.drawable.ic_steps,
@@ -25,9 +25,8 @@ fun ContainerCardsActivityBinding.initialize(context: Context) {
         CardActivityInitialFactory.create(
             context,
             R.string.card_water_title,
-            R.string.card_water_initial_value,
             R.string.card_water_value_measurement,
-            R.integer.card_water_target_value,
+            R.integer.card_water_ml_target_value,
             R.drawable.ic_water,
             R.color.color_water,
             true
@@ -38,7 +37,6 @@ fun ContainerCardsActivityBinding.initialize(context: Context) {
         CardActivityInitialFactory.create(
             context,
             R.string.card_sleep_title,
-            R.string.card_sleep_initial_value,
             R.string.card_sleep_value_measurement,
             R.integer.card_sleep_target_value,
             R.drawable.ic_sleep,
@@ -51,7 +49,6 @@ fun ContainerCardsActivityBinding.initialize(context: Context) {
         CardActivityInitialFactory.create(
             context,
             R.string.card_weight_title,
-            R.string.card_weight_initial_value,
             R.string.card_weight_value_measurement,
             null,
             R.drawable.ic_weight,

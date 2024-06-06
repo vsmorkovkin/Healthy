@@ -99,8 +99,9 @@ class NutritionRepositoryImpl @Inject constructor() : NutritionRepository {
         )
     }
 
-    override fun getNutritionByDate(date: String): NutritionEntity {
-        TODO("Not yet implemented")
+    override suspend fun getNutritionByDate(date: String): NutritionEntity {
+        val nutritionWithMeals = getNutritionWithMeals(date)
+        return nutritionWithMeals.totalNutrition
     }
 
     override suspend fun getNutritionWithMeals(date: String): NutritionWithMealsEntity {

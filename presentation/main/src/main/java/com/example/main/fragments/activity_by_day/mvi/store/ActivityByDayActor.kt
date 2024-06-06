@@ -1,7 +1,7 @@
 package com.example.main.fragments.activity_by_day.mvi.store
 
 import android.util.Log
-import com.example.activity.usecase.GetActivityByDateUseCase
+import com.example.activity.usecase.GetActivityWithNutritionByDateUseCase
 import com.example.common.mvi.MviActor
 import com.example.main.fragments.activity_by_day.model.toUi
 import com.example.main.fragments.activity_by_day.mvi.effect.ActivityByDayEffect
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ActivityByDayActor @Inject constructor(
-    private val getActivityByDateUseCase: GetActivityByDateUseCase
+    private val getActivityWithNutritionByDateUseCase: GetActivityWithNutritionByDateUseCase
 ) : MviActor<ActivityByDayPartialState, ActivityByDayIntent, ActivityByDayState, ActivityByDayEffect>() {
 
     override fun resolve(
@@ -23,14 +23,14 @@ class ActivityByDayActor @Inject constructor(
         state: ActivityByDayState
     ): Flow<ActivityByDayPartialState> {
         return when (intent) {
-            is ActivityByDayIntent.GetActivityByDayIntent -> getActivityByDayIntent(intent.date)
+            is ActivityByDayIntent.GetActivityByDayIntent -> getActivityWithNutritionByDayIntent(intent.date)
             ActivityByDayIntent.OpenSelectDateDialogIntent -> flow {
                 _effects.emit(ActivityByDayEffect.OpenSelectDateDialogEffect)
             }
         }
     }
 
-    private fun getActivityByDayIntent(date: String): Flow<ActivityByDayPartialState> = flow {
+    private fun getActivityWithNutritionByDayIntent(date: String): Flow<ActivityByDayPartialState> = flow {
         emit(
             ActivityByDayPartialState.ActivityByDaySelected(
                 DateConverter.dateEntityToActivityByDayUi(date),
@@ -40,7 +40,7 @@ class ActivityByDayActor @Inject constructor(
 
         runCatching {
             Log.d("Activity", "date=$date")
-            getActivityByDateUseCase(date)
+            getActivityWithNutritionByDateUseCase(date)
         }.fold(
             onSuccess = {
                 emit(

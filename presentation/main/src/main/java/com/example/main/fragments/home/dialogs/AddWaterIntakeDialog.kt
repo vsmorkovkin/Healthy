@@ -38,6 +38,7 @@ class AddWaterIntakeDialog : DialogFragment() {
                 parentFragmentManager.setFragmentResult(REQUEST_KEY_WATER_INTAKE_ENTERED, bundleOf(
                     BUNDLE_KEY_WATER_INTAKE to waterIntake.toInt()
                 ))
+                dismiss()
             }
         }
     }

@@ -1,19 +1,19 @@
 package com.example.main.fragments.activity_by_day.model
 
-import com.example.activity.entity.ActivityEntity
+import com.example.activity.entity.ActivityWithNutritionEntity
 import com.example.nutrition.entity.NutritionEntity
 
-fun ActivityEntity.toUi(
+fun ActivityWithNutritionEntity.toUi(
     formatDate: (dateString: String) -> String = { s -> s }
 ): ActivityUi {
     return this.run {
         ActivityUi(
-            date = formatDate(day),
+            date = "",//formatDate(day),
             nutrition = nutrition.toUi(),
-            stepsNumber = stepsNumber,
-            waterIntake = waterIntake,
-            sleepTime = sleepTime,
-            weight = weight
+            stepsNumber = activityEntity.stepsNumber,
+            waterIntake = activityEntity.waterIntake.toFloat(),
+            sleepTime = activityEntity.sleepTime,
+            weight = activityEntity.weight
         )
     }
 }

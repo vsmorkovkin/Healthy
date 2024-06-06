@@ -2,7 +2,6 @@ package com.example.activity.repository
 
 import com.example.activity.datasource.ActivityLocalDataSource
 import com.example.activity.entity.ActivityEntity
-import com.example.activity.model.ActivityFirebaseModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,10 +18,9 @@ class ActivityRepositoryImpl @Inject constructor(
         const val COLLECTION_ACTIVITIES = "activities"
     }
 
-    override suspend fun getActivityByDate(date: String): ActivityEntity? {
+    override suspend fun getActivityByDate(date: String): ActivityEntity {
         val db = FirebaseFirestore.getInstance()
-
-        val userId = Firebase.auth.currentUser?.uid ?: return null
+        val userId = Firebase.auth.currentUser?.uid ?: return ActivityEntity()
 
         val document = db.collection(COLLECTION_USERS)
             .document(userId)
@@ -32,30 +30,23 @@ class ActivityRepositoryImpl @Inject constructor(
             .await()
 
         if (document != null && document.exists()) {
-            val activityFirebaseModel = document.toObject<ActivityFirebaseModel>()
-            return activityFirebaseModel?.toDomain()
+            val activity = document.toObject<ActivityEntity>()
+            if (activity != null) return activity
         }
-        return null
+
+        return ActivityEntity()
     }
 
-    override fun getLastLocalActivity(): ActivityEntity? {
-        return activityLocalDataSource.getLastActivity()
-    }
-
-    override fun saveActivityLocally(activityEntity: ActivityEntity) {
-        activityLocalDataSource.saveActivity(activityEntity)
-    }
-
-    override fun saveActivityRemotely(activityEntity: ActivityEntity) {
+    override suspend fun updateActivity(date: String, activityEntity: ActivityEntity) {
         val db = FirebaseFirestore.getInstance()
-
         val userId = Firebase.auth.currentUser?.uid ?: return
 
         db.collection(COLLECTION_USERS)
             .document(userId)
             .collection(COLLECTION_ACTIVITIES)
-            .document(activityEntity.day)
+            .document(date)
             .set(activityEntity)
+            .await()
     }
 
 }

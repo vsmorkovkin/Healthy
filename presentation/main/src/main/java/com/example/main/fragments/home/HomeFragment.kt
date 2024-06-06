@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
+import com.example.main.fragments.activity_by_day.model.toUi
 import com.example.main.fragments.home.dialogs.AddWaterIntakeDialog
 import com.example.main.fragments.home.dialogs.EnterCurrentWeightDialog
 import com.example.main.fragments.home.dialogs.EnterSleepTimeDialog
@@ -20,6 +21,11 @@ import com.example.main.fragments.home.mvi.state.HomeState
 import com.example.main.fragments.home.mvi.store.HomeStore
 import com.example.main.utils.DateConverter
 import com.example.main.views.initialize
+import com.example.main.views.initializeValues
+import com.example.main.views.setCurrentWeight
+import com.example.main.views.setSleepTime
+import com.example.main.views.setValue
+import com.example.main.views.setWaterIntake
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
@@ -35,33 +41,7 @@ class HomeFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        childFragmentManager.setFragmentResultListener(
-            AddWaterIntakeDialog.REQUEST_KEY_WATER_INTAKE_ENTERED,
-            this
-        ) { _, bundle ->
-            val waterIntake = bundle.getInt(AddWaterIntakeDialog.BUNDLE_KEY_WATER_INTAKE)
-            Log.d("Home", "waterIntake=$waterIntake")
-        }
-
-        childFragmentManager.setFragmentResultListener(
-            EnterSleepTimeDialog.REQUEST_KEY_SLEEP_TIME_ENTERED,
-            this
-        ) { _, bundle ->
-            val bedtime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_BEDTIME)
-            val wakeupTime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_WAKEUP_TIME)
-            Log.d("Home", "bedtime=$bedtime wakeupTime=$wakeupTime")
-        }
-
-        childFragmentManager.setFragmentResultListener(
-            EnterCurrentWeightDialog.REQUEST_KEY_CURRENT_WEIGHT_ENTERED,
-            this
-        ) { _, bundle ->
-            val currentWeight = bundle.getFloat(EnterCurrentWeightDialog.BUNDLE_KEY_CURRENT_WEIGHT)
-            Log.d("Home", "currentWeight=$currentWeight")
-        }
-
+        registerForDialogResults()
     }
 
     override fun onCreateView(
@@ -75,11 +55,55 @@ class HomeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        store.postIntent(HomeIntent.GetCurrentDate)
+        setupViews()
 
+        store.postIntent(HomeIntent.GetCurrentDate)
+        store.postIntent(HomeIntent.GetActivityWithNutrition)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        render(store.uiState.value)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun resolveEffect(effect: HomeEffect) {
+        when (effect) {
+            HomeEffect.NavigateToNutritionFragment -> {}
+        }
+    }
+
+    override fun render(state: HomeState) {
+        binding.run {
+            textViewCurrentDate.text = state.currentDate
+
+            cardNutritionHome.setValue(state.nutritionEntity.toUi())
+
+            val stateActivity = state.activityEntity
+            containerCardsActivity.run {
+                cardSteps.setValue(stateActivity.stepsNumber)
+                cardWater.setWaterIntake(stateActivity.waterIntake)
+                cardSleep.setSleepTime(stateActivity.sleepTime)
+                cardWeight.setCurrentWeight(stateActivity.weight)
+            }
+        }
+    }
+
+    private fun registerForDialogResults() {
+        registerForWaterDialogResult()
+        registerForSleepDialogResult()
+        registerForWeightDialog()
+    }
+
+    private fun setupViews() {
         binding.run {
             containerCardsActivity.run {
-                initialize(requireContext())
+                initialize()
+                initializeValues(requireContext())
 
                 cardWater.root.setOnClickListener {
                     AddWaterIntakeDialog().show(childFragmentManager, null)
@@ -103,20 +127,38 @@ class HomeFragment :
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
-    override fun resolveEffect(effect: HomeEffect) {
-        when (effect) {
-            HomeEffect.NavigateToNutritionFragment -> {}
+    private fun registerForWaterDialogResult() {
+        childFragmentManager.setFragmentResultListener(
+            AddWaterIntakeDialog.REQUEST_KEY_WATER_INTAKE_ENTERED,
+            this
+        ) { _, bundle ->
+            val waterIntake = bundle.getInt(AddWaterIntakeDialog.BUNDLE_KEY_WATER_INTAKE)
+            store.postIntent(HomeIntent.UpdateWaterIntakeInActivity(waterIntake))
         }
     }
 
-    override fun render(state: HomeState) {
-        binding.textViewCurrentDate.text = state.currentDate
+    private fun registerForSleepDialogResult() {
+        childFragmentManager.setFragmentResultListener(
+            EnterSleepTimeDialog.REQUEST_KEY_SLEEP_TIME_ENTERED,
+            this
+        ) { _, bundle ->
+            val bedtime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_BEDTIME) ?: return@setFragmentResultListener
+            val wakeupTime = bundle.getString(EnterSleepTimeDialog.BUNDLE_KEY_WAKEUP_TIME) ?: return@setFragmentResultListener
+            store.postIntent(HomeIntent.UpdateSleepTimeInActivity(bedtime, wakeupTime))
+        }
     }
+
+    private fun registerForWeightDialog() {
+        childFragmentManager.setFragmentResultListener(
+            EnterCurrentWeightDialog.REQUEST_KEY_CURRENT_WEIGHT_ENTERED,
+            this
+        ) { _, bundle ->
+            val currentWeight = bundle.getFloat(EnterCurrentWeightDialog.BUNDLE_KEY_CURRENT_WEIGHT)
+            store.postIntent(HomeIntent.UpdateWeightInActivity(currentWeight))
+        }
+    }
+
 
     private fun navigateToNutritionFragment() {
         val currentDate = Calendar.getInstance().time
@@ -124,5 +166,4 @@ class HomeFragment :
         val action = HomeFragmentDirections.actionHomeFragmentToNutritionFragment(formattedDate)
         findNavController().navigate(action)
     }
-
 }

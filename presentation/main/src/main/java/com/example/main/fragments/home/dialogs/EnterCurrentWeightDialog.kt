@@ -39,6 +39,7 @@ class EnterCurrentWeightDialog : DialogFragment() {
                     REQUEST_KEY_CURRENT_WEIGHT_ENTERED,
                     bundleOf(BUNDLE_KEY_CURRENT_WEIGHT to weight.toFloat())
                 )
+                dismiss()
             }
         }
     }
