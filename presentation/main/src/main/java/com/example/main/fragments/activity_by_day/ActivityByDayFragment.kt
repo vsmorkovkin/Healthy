@@ -10,14 +10,18 @@ import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentActivityByDayBinding
 import com.example.main.fragments.activity_by_day.dialog.DatePickerFragment
+import com.example.main.fragments.activity_by_day.model.toUi
 import com.example.main.fragments.activity_by_day.mvi.effect.ActivityByDayEffect
 import com.example.main.fragments.activity_by_day.mvi.intent.ActivityByDayIntent
 import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayPartialState
 import com.example.main.fragments.activity_by_day.mvi.state.ActivityByDayState
 import com.example.main.fragments.activity_by_day.mvi.store.ActivityByDayStore
+import com.example.main.utils.DateConverter
 import com.example.main.views.initialize
-import com.example.main.views.initializeValues
+import com.example.main.views.setCurrentWeight
+import com.example.main.views.setSleepTime
 import com.example.main.views.setValue
+import com.example.main.views.setWaterIntake
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -32,30 +36,44 @@ class ActivityByDayFragment :
 
     override val store: ActivityByDayStore by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        childFragmentManager.setFragmentResultListener(
+            DatePickerFragment.REQUEST_KEY_DATE_SELECTED,
+            this
+        ) { _, bundle ->
+            val selectedDate = bundle.getString(DatePickerFragment.BUNDLE_KEY_SELECTED_DATE)
+                ?: return@setFragmentResultListener
+            store.postIntent(ActivityByDayIntent.GetActivityWithNutritionByDayIntent(selectedDate))
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentActivityByDayBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.run {
-            //containerCardsActivityByDay.initialize(requireContext())
-            containerCardsActivityByDay.initialize()
             cardNutritionActivityByDay.run {
                 initialize()
                 root.setOnClickListener { navigateToNutritionFragment() }
             }
 
-            buttonSelectDate.setOnClickListener {
-                store.postIntent(ActivityByDayIntent.OpenSelectDateDialogIntent)
-            }
+            containerCardsActivityByDay.initialize()
+
+            buttonSelectDate.setOnClickListener { showDatePickerDialog() }
         }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        render(store.uiState.value)
     }
 
     override fun onDestroyView() {
@@ -65,41 +83,39 @@ class ActivityByDayFragment :
 
     override fun resolveEffect(effect: ActivityByDayEffect) {
         when (effect) {
-            ActivityByDayEffect.OpenSelectDateDialogEffect -> DatePickerFragment { date ->
-                store.postIntent(ActivityByDayIntent.GetActivityByDayIntent(date))
-            }.show(parentFragmentManager, null)
+            ActivityByDayEffect.OpenSelectDateDialogEffect -> showDatePickerDialog()
         }
     }
 
     override fun render(state: ActivityByDayState) {
         binding.run {
-            state.selectedDateUi?.let {
-                textViewCurrentDateActivityByDay.text = it
+            state.selectedDateEntity?.let {
+                textViewCurrentDateActivityByDay.text =
+                    DateConverter.dateEntityToActivityByDayUi(it)
             }
 
-            val activityUi = state.activityUi
+            val nutritionEntity = state.activityWithNutritionEntity.nutrition
+            cardNutritionActivityByDay.setValue(nutritionEntity.toUi())
 
-            if (activityUi == null) {
-                cardNutritionActivityByDay.initializeValues()
-                containerCardsActivityByDay.initializeValues(requireContext())
-            } else {
-                textViewCurrentDateActivityByDay.text = activityUi.date
+            val activityEntity = state.activityWithNutritionEntity.activityEntity
 
-                cardNutritionActivityByDay.setValue(activityUi.nutrition)
-
-                containerCardsActivityByDay.run {
-                    cardSteps.setValue(activityUi.stepsNumber)
-                    cardWater.setValue(activityUi.waterIntake.toInt())
-                    cardSleep.setValue(activityUi.sleepTime.toInt())
-                    cardWeight.setValue(activityUi.weight.toInt())
-                }
+            containerCardsActivityByDay.run {
+                cardSteps.setValue(activityEntity.stepsNumber)
+                cardWater.setWaterIntake(activityEntity.waterIntake)
+                cardSleep.setSleepTime(activityEntity.sleepTime)
+                cardWeight.setCurrentWeight(activityEntity.weight)
             }
         }
     }
 
+    private fun showDatePickerDialog() {
+        DatePickerFragment().show(childFragmentManager, null)
+    }
+
     private fun navigateToNutritionFragment() {
         store.uiState.value.selectedDateEntity?.let { date ->
-            val action = ActivityByDayFragmentDirections.actionActivityByDayFragmentToNutritionFragment(date)
+            val action =
+                ActivityByDayFragmentDirections.actionActivityByDayFragmentToNutritionFragment(date)
             findNavController().navigate(action)
         }
     }

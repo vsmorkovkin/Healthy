@@ -4,13 +4,12 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.DatePicker
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 
 import java.util.Calendar
 
-class DatePickerFragment(
-    private val actionOnDateSet: (date: String) -> Unit
-) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker.
@@ -25,6 +24,16 @@ class DatePickerFragment(
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         val date = String.format("%04d-%02d-%02d", year, month + 1, day)
-        actionOnDateSet(date)
+
+        parentFragmentManager.setFragmentResult(
+            REQUEST_KEY_DATE_SELECTED, bundleOf(
+                BUNDLE_KEY_SELECTED_DATE to date
+            )
+        )
+    }
+
+    companion object {
+        const val REQUEST_KEY_DATE_SELECTED = "REQUEST_KEY_DATE_SELECTED"
+        const val BUNDLE_KEY_SELECTED_DATE = "BUNDLE_KEY_SELECTED_DATE"
     }
 }

@@ -1,5 +1,6 @@
 package com.example.main.fragments.activity_by_day.mvi.store
 
+import com.example.activity.entity.ActivityWithNutritionEntity
 import com.example.common.mvi.MviStore
 import com.example.main.fragments.activity_by_day.mvi.effect.ActivityByDayEffect
 import com.example.main.fragments.activity_by_day.mvi.intent.ActivityByDayIntent
@@ -18,7 +19,7 @@ class ActivityByDayStore @Inject constructor(
 ) {
 
     override fun initialStateCreator(): ActivityByDayState {
-        return ActivityByDayState(null, null, null)
+        return ActivityByDayState(null, ActivityWithNutritionEntity())
     }
 
 }

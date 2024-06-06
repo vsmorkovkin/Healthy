@@ -1,7 +1,6 @@
 package com.example.main.fragments.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,6 @@ import com.example.main.fragments.home.mvi.state.HomeState
 import com.example.main.fragments.home.mvi.store.HomeStore
 import com.example.main.utils.DateConverter
 import com.example.main.views.initialize
-import com.example.main.views.initializeValues
 import com.example.main.views.setCurrentWeight
 import com.example.main.views.setSleepTime
 import com.example.main.views.setValue
@@ -103,7 +101,6 @@ class HomeFragment :
         binding.run {
             containerCardsActivity.run {
                 initialize()
-                initializeValues(requireContext())
 
                 cardWater.root.setOnClickListener {
                     AddWaterIntakeDialog().show(childFragmentManager, null)
@@ -158,7 +155,6 @@ class HomeFragment :
             store.postIntent(HomeIntent.UpdateWeightInActivity(currentWeight))
         }
     }
-
 
     private fun navigateToNutritionFragment() {
         val currentDate = Calendar.getInstance().time

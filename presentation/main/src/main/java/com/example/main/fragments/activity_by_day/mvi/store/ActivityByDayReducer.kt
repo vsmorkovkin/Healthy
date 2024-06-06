@@ -13,15 +13,12 @@ class ActivityByDayReducer @Inject constructor() :
         partialState: ActivityByDayPartialState
     ): ActivityByDayState {
         return when (partialState) {
-            is ActivityByDayPartialState.ActivityByDaySelected -> {
-                prevState.copy(
-                    selectedDateUi = partialState.selectedDateUi,
-                    selectedDateEntity = partialState.selectedDateEntity
-                )
+            is ActivityByDayPartialState.DateSelected -> {
+                prevState.copy(selectedDateEntity = partialState.selectedDateEntity)
             }
 
-            is ActivityByDayPartialState.ActivityByDayLoaded -> {
-                prevState.copy(activityUi = partialState.activityUi)
+            is ActivityByDayPartialState.ActivityWithNutritionByDateLoaded -> {
+                prevState.copy(activityWithNutritionEntity = partialState.activityWithNutritionEntity)
             }
         }
     }
