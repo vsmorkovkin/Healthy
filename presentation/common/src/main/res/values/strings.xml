@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_deeplink_scheme">healthy</string>
+    <string name="navigation_deeplink_host">healthy.app</string>
+    <string name="path_to_authorization_activity">/auth</string>
+    <string name="path_to_main_activity">/main</string>
+</resources>

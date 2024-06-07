@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="def_horizontal_margin">16dp</dimen>
+    <dimen name="def_vertical_margin">24dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+
+    <dimen name="primary_button_height">54dp</dimen>
+    <dimen name="primary_button_icon_size">24dp</dimen>
+    <dimen name="secondary_button_height">48dp</dimen>
+
+    <dimen name="tab_layout_page_indicator_height">8dp</dimen>
+
+
+    <dimen name="margin_app_name">48dp</dimen>
+    <dimen name="margin_edit_text">12dp</dimen>
+
+
+</resources>

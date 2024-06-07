@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    namespace 'com.example.main'
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+        minSdk buildConfig.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility javaCompileVersion
+        targetCompatibility javaCompileVersion
+    }
+    kotlinOptions {
+        jvmTarget = javaCompileVersion
+    }
+}
+
+dependencies {
+
+    implementation project(':presentation:common')
+
+    implementation project(':data:session')
+    implementation project(':domain:session')
+
+    implementation project(':data:activity')
+    implementation project(':domain:activity')
+
+    implementation project(':data:nutrition')
+    implementation project(':domain:nutrition')
+
+    implementation project(':data:videos')
+    implementation project(':domain:videos')
+
+    implementation androidx.core
+    implementation androidx.appCompat
+    implementation androidx.constraintLayout
+    implementation material.material
+
+    implementation androidx.navigationFragment
+    implementation androidx.navigationUiKtx
+
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
+
+    implementation platform(firebase.BoM)
+    implementation firebase.auth
+    implementation firebase.firestore
+    implementation firebase.storage
+
+    implementation glide.glide
+
+    implementation gson.gson
+
+}
+
+kapt {
+    correctErrorTypes = true
+}

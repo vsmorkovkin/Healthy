@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Фон ProgressBar -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="#F0F1F8"/> <!-- Цвет фона -->
+            <corners android:radius="@dimen/card_activity_progress_corner_radius"/>
+        </shape>
+    </item>
+
+    <!-- Вторичный прогресс (опционально) -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="#B3B3B3"/> <!-- Цвет вторичного прогресса -->
+                <corners android:radius="@dimen/card_activity_progress_corner_radius"/>
+            </shape>
+        </clip>
+    </item>
+
+    <!-- Основной прогресс -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="?attr/colorPrimary"/> <!-- Цвет индикатора прогресса -->
+                <corners android:radius="@dimen/card_activity_progress_corner_radius"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

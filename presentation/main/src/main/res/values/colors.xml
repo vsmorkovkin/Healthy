@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_black">#FF000000</color>
+
+    <color name="color_steps">#3FCC7D</color>
+    <color name="color_water">#5BC7F8</color>
+    <color name="color_sleep">#7265E3</color>
+    <color name="color_weight">#000000</color>
+
+    <color name="color_calories_bg">#3FCC7D</color>
+    <color name="color_calories_progress_bg">#6BD695</color>
+    <color name="color_calories_progress_text">#8BE1A9</color>
+    <color name="color_calories_indicator">#FFFFFF</color>
+
+    <color name="color_nutrient_progress_bg">#E7EBF4</color>
+
+    <color name="color_proteins_progress">#F79A14</color>
+    <color name="color_fats_progress">#FCC903</color>
+    <color name="color_carbs_progress">#EB0A56</color>
+
+    <color name="color_delete">#FF555D</color>
+    <color name="color_meal_nutrient_value">#939292</color>
+
+    <color name="color_nutrition">#F79A14</color>
+
+    <color name="color_video_preview_bg">#BCBCBC</color>
+
+</resources>

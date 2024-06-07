@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/card_calories_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_calories"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:paddingVertical="@dimen/_20dp">
+
+    <TextView
+        android:id="@+id/title_calories"
+        style="@style/Healthy.Text.Body0.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="@string/card_calories_title"
+        android:textColor="@color/color_calories_indicator"
+        app:layout_constraintBottom_toBottomOf="@id/icon_calories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_calories" />
+
+    <ImageView
+        android:id="@+id/icon_calories"
+        android:layout_width="@dimen/card_calories_icon_size"
+        android:layout_height="@dimen/card_calories_icon_size"
+        android:background="@drawable/ic_calories"
+        android:backgroundTint="@color/color_calories_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_calories"
+        android:layout_width="@dimen/card_calories_progress_size"
+        android:layout_height="@dimen/card_calories_progress_size"
+        android:layout_marginTop="@dimen/_16dp"
+        android:max="@integer/card_calories_target_value"
+        android:progress="0"
+        android:rotation="180"
+        app:indicatorColor="@color/color_calories_indicator"
+        app:indicatorSize="@dimen/card_calories_progress_size"
+        app:indicatorTrackGapSize="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_calories"
+        app:trackColor="@color/color_calories_progress_bg"
+        app:trackCornerRadius="@dimen/_12dp"
+        app:trackThickness="@dimen/_9dp" />
+
+
+    <TextView
+        android:id="@+id/value_calories"
+        style="@style/Healthy.Text.H4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="@color/color_calories_indicator"
+        app:layout_constraintBottom_toTopOf="@id/value_measurement_calories"
+        app:layout_constraintEnd_toEndOf="@id/progress_calories"
+        app:layout_constraintStart_toStartOf="@id/progress_calories"
+        app:layout_constraintTop_toTopOf="@id/progress_calories"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="730" />
+
+    <TextView
+        android:id="@+id/value_measurement_calories"
+        style="@style/Healthy.Text.Body1.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="@string/card_calories_value_measurement"
+        android:textColor="@color/color_calories_progress_text"
+        app:layout_constraintBottom_toBottomOf="@id/progress_calories"
+        app:layout_constraintEnd_toEndOf="@id/progress_calories"
+        app:layout_constraintStart_toStartOf="@id/progress_calories"
+        app:layout_constraintTop_toBottomOf="@id/value_calories" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+<resources>
+    <string name="button_logout_text">Выйти</string>
+
+    <string name="fragment_home_label">Активность</string>
+    <string name="fragment_videos_label">Видео</string>
+    <string name="fragment_events_label">События</string>
+    <string name="fragment_chats_label">Чаты</string>
+    <string name="fragment_profile_label">Профиль</string>
+    <string name="fragment_activity_by_day_label">Активность по дням</string>
+    <string name="fragment_nutrition_label">Питание</string>
+    <string name="fragment_watching_video_label">Видео</string>
+
+    <string name="card_steps_title">Шаги</string>
+    <string name="card_steps_initial_value">0</string>
+    <string name="card_steps_value_measurement">шагов</string>
+
+    <string name="card_water_title">Вода</string>
+    <string name="card_water_initial_value">0</string>
+    <string name="card_water_value_measurement">литров</string>
+
+    <string name="card_sleep_title">Сон</string>
+    <string name="card_sleep_initial_value">--</string>
+    <string name="card_sleep_value_measurement">часов</string>
+
+    <string name="card_weight_title">Вес</string>
+    <string name="card_weight_initial_value">--</string>
+    <string name="card_weight_value_measurement">кг</string>
+
+    <string name="button_select_date">Выбрать дату</string>
+    <string name="current_date_hint">Выберите дату</string>
+
+    <string name="card_calories_title">Калории</string>
+    <string name="card_calories_value_measurement">ккал</string>
+
+    <string name="card_proteins_title">Белки</string>
+    <string name="card_fats_title">Жиры</string>
+    <string name="card_carbs_title">Углеводы</string>
+
+    <string name="meals_text">Приемы пищи</string>
+    <string name="button_add_text_with_plus">+ Добавить</string>
+    <string name="button_add_text">Добавить</string>
+    <string name="kilocalories_text">Ккал</string>
+    <string name="card_meal_proteins_title">Б</string>
+    <string name="card_meal_fats_title">Ж</string>
+    <string name="card_meal_carbs_title">У</string>
+    <string name="dialog_nutrition_title">Питание</string>
+    <string name="hint_meal_title">Прием пищи</string>
+    <string name="hint_calories">Калории</string>
+    <string name="hint_proteins">Белки</string>
+    <string name="hint_fats">Жиры</string>
+    <string name="hint_carbs">Углеводы</string>
+    <string name="warning_empty_calories">Введите калории</string>
+    <string name="warning_empty_meal_title">Введите название для приема пищи</string>
+    <string name="warning_empty_proteins">Введите количество белков</string>
+    <string name="warning_empty_fats">Введите количество жиров</string>
+    <string name="warning_empty_carbs">Введите количество углеводов</string>
+    <string name="button_save_text">Сохранить</string>
+    <string name="hint_wakeup_time">Время пробуждения</string>
+    <string name="hint_bedtime">Время отхода ко сну</string>
+    <string name="warning_enter_correct_time">Введите корректное время</string>
+    <string name="hint_water_intake_ml">мл</string>
+    <string name="warning_empty_water_intake">Введите объем выпитой воды в мл</string>
+    <string name="hint_current_weight">Текущий вес</string>
+    <string name="warning_empty_current_weight">Введите ваш текущий вес</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

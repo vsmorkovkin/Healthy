@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="card_steps_target_value">6000</integer>
+    <integer name="card_water_ml_target_value">2500</integer>
+    <integer name="card_sleep_target_value">8</integer>
+
+    <integer name="card_calories_target_value">2500</integer>
+    <integer name="card_proteins_target_value">112</integer>
+    <integer name="card_fats_target_value">63</integer>
+    <integer name="card_carbs_target_value">371</integer>
+
+</resources>

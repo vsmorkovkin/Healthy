@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,9 +37,29 @@ android {
 
 dependencies {
 
+    implementation project(':presentation:common')
+    implementation project(':presentation:auth')
+    implementation project(':presentation:main')
+
     implementation androidx.core
     implementation androidx.appCompat
     implementation androidx.constraintLayout
     implementation material.material
 
+    implementation androidx.splashScreen
+
+    implementation androidx.navigationFragment
+    implementation androidx.navigationUiKtx
+
+    implementation platform(firebase.BoM)
+    implementation firebase.auth
+    implementation firebase.firestore
+
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
+
+}
+
+kapt {
+    correctErrorTypes = true
 }

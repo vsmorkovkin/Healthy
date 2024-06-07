@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.profile.ProfileFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view_profile"
+        android:layout_width="@dimen/profile_image_view_size"
+        android:layout_height="@dimen/profile_image_view_size"
+        android:layout_marginTop="@dimen/_36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="#232323"
+        app:shapeAppearanceOverlay="@style/CircleImageView"/>
+
+    <TextView
+        style="@style/Healthy.Text.H5"
+        android:id="@+id/text_view_user_name_and_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_profile"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_logout"
+        style="@style/Healthy.Widget.Button.Secondary"
+        android:layout_width="@dimen/profile_image_view_size"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_36dp"
+        android:text="@string/button_logout_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

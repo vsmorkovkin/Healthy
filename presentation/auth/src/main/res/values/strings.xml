@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="welcome_title">Добро пожаловать в Healthy</string>
+    <string name="welcome_description">Мы рады приветствовать вас в нашем приложении, которое поможет вам следить за здоровым образом жизни. Давайте познакомимся с основными функциями</string>
+    <string name="button_start_text">Начать</string>
+
+    <string name="button_forward_text">Далее</string>
+    <string name="button_get_started_text">Приступить</string>
+    <string name="button_login_text">Войти</string>
+    <string name="button_register_text">Зарегистрироваться</string>
+
+    <string name="entry_description">Остался последний шаг\nВойдите в сущестующий аккаунт или создайте новый</string>
+
+    <string name="edit_text_login_hint">Логин</string>
+    <string name="edit_text_password_hint">Пароль</string>
+
+    <string name="app_name">Healthy</string>
+
+    <string name="button_no_account_text">Нет аккаунта</string>
+    <string name="button_password_forgotten_text">Не помню пароль</string>
+
+    <string name="edit_text_password_confirmation_hint">Подтвердите пароль</string>
+    <string name="edit_text_email_hint">Электронная почта</string>
+    <string name="edit_text_name_hint">Имя</string>
+    <string name="edit_text_surname_hint">Фамилия</string>
+
+    <string name="onboarding_home_title">Отслеживание здоровья и питания</string>
+    <string name="onboarding_home_description">На главном экране вы можете вводить информацию о вашем питании, контролировать уровень водного баланса, отслеживать время сна, пройденные шаги</string>
+
+    <string name="onboarding_video_title">Видео упражнения</string>
+    <string name="onboarding_video_description">Откройте второй экран, чтобы найти видео упражнения по различным видам спорта. Независимо от вашего уровня подготовки, здесь вы найдете что-то полезное для себя!</string>
+
+    <string name="onboarding_events_title">Создание событий на карте</string>
+    <string name="onboarding_events_description">Используйте третий экран, чтобы создавать события в вашем городе или районе. Это могут быть беговые группы, йога на открытом воздухе или фитнес-мероприятия. Другие пользователи смогут присоединиться к вашему событию, чтобы вместе достигать своих целей</string>
+
+    <string name="onboarding_chat_title">Общение в чате</string>
+    <string name="onboarding_chat_description">На четвертом экране вы найдете чат, где можете общаться с участниками событий. Делитесь опытом, договаривайтесь о встречах или просто знакомьтесь с новыми друзьями, разделяющими ваши интересы</string>
+
+
+    <string name="warning_empty_name">Введите имя</string>
+    <string name="warning_empty_surname">Введите фамилию</string>
+    <string name="warning_empty_email">Введите электронную почту</string>
+    <string name="warning_empty_password">Введите пароль</string>
+    <string name="warning_empty_password_confirmation">Введите подтверждение пароля</string>
+    <string name="warning_not_matching_password">Пароли не совпадают</string>
+
+</resources>

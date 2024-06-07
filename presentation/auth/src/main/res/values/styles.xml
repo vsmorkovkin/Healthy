@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Healthy.Text.Headline">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#232323</item>
+    </style>
+
+    <style name="Healthy.Text.Description">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#8E8E8E</item>
+    </style>
+
+    <style name="Healthy.Text.Onboarding"/>
+
+    <style name="Healthy.Text.Onboarding.Title">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#232323</item>
+    </style>
+
+    <style name="Healthy.Text.Onboarding.Description">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#8E8E8E</item>
+    </style>
+
+
+    <style name="Healthy.Widget.Button.Primary.Forward">
+        <item name="icon">@drawable/ic_forward_arrow</item>
+        <item name="iconSize">@dimen/primary_button_icon_size</item>
+        <item name="iconGravity">textEnd</item>
+    </style>
+
+    <style name="Healthy.Widget.Button.Secondary.Forward">
+        <item name="icon">@drawable/ic_forward_arrow</item>
+        <item name="iconSize">@dimen/primary_button_icon_size</item>
+        <item name="iconGravity">textEnd</item>
+    </style>
+
+</resources>

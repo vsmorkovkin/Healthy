@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="?android:colorBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_main"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                app:contentInsetStart="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Healthy.Text.H5" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_profile"
+                android:layout_width="@dimen/profile_image_side"
+                android:layout_height="@dimen/profile_image_side"
+                android:layout_marginStart="@dimen/_16dp"
+                android:background="#232323"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/CircleImageView"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_nav_graph"
+        tools:context=".MainActivity" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_view_height"
+        android:background="?android:colorBackground"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemBackground="@drawable/bottom_nav_item_background"
+        app:itemIconTint="@color/bottom_nav_item_icon_color"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_main_bottom_nav" />
+
+</LinearLayout>
+

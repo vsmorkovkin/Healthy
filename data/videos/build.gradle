@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.videos'
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+        minSdk buildConfig.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility javaCompileVersion
+        targetCompatibility javaCompileVersion
+    }
+    kotlinOptions {
+        jvmTarget = javaCompileVersion
+    }
+}
+
+dependencies {
+
+    implementation project(':domain:videos')
+
+    implementation platform(firebase.BoM)
+    implementation firebase.auth
+    implementation firebase.firestore
+    implementation firebase.storage
+
+    implementation di.hiltAndroid
+    kapt di.hiltCompiler
+
+    implementation network.okHttp
+    implementation network.okHttpLogging
+    implementation network.retrofit
+    implementation network.retrofitGson
+
+}

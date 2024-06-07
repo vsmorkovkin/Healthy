@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_nutrient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:rotation="180"
+        app:indicatorSize="@dimen/card_nutrient_progress_size"
+        app:indicatorTrackGapSize="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/color_nutrient_progress_bg"
+        app:trackCornerRadius="@dimen/_4dp"
+        app:trackThickness="3.5dp" />
+
+    <TextView
+        android:id="@+id/percentage_nutrient"
+        style="@style/Healthy.Text.Caption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/progress_nutrient"
+        app:layout_constraintEnd_toEndOf="@id/progress_nutrient"
+        app:layout_constraintStart_toStartOf="@id/progress_nutrient"
+        app:layout_constraintTop_toTopOf="@id/progress_nutrient"
+        tools:text="40" />
+
+    <TextView
+        android:id="@+id/title_nutrient"
+        style="@style/Healthy.Text.Body1.Semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/value_nutrient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/progress_nutrient"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Белки" />
+
+    <TextView
+        android:id="@+id/value_nutrient"
+        style="@style/Healthy.Text.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginTop="@dimen/_0dp"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/progress_nutrient"
+        app:layout_constraintTop_toBottomOf="@+id/title_nutrient"
+        tools:text="59" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onboarding.OnboardingFragment">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2_onboarding"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tab_layout_page_indicator"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_page_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tab_layout_page_indicator_height"
+        android:layout_marginHorizontal="@dimen/def_horizontal_margin"
+        android:layout_marginBottom="@dimen/def_vertical_margin"
+        android:background="@null"
+        app:tabIndicator="@null"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabBackground="@drawable/bg_page_indicator" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_onboarding_forward"
+        style="@style/Healthy.Widget.Button.Secondary.Forward"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/def_horizontal_margin"
+        android:layout_marginBottom="@dimen/def_vertical_margin"
+        android:text="@string/button_forward_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_onboarding_get_started"
+        style="@style/Healthy.Widget.Button.Secondary.Forward"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/def_horizontal_margin"
+        android:layout_marginBottom="@dimen/def_vertical_margin"
+        android:text="@string/button_get_started_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="button_onboarding_forward,button_onboarding_get_started" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

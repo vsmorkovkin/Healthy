@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/videosFragment"
+        android:icon="@drawable/ic_videos"
+        android:title="Videos"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/eventsFragment"
+        android:icon="@drawable/ic_events"
+        android:title="Events"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/chatsFragment"
+        android:icon="@drawable/ic_chats"
+        android:title="Chats"
+        tools:ignore="HardcodedText" />
+
+</menu>

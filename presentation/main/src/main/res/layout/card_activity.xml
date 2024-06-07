@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_activity"
+    android:padding="@dimen/_12dp">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Healthy.Text.Body0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon"
+        tools:text="Шаги" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/card_activity_icon_size"
+        android:layout_height="@dimen/card_activity_icon_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_steps" />
+
+    <TextView
+        android:id="@+id/value"
+        style="@style/Healthy.Text.H4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon"
+        tools:text="6749" />
+
+    <TextView
+        android:id="@+id/value_measurement"
+        style="@style/Healthy.Text.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/value"
+        app:layout_constraintStart_toEndOf="@id/value"
+        tools:text="шагов" />
+
+    <TextView
+        android:id="@+id/percentage"
+        style="@style/Healthy.Text.H4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        app:layout_constraintEnd_toStartOf="@id/percent_sign"
+        app:layout_constraintTop_toBottomOf="@id/icon"
+        tools:text="83" />
+
+    <TextView
+        android:id="@+id/percent_sign"
+        style="@style/Healthy.Text.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        app:layout_constraintBaseline_toBaselineOf="@id/percentage"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_activity_progress_bar_height"
+        android:layout_marginTop="@dimen/_8dp"
+        android:progressDrawable="@drawable/bg_card_activity_progress"
+        app:layout_constraintTop_toBottomOf="@id/value"
+        tools:max="100"
+        tools:progress="80" />
+</androidx.constraintlayout.widget.ConstraintLayout>

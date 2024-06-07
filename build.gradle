@@ -2,6 +2,7 @@
 buildscript {
     ext {
         javaCompileVersion = JavaVersion.VERSION_1_8
+        jvmToolchain = 8
 
         buildConfig = [
                 'compileSdk': 34,
@@ -21,27 +22,81 @@ buildscript {
 
 
         versions = [
-                coreKtx         : "1.13.1",
-                appCompat       : "1.6.1",
-                material        : "1.12.0",
-                constraintLayout: "2.1.4",
+                coreKtx            : "1.13.1",
+                appCompat          : "1.6.1",
+                material           : "1.12.0",
+                constraintLayout   : "2.1.4",
+                splashScreen       : "1.0.1",
+                navigation         : "2.7.7",
+                firebaseBoM        : "33.0.0",
+                coroutines         : "1.7.1",
+                hilt               : "2.51.1",
+                lifecycleRuntimeKtx: "2.8.0",
+                viewModel          : "2.8.0",
+                glide              : "4.14.2",
+                gson               : "2.10",
+                okHttp             : "4.7.2",
+                retrofit           : "2.11.0"
         ]
 
         androidx = [
-                core              : "androidx.core:core-ktx:${versions.coreKtx}",
-                appCompat         : "androidx.appcompat:appcompat:${versions.appCompat}",
-                constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                core               : "androidx.core:core-ktx:${versions.coreKtx}",
+                appCompat          : "androidx.appcompat:appcompat:${versions.appCompat}",
+                constraintLayout   : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                splashScreen       : "androidx.core:core-splashscreen:${versions.splashScreen}",
+                navigationFragment : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+                navigationUiKtx    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                lifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycleRuntimeKtx}",
+                viewModelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewModel}",
         ]
 
         material = [
                 material: "com.google.android.material:material:${versions.material}"
         ]
 
+        firebase = [
+                BoM      : "com.google.firebase:firebase-bom:${versions.firebaseBoM}",
+                auth     : "com.google.firebase:firebase-auth",
+                firestore: "com.google.firebase:firebase-firestore",
+                storage  : "com.google.firebase:firebase-storage"
+        ]
+
+        kotlinx = [
+                coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+        ]
+
+        di = [
+                hiltAndroid : "com.google.dagger:hilt-android:${versions.hilt}",
+                hiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+        ]
+
+        glide = [
+                glide: "com.github.bumptech.glide:glide:${versions.glide}"
+        ]
+
+        gson = [
+                gson: "com.google.code.gson:gson:${versions.gson}"
+        ]
+
+        network = [
+                okHttp       : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
+                okHttpLogging: "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
+                retrofit     : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                retrofitGson : "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+        ]
+
     }
 
+    dependencies {
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}")
+    }
 }
 
 plugins {
-id 'com.android.application' version '8.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.9.22' apply false
+    id 'com.android.application' version '8.2.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.23' apply false
+    id 'com.android.library' version '8.2.2' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.9.23' apply false
+    id 'com.google.gms.google-services' version '4.4.1' apply false
+    id 'com.google.dagger.hilt.android' version '2.51.1' apply false
 }
