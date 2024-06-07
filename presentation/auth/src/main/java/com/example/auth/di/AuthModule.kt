@@ -17,10 +17,8 @@ class AuthModule {
         return GetOnboardingCompleteStatusUseCase(onboardingRepository)
     }
 
-
     @Provides
     fun provideUpdateOnboardingCompleteStatusUseCase(onboardingRepository: OnboardingRepository): UpdateOnboardingCompleteStatusUseCase {
         return UpdateOnboardingCompleteStatusUseCase(onboardingRepository)
     }
-
 }

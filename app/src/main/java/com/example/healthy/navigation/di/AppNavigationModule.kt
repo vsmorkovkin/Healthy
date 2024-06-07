@@ -18,5 +18,4 @@ class AppNavigationModule {
     fun providesDefaultDeeplinkHandler(
         processors: Set<@JvmSuppressWildcards DeeplinkProcessor>
     ): DeeplinkHandler = DefaultDeeplinkHandler(processors)
-
 }

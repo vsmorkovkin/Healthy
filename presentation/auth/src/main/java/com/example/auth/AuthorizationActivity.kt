@@ -9,7 +9,6 @@ import com.example.onboarding.usecase.GetOnboardingCompleteStatusUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class AuthorizationActivity : AppCompatActivity() {
 
@@ -19,7 +18,6 @@ class AuthorizationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization)
-
 
         if (getOnboardingCompleteStatusUseCase()) {
             // if onboarding was completed navigate to LoginFragment
@@ -32,6 +30,5 @@ class AuthorizationActivity : AppCompatActivity() {
             }
             navController.navigate(R.id.loginFragment, null, navOptions)
         }
-
     }
 }

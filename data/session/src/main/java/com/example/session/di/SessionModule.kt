@@ -6,7 +6,6 @@ import com.example.session.repository.SessionRepository
 import com.example.session.repository.SessionRepositoryImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
@@ -19,5 +18,4 @@ abstract class SessionModule {
 
     @Binds
     abstract fun bindSessionRepository(impl: SessionRepositoryImpl): SessionRepository
-
 }

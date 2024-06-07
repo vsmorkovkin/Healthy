@@ -25,5 +25,4 @@ class OnboardingRepositoryImpl @Inject constructor(
             .putBoolean(ONBOARDING_COMPLETE_STATUS, isCompleted)
             .apply()
     }
-
 }

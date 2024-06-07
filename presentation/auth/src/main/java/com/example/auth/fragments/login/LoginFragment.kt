@@ -15,7 +15,6 @@ import com.example.common.navigation.NavigationDeeplinkContainer
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class LoginFragment :
     BaseFragmentMvi<LoginPartialState, LoginIntent, LoginState, LoginEffect>(R.layout.fragment_login) {
@@ -29,7 +28,8 @@ class LoginFragment :
     lateinit var deeplinkContainer: NavigationDeeplinkContainer
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
@@ -50,7 +50,6 @@ class LoginFragment :
                 store.postIntent(LoginIntent.NoAccountIntent)
             }
         }
-
     }
 
     override fun onDestroyView() {
@@ -78,5 +77,4 @@ class LoginFragment :
         val intent = Intent(Intent.ACTION_VIEW, deeplinkContainer.DEEPLINK_TO_MAIN_ACTIVITY)
         startActivity(intent)
     }
-
 }

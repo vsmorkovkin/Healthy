@@ -12,18 +12,18 @@ import com.example.onboarding.usecase.UpdateOnboardingCompleteStatusUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class EntryFragment : Fragment() {
-    
+
     private var _binding: FragmentEntryBinding? = null
     private val binding get() = _binding!!
 
     @Inject
     lateinit var updateOnboardingCompleteStatusUseCase: UpdateOnboardingCompleteStatusUseCase
-    
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEntryBinding.inflate(inflater, container, false)
@@ -44,12 +44,10 @@ class EntryFragment : Fragment() {
                 findNavController().navigate(R.id.action_entryFragment_to_registrationFragment)
             }
         }
-
     }
-    
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    
 }

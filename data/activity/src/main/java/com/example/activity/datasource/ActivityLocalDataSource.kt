@@ -35,5 +35,4 @@ class ActivityLocalDataSource @Inject constructor(
             .putInt(KEY_LAST_ACTIVITY, initialSteps)
             .apply()
     }
-
 }

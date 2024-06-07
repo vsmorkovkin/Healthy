@@ -7,5 +7,4 @@ interface VideosService {
 
     @GET("videoGroups.json")
     suspend fun getVideoGroups(): List<VideoGroupEntity>
-
 }

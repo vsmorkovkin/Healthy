@@ -27,11 +27,9 @@ abstract class VideosDataModule {
             val retrofit = Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                .build()
 
             return retrofit.create(VideosService::class.java)
         }
-
     }
-
 }

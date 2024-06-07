@@ -13,5 +13,4 @@ abstract class OnboardingModule {
 
     @Binds
     abstract fun bindOnboardingRepository(impl: OnboardingRepositoryImpl): OnboardingRepository
-
 }

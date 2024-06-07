@@ -24,5 +24,4 @@ interface DeeplinkProcessorModule {
     fun bindMainProcessor(
         mainDeeplinkProcessor: MainDeeplinkProcessor
     ): DeeplinkProcessor
-
 }

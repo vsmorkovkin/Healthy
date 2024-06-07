@@ -89,5 +89,4 @@ class SessionRepositoryImpl @Inject constructor() : SessionRepository {
             }
         }
     }
-
 }

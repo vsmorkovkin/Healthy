@@ -13,5 +13,4 @@ abstract class ActivityDataModule {
 
     @Binds
     abstract fun bindActivityRepository(impl: ActivityRepositoryImpl): ActivityRepository
-
 }

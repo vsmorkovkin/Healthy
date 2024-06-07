@@ -44,5 +44,4 @@ class SessionServiceImpl @Inject constructor() : SessionService {
     override suspend fun deleteAccount() {
         Firebase.auth.currentUser!!.delete().await()
     }
-
 }
