@@ -29,6 +29,8 @@ class EventsFragment : Fragment() {
         binding.viewPager2Events.adapter = EventsFragmentAdapter(this)
         binding.viewPager2Events.isUserInputEnabled = false
 
+
+
         val titles = arrayOf("Мои события", "Все события")
 
         TabLayoutMediator(

@@ -10,7 +10,6 @@ import com.example.main.R
 import com.example.main.databinding.FragmentUserEventsBinding
 import com.example.main.fragments.events.userevents.recyclerview.adapter.UserEventsAdapter
 import com.example.main.fragments.nutrition.recyclerview.decoration.MealItemDecoration
-import com.example.main.fragments.videos.recyclerview.videos.decoration.VideoItemDecoration
 
 class UserEventsFragment : Fragment() {
     private var _binding: FragmentUserEventsBinding? = null
@@ -33,13 +32,22 @@ class UserEventsFragment : Fragment() {
         binding.recyclerViewUserEvents.addItemDecoration(
             MealItemDecoration(dimen16dp, dimen16dp, dimen16dp)
         )
+
+        val eventNames = arrayOf(
+            "Утренний пробежка в парке",
+            "Веломарафон по городским улицам",
+            "Йога на свежем воздухе",
+            "Фитнес-марафон на пляже",
+            "Вечерняя пробежка"
+        )
+
         adapter.submitList(Array(5) {
             EventEntity(
                 it.toString(),
-                "Событие $it",
+                eventNames[it],
                 (it + 1) * 3,
                 "chatId$it",
-                it * 1000L
+                it + 8L
             )
         }.toMutableList())
     }

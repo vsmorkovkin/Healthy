@@ -29,8 +29,8 @@ class UserEventsAdapter :
         fun bind(item: EventEntity) {
             binding.run {
                 textViewEventTitle.text = item.title
-                textViewDescription.text = item.dateTime.toString()
-                textViewParticipantNumber.text = item.participantNumber.toString()
+                textViewDescription.text = "${item.dateTime} июня"
+                textViewParticipantNumber.text = "${item.participantNumber} участников"
             }
         }
     }
