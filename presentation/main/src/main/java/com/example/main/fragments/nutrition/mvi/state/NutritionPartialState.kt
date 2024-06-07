@@ -5,5 +5,5 @@ import com.example.main.fragments.nutrition.model.NutritionWithMealsUi
 
 sealed interface NutritionPartialState : MviPartialState {
     data class DateLoaded(val date: String) : NutritionPartialState
-    data class NutritionWithMealsLoaded(val nutritionWithMealsUi : NutritionWithMealsUi) : NutritionPartialState
+    data class NutritionWithMealsLoaded(val nutritionWithMealsUi: NutritionWithMealsUi) : NutritionPartialState
 }

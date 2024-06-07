@@ -25,7 +25,7 @@ class HomeActor @Inject constructor(
     private val getActivityByDateUseCase: GetActivityByDateUseCase,
     private val getActivityWithNutritionByDateUseCase: GetActivityWithNutritionByDateUseCase,
     private val getInitialStepsUseCase: GetInitialStepsUseCase,
-    private val setInitialStepsUseCase: SetInitialStepsUseCase,
+    private val setInitialStepsUseCase: SetInitialStepsUseCase
 ) :
     MviActor<HomePartialState, HomeIntent, HomeState, HomeEffect>() {
 

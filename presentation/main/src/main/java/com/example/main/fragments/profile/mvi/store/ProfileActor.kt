@@ -20,7 +20,7 @@ class ProfileActor @Inject constructor(
 ) :
     MviActor<ProfilePartialState, ProfileIntent, ProfileState, ProfileEffect>() {
     override fun resolve(intent: ProfileIntent, state: ProfileState): Flow<ProfilePartialState> {
-        return when(intent) {
+        return when (intent) {
             ProfileIntent.GetUserProfile -> getUserProfile()
             ProfileIntent.SelectUserProfileImageFromDevice -> flow { _effects.emit(ProfileEffect.OpenSelectImageDialog) }
             is ProfileIntent.SetUserProfileImage -> setUserProfileImage(intent.imageUri)
@@ -28,7 +28,7 @@ class ProfileActor @Inject constructor(
         }
     }
 
-    private fun getUserProfile() : Flow<ProfilePartialState> = flow {
+    private fun getUserProfile(): Flow<ProfilePartialState> = flow {
         runCatching {
             getUserProfileUseCase()
         }.fold(

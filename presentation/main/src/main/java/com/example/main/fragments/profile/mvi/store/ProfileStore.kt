@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileStore @Inject constructor(
     actor: ProfileActor,
-    reducer: ProfileReducer,
+    reducer: ProfileReducer
 ) : MviStore<ProfilePartialState, ProfileIntent, ProfileState, ProfileEffect>(reducer, actor) {
     override fun initialStateCreator(): ProfileState {
         return ProfileState(null)

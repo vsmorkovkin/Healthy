@@ -23,7 +23,6 @@ import com.example.main.fragments.profile.mvi.store.ProfileStore
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class ProfileFragment :
     BaseFragmentMvi<ProfilePartialState, ProfileIntent, ProfileState, ProfileEffect>(
@@ -39,7 +38,8 @@ class ProfileFragment :
     lateinit var deeplinkContainer: NavigationDeeplinkContainer
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -121,5 +121,4 @@ class ProfileFragment :
     companion object {
         const val REQUEST_KEY_CHANGED_PROFILE_IMAGE = "REQUEST_KEY_CHANGED_PROFILE_IMAGE"
     }
-
 }

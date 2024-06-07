@@ -13,7 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
 class ProfileModule {
 
     @Provides
-    fun provideSetUserProfileImageUseCase(sessionRepository: SessionRepository) : SetUserProfileImageUseCase {
+    fun provideSetUserProfileImageUseCase(sessionRepository: SessionRepository): SetUserProfileImageUseCase {
         return SetUserProfileImageUseCase(sessionRepository)
     }
 

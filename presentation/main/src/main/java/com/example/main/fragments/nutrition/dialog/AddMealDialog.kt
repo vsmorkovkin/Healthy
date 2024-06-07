@@ -65,7 +65,7 @@ class AddMealDialog : DialogFragment() {
                 caloriesText.isEmpty() to getString(R.string.warning_empty_calories),
                 proteinsText.isEmpty() to getString(R.string.warning_empty_proteins),
                 fatsText.isEmpty() to getString(R.string.warning_empty_fats),
-                carbsText.isEmpty() to getString(R.string.warning_empty_carbs),
+                carbsText.isEmpty() to getString(R.string.warning_empty_carbs)
             )
 
             for (conditionWithMessage in conditionWithMessageList) {
