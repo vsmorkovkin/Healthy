@@ -84,7 +84,7 @@ class AddMealDialog : DialogFragment() {
                     caloriesText.toInt(),
                     proteinsText.toInt(),
                     fatsText.toInt(),
-                    carbsText.toInt(),
+                    carbsText.toInt()
                 )
             )
             val mealJsonString = gson.toJson(mealEntity)
