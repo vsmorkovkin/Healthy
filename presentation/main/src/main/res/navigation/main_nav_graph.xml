@@ -45,7 +45,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/activityByDayFragment"
-        android:name="com.example.main.fragments.activity_by_day.ActivityByDayFragment"
+        android:name="com.example.main.fragments.activitybyday.ActivityByDayFragment"
         android:label="@string/fragment_activity_by_day_label"
         tools:layout="@layout/fragment_activity_by_day" >
         <action

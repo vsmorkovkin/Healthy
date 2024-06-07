@@ -2,7 +2,7 @@ package com.example.main.views
 
 import com.example.main.R
 import com.example.main.databinding.CardNutritionBinding
-import com.example.main.fragments.activity_by_day.model.NutritionUi
+import com.example.main.fragments.activitybyday.model.NutritionUi
 
 fun CardNutritionBinding.initialize() {
     root.context.run {

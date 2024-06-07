@@ -1,6 +1,6 @@
 package com.example.main.fragments.nutrition.model
 
-import com.example.main.fragments.activity_by_day.model.toUi
+import com.example.main.fragments.activitybyday.model.toUi
 import com.example.nutrition.entity.MealEntity
 import com.example.nutrition.entity.NutritionWithMealsEntity
 

@@ -15,7 +15,7 @@ class NavigationDeeplinkContainer @Inject constructor(
     private val navigationDeeplinkBase: String by lazy {
         val scheme = context.getString(R.string.navigation_deeplink_scheme)
         val host = context.getString(R.string.navigation_deeplink_host)
-        "${scheme}://$host"
+        "$scheme://$host"
     }
 
     val DEEPLINK_TO_MAIN_ACTIVITY: Uri by lazy { createDeeplink(R.string.path_to_main_activity) }

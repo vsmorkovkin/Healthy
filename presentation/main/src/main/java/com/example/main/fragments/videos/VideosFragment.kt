@@ -14,8 +14,8 @@ import com.example.main.fragments.videos.mvi.intent.VideosIntent
 import com.example.main.fragments.videos.mvi.state.VideosPartialState
 import com.example.main.fragments.videos.mvi.state.VideosState
 import com.example.main.fragments.videos.mvi.store.VideosStore
-import com.example.main.fragments.videos.recycler_view.videogroups.adapter.VideoGroupsAdapter
-import com.example.main.fragments.videos.recycler_view.videogroups.decoration.VideoGroupItemDecoration
+import com.example.main.fragments.videos.recyclerview.videogroups.adapter.VideoGroupsAdapter
+import com.example.main.fragments.videos.recyclerview.videogroups.decoration.VideoGroupItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 

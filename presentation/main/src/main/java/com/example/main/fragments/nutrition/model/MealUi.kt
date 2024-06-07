@@ -1,6 +1,6 @@
 package com.example.main.fragments.nutrition.model
 
-import com.example.main.fragments.activity_by_day.model.NutritionUi
+import com.example.main.fragments.activitybyday.model.NutritionUi
 
 data class MealUi(
     val dateTimeOfCreation: Long,

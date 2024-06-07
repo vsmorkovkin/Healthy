@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
                     .build()
             )
         }
-
     }
 
     private fun registerFragmentResult() {
@@ -115,7 +114,6 @@ class MainActivity : AppCompatActivity() {
                 toolbarMain.menu.findItem(R.id.activityByDayFragment)?.isVisible =
                     destination.id == R.id.homeFragment
             }
-
         }
 
         // Set toolbar title with current destination label instead of app name
@@ -133,5 +131,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.main_nav_host_fragment)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
-
 }

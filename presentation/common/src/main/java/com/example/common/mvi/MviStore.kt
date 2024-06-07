@@ -19,9 +19,9 @@ abstract class MviStore<
         Intent : MviIntent,
         State : MviState,
         Effect : MviEffect>(
-    private val reducer: MviReducer<PartialState, State>,
-    private val actor: MviActor<PartialState, Intent, State, Effect>
-) : ViewModel() {
+                private val reducer: MviReducer<PartialState, State>,
+                private val actor: MviActor<PartialState, Intent, State, Effect>
+        ) : ViewModel() {
 
     private val initialState: State by lazy { initialStateCreator() }
 

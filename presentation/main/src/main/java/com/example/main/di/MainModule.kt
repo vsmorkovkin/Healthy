@@ -12,8 +12,7 @@ import dagger.hilt.android.components.ViewModelComponent
 class MainModule {
 
     @Provides
-    fun provideGetUserProfileUseCase(sessionRepository: SessionRepository) : GetUserProfileUseCase {
+    fun provideGetUserProfileUseCase(sessionRepository: SessionRepository): GetUserProfileUseCase {
         return GetUserProfileUseCase(sessionRepository)
     }
-
 }

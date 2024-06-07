@@ -14,8 +14,8 @@ import com.example.main.fragments.nutrition.mvi.intent.NutritionIntent
 import com.example.main.fragments.nutrition.mvi.state.NutritionPartialState
 import com.example.main.fragments.nutrition.mvi.state.NutritionState
 import com.example.main.fragments.nutrition.mvi.store.NutritionStore
-import com.example.main.fragments.nutrition.recycler_view.adapter.MealsListAdapter
-import com.example.main.fragments.nutrition.recycler_view.decoration.MealItemDecoration
+import com.example.main.fragments.nutrition.recyclerview.adapter.MealsListAdapter
+import com.example.main.fragments.nutrition.recyclerview.decoration.MealItemDecoration
 import com.example.main.views.initialize
 import com.example.main.views.setValue
 import com.example.nutrition.entity.MealEntity

@@ -15,5 +15,4 @@ class RegistrationModule {
     fun provideRegisterUseCase(sessionRepository: SessionRepository): RegisterUseCase {
         return RegisterUseCase(sessionRepository)
     }
-
 }

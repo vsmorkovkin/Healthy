@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.common.mvi.BaseFragmentMvi
 import com.example.main.R
 import com.example.main.databinding.FragmentHomeBinding
-import com.example.main.fragments.activity_by_day.model.toUi
+import com.example.main.fragments.activitybyday.model.toUi
 import com.example.main.fragments.home.dialogs.AddWaterIntakeDialog
 import com.example.main.fragments.home.dialogs.EnterCurrentWeightDialog
 import com.example.main.fragments.home.dialogs.EnterSleepTimeDialog
