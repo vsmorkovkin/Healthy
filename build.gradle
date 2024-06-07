@@ -36,7 +36,8 @@ buildscript {
                 glide              : "4.14.2",
                 gson               : "2.10",
                 okHttp             : "4.7.2",
-                retrofit           : "2.11.0"
+                retrofit           : "2.11.0",
+                yandexMaps         : "4.6.1"
         ]
 
         androidx = [
@@ -83,6 +84,10 @@ buildscript {
                 okHttpLogging: "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
                 retrofit     : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
                 retrofitGson : "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+        ]
+
+        yandexMaps = [
+                mapsLite : "com.yandex.android:maps.mobile:${versions.yandexMaps}-lite"
         ]
 
     }

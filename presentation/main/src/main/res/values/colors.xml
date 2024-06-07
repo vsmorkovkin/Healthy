@@ -26,4 +26,6 @@
 
     <color name="color_video_preview_bg">#BCBCBC</color>
 
+    <color name="color_user_event_button_text">#9F9F9F</color>
+
 </resources>

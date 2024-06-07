@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.chats.ChatsFragment">
+    tools:context=".fragments.events.userevents.UserEventsFragment">
 
-    <TextView
-        style="@style/Healthy.Text.Body1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_user_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingHorizontal="@dimen/_48dp"
-        android:text="@string/warning_no_contacts"
-        android:textColor="#6A6A6A" />
-
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </FrameLayout>

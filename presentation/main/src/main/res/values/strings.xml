@@ -64,6 +64,9 @@
     <string name="warning_empty_current_weight">Введите ваш текущий вес</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_open_chat_text">чат</string>
+    <string name="button_leave_event_text">покинуть</string>
+    <string name="warning_no_contacts">У вас нет контактов Присоединитись к событию, чтобы начать диалог</string>
 
 
 </resources>

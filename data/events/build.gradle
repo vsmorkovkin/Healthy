@@ -1,23 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
 }
 
 android {
-    namespace 'com.example.healthy'
+    namespace 'com.example.events'
     compileSdk buildConfig.compileSdk
 
     defaultConfig {
-        applicationId "com.example.healthy"
         minSdk buildConfig.minSdk
-        targetSdk buildConfig.targetSdk
-        versionCode buildConfig.version.code
-        versionName buildConfig.version.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,31 +33,16 @@ android {
 
 dependencies {
 
-    implementation project(':presentation:common')
-    implementation project(':presentation:auth')
-    implementation project(':presentation:main')
-
-    implementation androidx.core
-    implementation androidx.appCompat
-    implementation androidx.constraintLayout
-    implementation material.material
-
-    implementation androidx.splashScreen
-
-    implementation androidx.navigationFragment
-    implementation androidx.navigationUiKtx
+    implementation project(':domain:events')
 
     implementation platform(firebase.BoM)
     implementation firebase.auth
     implementation firebase.firestore
+    implementation firebase.storage
+
+    implementation gson.gson
 
     implementation di.hiltAndroid
     kapt di.hiltCompiler
 
-    implementation yandexMaps.mapsLite
-
-}
-
-kapt {
-    correctErrorTypes = true
 }

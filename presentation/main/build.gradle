@@ -52,6 +52,9 @@ dependencies {
     implementation project(':data:videos')
     implementation project(':domain:videos')
 
+    implementation project(':data:events')
+    implementation project(':domain:events')
+
     implementation androidx.core
     implementation androidx.appCompat
     implementation androidx.constraintLayout
@@ -61,6 +64,7 @@ dependencies {
     implementation androidx.navigationUiKtx
 
     implementation di.hiltAndroid
+    implementation project(':domain:events')
     kapt di.hiltCompiler
 
     implementation platform(firebase.BoM)
@@ -71,6 +75,8 @@ dependencies {
     implementation glide.glide
 
     implementation gson.gson
+
+    implementation yandexMaps.mapsLite
 
 }
 
