@@ -10,5 +10,5 @@ sealed interface RegistrationEffect : MviEffect {
     data object EmptyPasswordConfirmation : RegistrationEffect
     data object NotMatchingPasswords : RegistrationEffect
     data object SuccessfulRegistration : RegistrationEffect
-    data class RegistrationFailure(val message: String): RegistrationEffect
+    data class RegistrationFailure(val message: String) : RegistrationEffect
 }

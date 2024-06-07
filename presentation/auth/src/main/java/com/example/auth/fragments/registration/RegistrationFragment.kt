@@ -20,7 +20,6 @@ import com.example.common.navigation.NavigationDeeplinkContainer
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class RegistrationFragment :
     BaseFragmentMvi<RegistrationPartialState, RegistrationIntent, RegistrationState, RegistrationEffect>(
@@ -36,7 +35,8 @@ class RegistrationFragment :
     lateinit var deeplinkContainer: NavigationDeeplinkContainer
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
@@ -82,8 +82,6 @@ class RegistrationFragment :
             is RegistrationEffect.RegistrationFailure -> {
                 Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
             }
-
-
         }
     }
 
@@ -93,5 +91,4 @@ class RegistrationFragment :
         val intent = Intent(Intent.ACTION_VIEW, deeplinkContainer.DEEPLINK_TO_MAIN_ACTIVITY)
         startActivity(intent)
     }
-
 }

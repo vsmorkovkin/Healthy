@@ -5,5 +5,5 @@ data class UserRegistrationUi(
     val surname: String,
     val email: String,
     val password: String,
-    val passwordConfirmation: String,
+    val passwordConfirmation: String
 )

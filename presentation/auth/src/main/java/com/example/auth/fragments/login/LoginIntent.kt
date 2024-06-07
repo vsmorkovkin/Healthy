@@ -6,6 +6,6 @@ sealed interface LoginIntent : MviIntent {
     data class SignInIntent(
         val email: String,
         val password: String
-    ): LoginIntent
+    ) : LoginIntent
     data object NoAccountIntent : LoginIntent
 }

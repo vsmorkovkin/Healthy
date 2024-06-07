@@ -15,5 +15,4 @@ class LoginModule {
     fun provideLoginUseCase(sessionRepository: SessionRepository): LoginUseCase {
         return LoginUseCase(sessionRepository)
     }
-
 }

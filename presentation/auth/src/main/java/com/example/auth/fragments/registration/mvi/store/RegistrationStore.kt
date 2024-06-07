@@ -8,7 +8,6 @@ import com.example.common.mvi.MviStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-
 @HiltViewModel
 class RegistrationStore @Inject constructor(
     actor: RegistrationActor,

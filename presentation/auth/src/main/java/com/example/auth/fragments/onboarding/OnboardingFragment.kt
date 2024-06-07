@@ -14,14 +14,14 @@ import com.example.auth.fragments.onboarding.adapter.ONBOARDING_PAGES_NUMBER
 import com.example.auth.fragments.onboarding.adapter.OnboardingVp2Adapter
 import com.google.android.material.tabs.TabLayoutMediator
 
-
 class OnboardingFragment : Fragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
@@ -59,11 +59,9 @@ class OnboardingFragment : Fragment() {
 
             TabLayoutMediator(
                 tabLayoutPageIndicator,
-                viewPager2Onboarding,
+                viewPager2Onboarding
             ) { _, _ -> run {} }.attach()
-
         }
-
     }
 
     override fun onDestroyView() {

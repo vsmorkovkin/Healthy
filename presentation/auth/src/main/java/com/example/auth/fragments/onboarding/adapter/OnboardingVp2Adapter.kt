@@ -23,5 +23,4 @@ class OnboardingVp2Adapter(
             else -> OnboardingChatFragment()
         }
     }
-
 }

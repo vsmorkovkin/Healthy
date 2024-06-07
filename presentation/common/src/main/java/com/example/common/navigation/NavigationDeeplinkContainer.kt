@@ -7,7 +7,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class NavigationDeeplinkContainer @Inject constructor(
     @ApplicationContext private val context: Context
@@ -27,5 +26,4 @@ class NavigationDeeplinkContainer @Inject constructor(
         val path = context.getString(pathStringId)
         return Uri.parse("$navigationDeeplinkBase$path")
     }
-
 }

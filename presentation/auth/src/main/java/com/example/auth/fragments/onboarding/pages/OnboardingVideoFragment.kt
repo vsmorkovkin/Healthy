@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.auth.databinding.FragmentOnboardingVideoBinding
 
-
 class OnboardingVideoFragment : Fragment() {
 
     private var _binding: FragmentOnboardingVideoBinding? = null
@@ -25,5 +24,4 @@ class OnboardingVideoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

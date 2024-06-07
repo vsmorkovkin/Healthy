@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
 class RegistrationActor @Inject constructor(
     private val registerUseCase: RegisterUseCase
 ) : MviActor<RegistrationPartialState, RegistrationIntent, RegistrationState, RegistrationEffect>() {
@@ -34,7 +33,7 @@ class RegistrationActor @Inject constructor(
                 email.isEmpty() to RegistrationEffect.EmptyEmail,
                 password.isEmpty() to RegistrationEffect.EmptyPassword,
                 passwordConfirmation.isEmpty() to RegistrationEffect.EmptyPasswordConfirmation,
-                (password != passwordConfirmation) to RegistrationEffect.NotMatchingPasswords,
+                (password != passwordConfirmation) to RegistrationEffect.NotMatchingPasswords
             )
 
             for ((condition, effect) in conditionToEffect) {
