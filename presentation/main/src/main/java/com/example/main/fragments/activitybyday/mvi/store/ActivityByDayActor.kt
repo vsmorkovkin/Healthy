@@ -41,5 +41,4 @@ class ActivityByDayActor @Inject constructor(
             }
         )
     }
-
 }

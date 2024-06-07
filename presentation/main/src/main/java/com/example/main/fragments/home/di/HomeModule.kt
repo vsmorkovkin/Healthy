@@ -52,5 +52,4 @@ class HomeModule {
     fun provideSetInitialStepsUseCase(activityRepository: ActivityRepository): SetInitialStepsUseCase {
         return SetInitialStepsUseCase(activityRepository)
     }
-
 }

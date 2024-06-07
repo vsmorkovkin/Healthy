@@ -32,7 +32,6 @@ import com.example.main.views.setWaterIntake
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
-
 @AndroidEntryPoint
 class HomeFragment :
     BaseFragmentMvi<HomePartialState, HomeIntent, HomeState, HomeEffect>(R.layout.fragment_home),
@@ -56,7 +55,8 @@ class HomeFragment :
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -148,7 +148,6 @@ class HomeFragment :
             }
         }
     }
-
 
     private fun registerForWaterDialogResult() {
         childFragmentManager.setFragmentResultListener(

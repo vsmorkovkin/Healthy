@@ -6,4 +6,3 @@ data class UserProfileUi(
     val nameAndSurname: String,
     val imageUrl: Uri?
 )
-

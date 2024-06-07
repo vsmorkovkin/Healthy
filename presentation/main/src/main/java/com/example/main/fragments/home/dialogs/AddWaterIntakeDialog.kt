@@ -17,7 +17,8 @@ class AddWaterIntakeDialog : DialogFragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogAddWaterIntakeBinding.inflate(inflater, container, false)
@@ -64,5 +65,4 @@ class AddWaterIntakeDialog : DialogFragment() {
         const val REQUEST_KEY_WATER_INTAKE_ENTERED = "REQUEST_KEY_WATER_INTAKE_ENTERED"
         const val BUNDLE_KEY_WATER_INTAKE = "BUNDLE_KEY_WATER_INTAKE"
     }
-
 }

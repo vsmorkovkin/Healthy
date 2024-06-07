@@ -27,5 +27,4 @@ class NutritionModule {
     fun provideDeleteMealByDateUseCase(nutritionRepository: NutritionRepository): DeleteMealByDateUseCase {
         return DeleteMealByDateUseCase(nutritionRepository)
     }
-
 }

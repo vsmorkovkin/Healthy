@@ -22,7 +22,6 @@ import com.example.nutrition.entity.MealEntity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class NutritionFragment :
     BaseFragmentMvi<NutritionPartialState, NutritionIntent, NutritionState, NutritionEffect>(R.layout.fragment_nutrition) {
@@ -46,13 +45,13 @@ class NutritionFragment :
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNutritionBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -119,5 +118,4 @@ class NutritionFragment :
             )
         )
     }
-
 }

@@ -14,5 +14,4 @@ object TimeDiff {
 
         return difference.toFloat() / (1000 * 60 * 60) // convert to hours
     }
-
 }

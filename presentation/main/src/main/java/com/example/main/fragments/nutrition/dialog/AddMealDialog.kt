@@ -21,7 +21,8 @@ class AddMealDialog : DialogFragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogAddMealBinding.inflate(inflater, container, false)
@@ -99,5 +100,4 @@ class AddMealDialog : DialogFragment() {
         const val REQUEST_KEY_ENTERED_MEAL_TO_ADD = "REQUEST_KEY_ENTERED_MEAL_TO_ADD"
         const val BUNDLE_KEY_MEAL = "BUNDLE_KEY_MEAL"
     }
-
 }

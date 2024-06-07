@@ -21,5 +21,4 @@ class ActivityByDayStore @Inject constructor(
     override fun initialStateCreator(): ActivityByDayState {
         return ActivityByDayState(null, ActivityWithNutritionEntity())
     }
-
 }

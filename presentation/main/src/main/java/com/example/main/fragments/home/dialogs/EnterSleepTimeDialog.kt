@@ -18,7 +18,8 @@ class EnterSleepTimeDialog : DialogFragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogEnterSleepTimeBinding.inflate(inflater, container, false)
@@ -33,10 +34,7 @@ class EnterSleepTimeDialog : DialogFragment() {
                 val bedtime = textInputLayoutBedtime.getText()
                 val wakeupTime = textInputLayoutWakeupTime.getText()
 
-                if (bedtime.isEmpty()
-                    || wakeupTime.isEmpty()
-                    || !isValidTimeString(bedtime)
-                    || !isValidTimeString(wakeupTime)
+                if (bedtime.isEmpty() || wakeupTime.isEmpty() || !isValidTimeString(bedtime) || !isValidTimeString(wakeupTime)
                 ) {
                     showToast(getString(R.string.warning_enter_correct_time))
                     return@setOnClickListener
@@ -75,5 +73,4 @@ class EnterSleepTimeDialog : DialogFragment() {
         const val BUNDLE_KEY_BEDTIME = "BUNDLE_KEY_BEDTIME"
         const val BUNDLE_KEY_WAKEUP_TIME = "BUNDLE_KEY_WAKEUP_TIME"
     }
-
 }

@@ -1,13 +1,10 @@
 package com.example.main.views
 
 import android.graphics.drawable.LayerDrawable
-import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.main.databinding.CardActivityBinding
 import com.example.main.models.CardActivityInitial
 import com.example.main.utils.DecimalFormatter
-
 
 // Initializing
 fun CardActivityBinding.initialize(cardActivityInitial: CardActivityInitial) {
@@ -18,7 +15,7 @@ fun CardActivityBinding.initialize(cardActivityInitial: CardActivityInitial) {
     icon.setImageDrawable(cardActivityInitial.icon.apply { setTint(cardActivityInitial.itemColor) })
 
     // Value setup
-    //value.text = cardActivityInitial.initialValue
+    // value.text = cardActivityInitial.initialValue
     valueMeasurement.text = cardActivityInitial.valueMeasurement
 
     // Percentage setup
@@ -45,7 +42,6 @@ fun CardActivityBinding.initializeValue(initValue: String) {
     progress.progress = 0
 }
 
-
 // Setting values
 fun CardActivityBinding.setValue(currentValue: Int) {
     value.text = currentValue.toString()
@@ -67,13 +63,11 @@ fun CardActivityBinding.setCurrentWeight(currentWeight: Float) {
     value.text = if (currentWeight == 0f) "--" else DecimalFormatter.format(currentWeight)
 }
 
-
 // Setting progress
 private const val MAX_PERCENT = 100
 
 private fun CardActivityBinding.setProgress(currentProgress: Int) {
     progress.progress = currentProgress
-    //Log.d("Progress", "max=${progress.max}")
     percentage.text = minOf(
         ((currentProgress.toFloat() / progress.max) * 100).toInt(),
         MAX_PERCENT

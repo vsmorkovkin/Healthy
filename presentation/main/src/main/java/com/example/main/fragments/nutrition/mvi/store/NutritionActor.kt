@@ -84,5 +84,4 @@ class NutritionActor @Inject constructor(
     private fun showAddMealDialog(): Flow<NutritionPartialState> = flow {
         _effects.emit(NutritionEffect.ShowAddMealDialog)
     }
-
 }

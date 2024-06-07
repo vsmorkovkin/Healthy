@@ -10,7 +10,6 @@ import com.example.main.fragments.videos.model.VideoGroupUi
 import com.example.main.fragments.videos.recyclerview.videos.adapter.VideosAdapter
 import com.example.main.fragments.videos.recyclerview.videos.decoration.VideoItemDecoration
 
-
 class VideoGroupsAdapter(
     private val onVideoClick: (videoId: String) -> Unit
 ) :
@@ -48,8 +47,6 @@ class VideoGroupsAdapter(
                 recyclerViewVideos.addItemDecoration(videoItemDecoration)
                 adapter.submitList(item.videos)
             }
-
         }
     }
-
 }

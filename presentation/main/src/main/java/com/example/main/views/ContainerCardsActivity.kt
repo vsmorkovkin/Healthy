@@ -5,7 +5,6 @@ import com.example.main.R
 import com.example.main.databinding.ContainerCardsActivityBinding
 import com.example.main.models.CardActivityInitialFactory
 
-
 fun ContainerCardsActivityBinding.initialize() {
     val context = root.context
 

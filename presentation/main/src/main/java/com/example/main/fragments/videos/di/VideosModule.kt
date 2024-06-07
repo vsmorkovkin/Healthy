@@ -15,5 +15,4 @@ class VideosModule {
     fun provideGetVideoGroupsUseCase(videosRepository: VideosRepository): GetVideoGroupsUseCase {
         return GetVideoGroupsUseCase(videosRepository)
     }
-
 }

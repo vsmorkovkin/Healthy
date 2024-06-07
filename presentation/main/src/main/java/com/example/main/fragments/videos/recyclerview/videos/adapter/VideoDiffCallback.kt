@@ -11,5 +11,4 @@ class VideoDiffCallback : DiffUtil.ItemCallback<VideoUi>() {
     override fun areContentsTheSame(oldItem: VideoUi, newItem: VideoUi): Boolean {
         return oldItem == newItem
     }
-
 }

@@ -2,7 +2,6 @@ package com.example.main.views
 
 import com.example.main.databinding.CardNutrientBinding
 
-
 fun CardNutrientBinding.initialize(
     title: String,
     progressColor: Int,

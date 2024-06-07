@@ -8,7 +8,6 @@ import com.example.main.fragments.profile.mvi.state.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-
 @HiltViewModel
 class ProfileStore @Inject constructor(
     actor: ProfileActor,

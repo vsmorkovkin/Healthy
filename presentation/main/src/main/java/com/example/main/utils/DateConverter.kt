@@ -14,8 +14,7 @@ object DateConverter {
     private const val OUTPUT_FORMAT_ACTIVITY_BY_DAY = "d MMMM yyyy, EEE"
     private const val OUTPUT_FORMAT_NUTRITION = "d MMMM, E"
 
-
-    fun dateToDateEntity(date: Date) : String {
+    fun dateToDateEntity(date: Date): String {
         val outputFormat = SimpleDateFormat(DATE_ENTITY_FORMAT, Locale("ru"))
         return outputFormat.format(date)
     }
@@ -42,5 +41,4 @@ object DateConverter {
         val outputFormat = SimpleDateFormat(outputFormatString, Locale("ru"))
         return outputFormat.format(calendar.time)
     }
-
 }

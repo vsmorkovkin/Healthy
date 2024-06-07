@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.main.databinding.FragmentEventsBinding
 
-
 class EventsFragment : Fragment() {
 
     private var _binding: FragmentEventsBinding? = null
@@ -25,5 +24,4 @@ class EventsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

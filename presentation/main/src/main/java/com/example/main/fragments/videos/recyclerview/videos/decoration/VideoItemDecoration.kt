@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class VideoItemDecoration(
     private val innerDivider: Int,
-    private val outerDivider: Int,
+    private val outerDivider: Int
 ) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
@@ -40,5 +40,4 @@ class VideoItemDecoration(
     private fun RecyclerView.Adapter<*>.isRightmost(
         currentPosition: Int
     ): Boolean = currentPosition == itemCount - 1
-
 }

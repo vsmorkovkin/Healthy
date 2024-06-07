@@ -20,7 +20,6 @@ import java.util.Calendar
 import java.util.Date
 import javax.inject.Inject
 
-
 class HomeActor @Inject constructor(
     private val updateActivityUseCase: UpdateActivityUseCase,
     private val getActivityByDateUseCase: GetActivityByDateUseCase,
@@ -58,7 +57,6 @@ class HomeActor @Inject constructor(
             )
         }
     }
-
 
     private val currentDate: String
         get() {
@@ -157,7 +155,6 @@ class HomeActor @Inject constructor(
         )
     }
 
-
     private fun updateWeightInActivity(
         activityEntity: ActivityEntity,
         weight: Float
@@ -177,6 +174,4 @@ class HomeActor @Inject constructor(
             }
         )
     }
-
-
 }

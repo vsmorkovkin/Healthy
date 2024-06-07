@@ -4,7 +4,6 @@ import com.example.main.R
 import com.example.main.databinding.CardMealBinding
 import com.example.main.fragments.nutrition.model.MealUi
 
-
 fun CardMealBinding.initialize() {
     root.context.run {
         cardMealProteins.setTitle(getString(R.string.card_meal_proteins_title))

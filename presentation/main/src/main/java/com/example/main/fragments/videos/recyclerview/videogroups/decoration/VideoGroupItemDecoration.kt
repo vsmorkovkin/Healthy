@@ -33,7 +33,6 @@ class VideoGroupItemDecoration(
             left = horizontalPadding
             right = horizontalPadding
         }
-
     }
 
     private fun RecyclerView.Adapter<*>.isTopmost(
@@ -43,5 +42,4 @@ class VideoGroupItemDecoration(
     private fun RecyclerView.Adapter<*>.isBottommost(
         currentPosition: Int
     ): Boolean = currentPosition == itemCount - 1
-
 }

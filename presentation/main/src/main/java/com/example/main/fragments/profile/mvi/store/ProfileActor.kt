@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ProfileActor @Inject constructor(
     private val getUserProfileUseCase: GetUserProfileUseCase,
     private val setUserProfileImageUseCase: SetUserProfileImageUseCase,
-    private val logoutUseCase: LogoutUseCase,
+    private val logoutUseCase: LogoutUseCase
 ) :
     MviActor<ProfilePartialState, ProfileIntent, ProfileState, ProfileEffect>() {
     override fun resolve(intent: ProfileIntent, state: ProfileState): Flow<ProfilePartialState> {
@@ -27,7 +27,6 @@ class ProfileActor @Inject constructor(
             ProfileIntent.PerformLogout -> performLogout()
         }
     }
-
 
     private fun getUserProfile() : Flow<ProfilePartialState> = flow {
         runCatching {
@@ -68,5 +67,4 @@ class ProfileActor @Inject constructor(
             }
         )
     }
-
 }

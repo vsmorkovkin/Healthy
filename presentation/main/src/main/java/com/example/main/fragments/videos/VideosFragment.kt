@@ -18,7 +18,6 @@ import com.example.main.fragments.videos.recyclerview.videogroups.adapter.VideoG
 import com.example.main.fragments.videos.recyclerview.videogroups.decoration.VideoGroupItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class VideosFragment : BaseFragmentMvi<VideosPartialState, VideosIntent, VideosState, VideosEffect>(
     R.layout.fragment_videos
@@ -42,7 +41,8 @@ class VideosFragment : BaseFragmentMvi<VideosPartialState, VideosIntent, VideosS
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentVideosBinding.inflate(inflater, container, false)
@@ -68,5 +68,4 @@ class VideosFragment : BaseFragmentMvi<VideosPartialState, VideosIntent, VideosS
     override fun render(state: VideosState) {
         videosAdapter.submitList(state.videoGroups)
     }
-
 }

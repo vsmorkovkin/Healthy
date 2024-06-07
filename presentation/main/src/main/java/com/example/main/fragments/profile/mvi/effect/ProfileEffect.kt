@@ -5,7 +5,7 @@ import com.example.common.mvi.MviEffect
 sealed interface ProfileEffect : MviEffect {
     data class GetUserProfileFailure(val message: String) : ProfileEffect
 
-    data object OpenSelectImageDialog: ProfileEffect
+    data object OpenSelectImageDialog : ProfileEffect
     data class SetUserProfileImageFailure(val message: String) : ProfileEffect
     data object UserProfileImageChanged : ProfileEffect
 

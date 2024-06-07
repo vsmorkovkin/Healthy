@@ -8,7 +8,7 @@ fun ActivityWithNutritionEntity.toUi(
 ): ActivityUi {
     return this.run {
         ActivityUi(
-            date = "",//formatDate(day),
+            date = "", // formatDate(day),
             nutrition = nutrition.toUi(),
             stepsNumber = activityEntity.stepsNumber,
             waterIntake = activityEntity.waterIntake.toFloat(),

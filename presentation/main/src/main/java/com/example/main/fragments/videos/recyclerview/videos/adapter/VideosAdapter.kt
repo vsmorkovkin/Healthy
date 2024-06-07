@@ -41,8 +41,6 @@ class VideosAdapter(
                     onVideoClick(item.id)
                 }
             }
-
         }
     }
-
 }
